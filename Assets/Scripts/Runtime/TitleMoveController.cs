@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 시작 씬의 타이틀을 움직입니다.
 /// </summary>
+[ExecuteInEditMode]
 public class TitleMoveController : MonoBehaviour
 {
     /// <summary>
@@ -23,7 +24,7 @@ public class TitleMoveController : MonoBehaviour
     /// <summary>
     /// 타이틀이 움직일 때의 높이입니다.
     /// </summary>
-    private float _moveHeight;
+    public float _moveHeight;
 
     /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
