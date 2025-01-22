@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
+/// <summary>
+/// 인게임 백그라운드를 제어합니다.
+/// </summary>
 public class Background : MonoBehaviour
 {
     /// <summary>
