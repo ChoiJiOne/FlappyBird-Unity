@@ -20,4 +20,12 @@ public class SceneSwitchManager : MonoBehaviour
     public void OnClickScore()
     {
     }
+
+    /// <summary>
+    /// 세팅 버튼을 클릭했을 때 수행할 동작입니다.
+    /// </summary>
+    public void OnClickSetting()
+    {
+
+    }
 }
