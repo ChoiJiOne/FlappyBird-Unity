@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// 첫 프레임이 시작되기 전에 호출합니다.
+    /// </summary>
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// 매 프레임 한 번 호출합니다.
+    /// </summary>
     void Update()
     {
         
