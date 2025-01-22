@@ -30,12 +30,12 @@ public class Background : MonoBehaviour
     /// <summary>
     /// '낮' 백그라운드가 스프라이트입니다.
     /// </summary>
-    static private Sprite _dayBackground;
+    private static Sprite _dayBackground;
 
     /// <summary>
     /// '밤' 백그라운드 스프라이트입니다.
     /// </summary>
-    static private Sprite _nightBackground;
+    private static Sprite _nightBackground;
 
     /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
