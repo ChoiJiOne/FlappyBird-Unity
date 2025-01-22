@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Background : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Background : MonoBehaviour
     /// 백그라운드가 렌더링할 스프라이트를 설정할 스프라이트 렌더러입니다.
     /// </summary>
     private SpriteRenderer _spriteRenderer;
-        
+    
     /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
     /// </summary>
