@@ -16,11 +16,17 @@ public class TitleMoveController : MonoBehaviour
     private RectTransform _rectTransform;
 
     /// <summary>
+    /// 타이틀이 움직일 때 기준이 되는 위치입니다.
+    /// </summary>
+    private Vector2 _moveBasePosition;
+
+    /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
     /// </summary>
     void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _moveBasePosition = _rectTransform.anchoredPosition;
     }
 
     /// <summary>
