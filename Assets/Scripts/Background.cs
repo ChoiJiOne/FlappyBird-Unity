@@ -6,6 +6,15 @@ using UnityEngine.U2D;
 public class Background : MonoBehaviour
 {
     /// <summary>
+    /// 백그라운드의 낮-밤을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public bool Day
+    {
+        get { return _isDay; }
+        set { _isDay = value; }
+    }
+
+    /// <summary>
     /// 백드라운드의 트랜스폼입니다. 백그라운드의 스케일 값을 조정하기 위한 멤버 변수입니다.
     /// </summary>
     private Transform _transform;
