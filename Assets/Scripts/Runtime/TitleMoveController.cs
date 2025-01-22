@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 시작 씬의 타이틀을 움직입니다.
 /// </summary>
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class TitleMoveController : MonoBehaviour
 {
     /// <summary>
@@ -52,10 +52,33 @@ public class TitleMoveController : MonoBehaviour
     }
 
     /// <summary>
-    /// 매 프레임 한 번 호출합니다.
+    /// 타이틀이 포물선 운동을 하도록 업데이트합니다.
     /// </summary>
+    /// <remarks>
+    /// 포물선 운동의 식은 다음과 같습니다.
+    /// 시간 t에 대하여 움직일 때, a초만큼 최대 h 움직일 때,
+    /// y = (4 * h / a^2) * t * (a - t)
+    /// 아래의 코드에서 constant가 (4 * h / a^2)를 계산한 것임.
+    /// </remarks>
     void Update()
     {
-        
+        // 애플리케이션이 실행중이 아니라면, 아무동작도 수행하지 않음.
+        if(!Application.isPlaying)
+        {
+            return;
+        }
+
+        _currentStepTime += Time.deltaTime;
+        if (_currentStepTime > _moveTime)
+        {
+            _currentStepTime -= _moveTime;
+        }
+
+        float constant = (4.0f * _moveHeight) / (_moveTime * _moveTime);
+
+        Vector2 newMovePosition = _moveBasePosition;
+        newMovePosition.y += constant * _currentStepTime * (_moveTime - _currentStepTime);
+
+        _rectTransform.anchoredPosition = newMovePosition;
     }
 }
