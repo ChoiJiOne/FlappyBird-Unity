@@ -40,8 +40,8 @@ public class Background : MonoBehaviour
     void Start()
     {
         _isDay = true;
-        _dayBackground = Resources.Load<Sprite>("Sprite/background_day");
-        _nightBackground = Resources.Load<Sprite>("Sprite/background_night");
+        _dayBackground = Resources.Load<Sprite>("Sprite/Day");
+        _nightBackground = Resources.Load<Sprite>("Sprite/Night");
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (_isDay)
