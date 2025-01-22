@@ -35,6 +35,14 @@ public class TitleMoveController : MonoBehaviour
     public float _moveTime;
 
     /// <summary>
+    /// 타이틀의 누적 시간 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 누적 시간 값은 _moveTime을 넘어설 수 없습니다.
+    /// </remarks>
+    private float _currentStepTime;
+
+    /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
     /// </summary>
     void Start()
