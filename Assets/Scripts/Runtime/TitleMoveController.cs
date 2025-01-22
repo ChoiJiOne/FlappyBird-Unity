@@ -27,6 +27,14 @@ public class TitleMoveController : MonoBehaviour
     public float _moveHeight;
 
     /// <summary>
+    /// 타이틀이 움직이는 시간 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 움직이는 시간은 위로 움직이기 시작해서 원래 위치로 돌아오는 시간입니다.
+    /// </remarks>
+    public float _moveTime;
+
+    /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
     /// </summary>
     void Start()
