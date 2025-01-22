@@ -30,12 +30,12 @@ public class Background : MonoBehaviour
     /// <summary>
     /// '낮' 백그라운드가 스프라이트입니다.
     /// </summary>
-    private Sprite _dayBackground;
+    static private Sprite _dayBackground;
 
     /// <summary>
     /// '밤' 백그라운드 스프라이트입니다.
     /// </summary>
-    private Sprite _nightBackground;
+    static private Sprite _nightBackground;
 
     /// <summary>
     /// 첫 프레임이 시작되기 전에 호출합니다.
@@ -43,10 +43,18 @@ public class Background : MonoBehaviour
     void Start()
     {
         _isDay = true;
-        _dayBackground = Resources.Load<Sprite>("Sprite/Day");
-        _nightBackground = Resources.Load<Sprite>("Sprite/Night");
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
+        if (_dayBackground == null)
+        {
+            _dayBackground = Resources.Load<Sprite>("Sprite/Day");
+        }
+
+        if (_nightBackground == null)
+        {
+            _nightBackground = Resources.Load<Sprite>("Sprite/Night");
+        }
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         if (_isDay)
         {
             _spriteRenderer.sprite = _dayBackground;
