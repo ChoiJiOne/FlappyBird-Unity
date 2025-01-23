@@ -25,7 +25,7 @@ public class Background : MonoBehaviour
     /// <summary>
     /// 배경이 낮인지 밤인지 확인합니다. 낮이라면 true, 밤이라면 false입니다.
     /// </summary>
-    private static bool _isDay;
+    private static bool _isDay = true;
 
     /// <summary>
     /// '낮' 백그라운드가 스프라이트입니다.
@@ -42,8 +42,6 @@ public class Background : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _isDay = true;
-
         if (_dayBackground == null)
         {
             _dayBackground = Resources.Load<Sprite>("Sprite/Day");
