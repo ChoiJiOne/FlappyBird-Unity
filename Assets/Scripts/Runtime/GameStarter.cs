@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 씬을 전환하여 게임을 시작합니다.
@@ -15,6 +16,6 @@ public class GameStarter : MonoBehaviour
     /// </summary>
     public void OnClickStart()
     {
-        
+        SceneManager.LoadScene("PlayScene");
     }
 }
