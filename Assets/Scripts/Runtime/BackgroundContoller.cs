@@ -15,7 +15,7 @@ public class BackgroundContoller : MonoBehaviour
     /// </summary>
     public void OnClickDay()
     {
-
+        Background.Day = true;
     }
 
     /// <summary>
@@ -23,6 +23,6 @@ public class BackgroundContoller : MonoBehaviour
     /// </summary>
     public void OnClickNight()
     {
-
+        Background.Day = false;
     }
 }
