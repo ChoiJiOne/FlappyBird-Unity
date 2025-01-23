@@ -11,7 +11,7 @@ public class Background : MonoBehaviour
     /// <summary>
     /// 백그라운드의 낮-밤을 설정하는 프로퍼티입니다.
     /// </summary>
-    public bool Day
+    public static bool Day
     {
         get { return _isDay; }
         set { _isDay = value; }
@@ -25,7 +25,7 @@ public class Background : MonoBehaviour
     /// <summary>
     /// 배경이 낮인지 밤인지 확인합니다. 낮이라면 true, 밤이라면 false입니다.
     /// </summary>
-    private bool _isDay;
+    private static bool _isDay;
 
     /// <summary>
     /// '낮' 백그라운드가 스프라이트입니다.
