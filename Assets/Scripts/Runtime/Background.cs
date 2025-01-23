@@ -69,4 +69,19 @@ public class Background : MonoBehaviour
     void Update()
     {
     }
+
+    /// <summary>
+    /// 백그라운드의 스프라이트 변경 사항을 반영합니다.
+    /// </summary>
+    public void ApplySprite()
+    {
+        if (_isDay)
+        {
+            _spriteRenderer.sprite = _dayBackground;
+        }
+        else
+        {
+            _spriteRenderer.sprite = _nightBackground;
+        }
+    }
 }
