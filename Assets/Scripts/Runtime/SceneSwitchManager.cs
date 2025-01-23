@@ -14,11 +14,17 @@ public class SceneSwitchManager : MonoBehaviour
     private string _selectSceneName;
 
     /// <summary>
+    /// 세팅 버튼을 클릭했을 때 전환할 씬의 이름입니다.
+    /// </summary>
+    private string _settingSceneName;
+
+    /// <summary>
     /// 전환될 씬 이름을 설정합니다.
     /// </summary>
     void Start()
     {
         _selectSceneName = "SelectScene";
+        _settingSceneName = "SettingScene";
     }
 
     /// <summary>
@@ -41,6 +47,6 @@ public class SceneSwitchManager : MonoBehaviour
     /// </summary>
     public void OnClickSetting()
     {
-
+        SceneManager.LoadScene(_settingSceneName);
     }
 }
