@@ -18,12 +18,19 @@ public class TitleMoveControllerEditor : Editor
     /// </remarks>
     private SerializedProperty _moveLength;
 
+
+    /// <summary>
+    /// 에디터에서 제어할 타이틀 이동 시간입니다.
+    /// </summary>
+    private SerializedProperty _moveTime;
+
     /// <summary>
     /// 에디터에서 제어할 타이틀 이동 거리를 설정합니다.
     /// </summary>
     void OnEnable()
     {
         _moveLength = serializedObject.FindProperty("_moveLength");
+        _moveTime = serializedObject.FindProperty("_moveTime");
     }
 
     /// <summary>
@@ -33,6 +40,7 @@ public class TitleMoveControllerEditor : Editor
     {
         serializedObject.Update();
         EditorGUILayout.PropertyField(_moveLength);
+        EditorGUILayout.PropertyField(_moveTime);
         serializedObject.ApplyModifiedProperties();
     }
 }
