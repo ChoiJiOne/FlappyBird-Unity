@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 시작 씬 타이틀의 움직임을 제어합니다.
 /// </summary>
+[ExecuteAlways]
 public class TitleMoveController : MonoBehaviour
 {
     /// <summary>
@@ -61,6 +62,14 @@ public class TitleMoveController : MonoBehaviour
     /// </remarks>
     void Update()
     {
+#if UNITY_EDITOR
+        // 애플리케이션이 실행중이 아니라면, 아무동작도 수행하지 않음.
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
+
         _currentStepTime += Time.deltaTime;
         if(_currentStepTime > _moveTime)
         {
