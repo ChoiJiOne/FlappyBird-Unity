@@ -67,4 +67,22 @@ public class BgSpriteController : MonoBehaviour
             _spriteRenderer.sprite = _nightSprite;
         }
     }
+
+    /// <summary>
+    /// 백그라운드의 스프라이트 변경 사항을 적용합니다.
+    /// </summary>
+    /// <remarks>
+    /// 외부에서 BgSpriteController.Day 를 이용해서 값을 변경했다면, 이 메서드를 반드시 호출해야 변경 사항이 적용됩니다.
+    /// </remarks>
+    public void ApplySprite()
+    {
+        if (_isDay)
+        {
+            _spriteRenderer.sprite = _daySprite;
+        }
+        else
+        {
+            _spriteRenderer.sprite = _nightSprite;
+        }
+    }
 }
