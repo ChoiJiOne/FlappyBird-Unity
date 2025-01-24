@@ -33,10 +33,30 @@ public class BgSpriteController : MonoBehaviour
     private static bool _isDay = true;
 
     /// <summary>
+    /// 낮 배경의 스프라이트입니다.
+    /// </summary>
+    private static Sprite _daySprite;
+
+    /// <summary>
+    /// 밤 배경의 스프라이트입니다.
+    /// </summary>
+    private static Sprite _nightSprite;
+
+    /// <summary>
     /// 스프라이트 렌더러를 설정합니다.
     /// </summary>
     private void Awake()
     {
+        if (_daySprite == null)
+        {
+            _daySprite = Resources.Load<Sprite>("Sprites/Day");
+        }
+
+        if (_nightSprite == null)
+        {
+            _nightSprite = Resources.Load<Sprite>("Sprites/Night");
+        }
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 }
