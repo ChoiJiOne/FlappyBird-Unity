@@ -19,12 +19,18 @@ public class SceneSwitchTrigger : MonoBehaviour
     private string _selectSceneName;
 
     /// <summary>
+    /// 플레이어의 플레이 스코어를 확인하는 씬의 이름입니다.
+    /// </summary>
+    private string _scoreSceneName;
+
+    /// <summary>
     /// 전환할 씬의 이름 값을 초기화합니다.
     /// </summary>
     private void Awake()
     {
         _settingSceneName = "SettingScene";
         _selectSceneName = "SelectScene";
+        _scoreSceneName = "ScoreScene";
     }
 
     /// <summary>
@@ -41,5 +47,13 @@ public class SceneSwitchTrigger : MonoBehaviour
     public void OnClickPlayButton()
     {
         SceneManager.LoadScene(_selectSceneName);
+    }
+
+    /// <summary>
+    /// 스코어 버튼을 클릭했을 때 수행할 동작입니다.
+    /// </summary>
+    public void OnClickScoreButton()
+    {
+        SceneManager.LoadScene(_scoreSceneName);
     }
 }
