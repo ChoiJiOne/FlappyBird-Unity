@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// 세팅 씬의 버튼 이벤트를 수행합니다.
+/// 세팅 씬의 나가기 버튼 이벤트를 수행합니다.
 /// </summary>
-public class ButtonEventTrigger : MonoBehaviour
+public class ExitEventTrigger : MonoBehaviour
 {
     /// <summary>
     /// 세팅 씬 내에 EXIT 버튼을 클릭했을 때 전환할 씬의 이름입니다.
