@@ -11,6 +11,15 @@ using UnityEngine;
 public class BgSpriteController : MonoBehaviour
 {
     /// <summary>
+    /// 배경의 낮-밤을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public static bool Day
+    {
+        get { return _isDay;  }
+        set { _isDay = value; }
+    }
+
+    /// <summary>
     /// 배경 스프라이트 렌더링을 수행할 렌더러입니다.
     /// </summary>
     private SpriteRenderer _spriteRenderer;
