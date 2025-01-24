@@ -13,7 +13,7 @@ public class GroundScroller : MonoBehaviour
     /// <summary>
     /// 그라운드의 스크롤 속도입니다.
     /// </summary>
-    private float _scrollSpeed = 1.0f;
+    public float _scrollSpeed = 1.0f;
 
     /// <summary>
     /// 셰이더에 전달될 그라운드 텍스처의 오프셋 값입니다.
