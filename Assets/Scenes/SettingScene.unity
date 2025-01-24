@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 903691577}
   - component: {fileID: 903691578}
   m_Layer: 0
-  m_Name: ButtonEventTrigger
+  m_Name: ExitEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
