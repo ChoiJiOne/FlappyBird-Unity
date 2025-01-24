@@ -24,6 +24,14 @@ public class TitleMoveController : MonoBehaviour
     /// 타이틀이 움직이는 거리입니다.
     /// </summary>
     private float _moveLength;
+
+    /// <summary>
+    /// 타이틀이 움직이는 초 단위 시간 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 움직이는 시간은 위 방향으로 출발해서 원래 위치로 돌아오는 시간입니다.
+    /// </remarks>
+    private float _moveTime;
     
     /// <summary>
     /// 랙 트랜스폼과 타이틀이 움직일 때 기준이 되는 위치 값을 설정합니다.
