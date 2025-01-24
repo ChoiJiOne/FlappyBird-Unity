@@ -58,5 +58,13 @@ public class BgSpriteController : MonoBehaviour
         }
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_isDay)
+        {
+            _spriteRenderer.sprite = _daySprite;
+        }
+        else
+        {
+            _spriteRenderer.sprite = _nightSprite;
+        }
     }
 }
