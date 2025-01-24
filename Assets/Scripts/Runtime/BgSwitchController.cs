@@ -35,8 +35,7 @@ public class BgSwitchController : MonoBehaviour
             return;
         }
 
-        BgSpriteController.Day = true;
-        _bgSpriteController.ApplySprite();
+        SwitchBackgroundSprite();
     }
 
     /// <summary>
@@ -52,7 +51,18 @@ public class BgSwitchController : MonoBehaviour
             return;
         }
 
-        BgSpriteController.Day = false;
+        SwitchBackgroundSprite();
+    }
+
+    /// <summary>
+    /// 백그라운드의 스프라이트를 반대로 전환합니다.
+    /// </summary>
+    /// <remarks>
+    /// 낮(DAY)이라면 밤(NIGHT)으로 설정하고, 밤이면 낮으로 설정합니다.
+    /// </remarks>
+    private void SwitchBackgroundSprite()
+    {
+        BgSpriteController.Day = !BgSpriteController.Day;
         _bgSpriteController.ApplySprite();
     }
 }
