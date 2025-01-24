@@ -21,4 +21,21 @@ public class BgSwitchController : MonoBehaviour
         GameObject background = GameObject.Find("Background");
         _bgSpriteController = background.GetComponent<BgSpriteController>();
     }
+
+    /// <summary>
+    /// DAY 버튼을 클릭했을 때의 동작입니다.
+    /// </summary>
+    /// <remarks>
+    /// 만약, 백그라운드가 DAY로 설정되어 있다면 아무 동작도 수행하지 않습니다.
+    /// </remarks>
+    public void OnClickSwitchDayButton()
+    {
+        if (BgSpriteController.Day)
+        {
+            return;
+        }
+
+        BgSpriteController.Day = true;
+        _bgSpriteController.ApplySprite();
+    }
 }
