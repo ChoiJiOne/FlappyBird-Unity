@@ -11,6 +11,15 @@ using UnityEngine;
 public class GroundScroller : MonoBehaviour
 {
     /// <summary>
+    /// 그라운드의 움직임을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public bool Movable
+    {
+        get { return _canMove;  }
+        set { _canMove = value; }
+    }
+
+    /// <summary>
     /// 그라운드의 스크롤 속도입니다.
     /// </summary>
     public float _scrollSpeed = 1.0f;
@@ -29,6 +38,11 @@ public class GroundScroller : MonoBehaviour
     /// 재질의 텍스처 오프셋을 변경할 때 사용할 렌더러입니다.
     /// </summary>
     private Renderer _renderer;
+
+    /// <summary>
+    /// 그라운드의 움직임 여부를 확인합니다.
+    /// </summary>
+    private bool _canMove = true;
 
     /// <summary>
     /// 스크롤링에 필요한 렌더러와 매터리얼을 초기화합니다.
