@@ -16,11 +16,17 @@ public class TitleMoveController : MonoBehaviour
     private RectTransform _rectTransform;
 
     /// <summary>
-    /// 랙 트랜스폼을 설정합니다.
+    /// 타이틀이 움직일 때 기준이 되는 위치입니다.
+    /// </summary>
+    private Vector2 _moveBasePosition;
+
+    /// <summary>
+    /// 랙 트랜스폼과 타이틀이 움직일 때 기준이 되는 위치 값을 설정합니다.
     /// </summary>
     void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _moveBasePosition = _rectTransform.anchoredPosition;
     }
 
     // Update is called once per frame
