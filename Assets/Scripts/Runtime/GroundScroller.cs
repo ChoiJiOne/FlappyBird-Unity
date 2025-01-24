@@ -33,7 +33,7 @@ public class GroundScroller : MonoBehaviour
     /// <summary>
     /// 스크롤링에 필요한 렌더러와 매터리얼을 초기화합니다.
     /// </summary>
-    void Awake()
+    private void Awake()
     {
         _renderer = GetComponent<Renderer>();
         _groundMaterial = _renderer.material;
@@ -42,7 +42,7 @@ public class GroundScroller : MonoBehaviour
     /// <summary>
     /// 그라운드의 횡 스크롤링을 수행합니다.
     /// </summary>
-    void Update()
+    private void Update()
     {
         _textureOffset.x = _groundMaterial.mainTextureOffset.x + _scrollSpeed * Time.deltaTime;
         if (_textureOffset.x >= 1.0f)

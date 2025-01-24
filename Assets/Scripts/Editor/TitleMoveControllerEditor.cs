@@ -27,7 +27,7 @@ public class TitleMoveControllerEditor : Editor
     /// <summary>
     /// 에디터에서 제어할 타이틀 이동 거리를 설정합니다.
     /// </summary>
-    void OnEnable()
+    private void OnEnable()
     {
         _moveLength = serializedObject.FindProperty("_moveLength");
         _moveTime = serializedObject.FindProperty("_moveTime");

@@ -41,11 +41,11 @@ public class TitleMoveController : MonoBehaviour
     /// 누적 시간 값은 _moveTime를 넘을 수 없습니다.
     /// </remarks>
     private float _currentStepTime;
-    
+
     /// <summary>
     /// 랙 트랜스폼과 타이틀이 움직일 때 기준이 되는 위치 값을 설정합니다.
     /// </summary>
-    void Start()
+    private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
         _moveBasePosition = _rectTransform.anchoredPosition;
@@ -60,7 +60,7 @@ public class TitleMoveController : MonoBehaviour
     /// y = (4 * h / a^2) * t * (a - t)
     /// 아래의 코드에서 constant가 (4 * h / a^2)를 계산한 것입니다.
     /// </remarks>
-    void Update()
+    private void Update()
     {
 #if UNITY_EDITOR
         // 애플리케이션이 실행중이 아니라면, 아무동작도 수행하지 않음.

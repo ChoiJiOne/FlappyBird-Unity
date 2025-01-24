@@ -18,7 +18,7 @@ public class GroundScrollerEditor : Editor
     /// <summary>
     /// 에디터에서 제어할 스크롤 속도를 설정합니다.
     /// </summary>
-    void OnEnable()
+    private void OnEnable()
     {
         _scrollSpeed = serializedObject.FindProperty("_scrollSpeed");
     }
