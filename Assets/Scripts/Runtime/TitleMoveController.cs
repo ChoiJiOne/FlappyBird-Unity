@@ -21,6 +21,11 @@ public class TitleMoveController : MonoBehaviour
     private Vector2 _moveBasePosition;
 
     /// <summary>
+    /// 타이틀이 움직이는 거리입니다.
+    /// </summary>
+    private float _moveLength;
+    
+    /// <summary>
     /// 랙 트랜스폼과 타이틀이 움직일 때 기준이 되는 위치 값을 설정합니다.
     /// </summary>
     void Start()
