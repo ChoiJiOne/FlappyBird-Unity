@@ -45,6 +45,11 @@ public class GroundScroller : MonoBehaviour
     void Update()
     {
         _textureOffset.x = _groundMaterial.mainTextureOffset.x + _scrollSpeed * Time.deltaTime;
+        if (_textureOffset.x >= 1.0f)
+        {
+            _textureOffset.x -= 1.0f;
+        }
+
         _groundMaterial.mainTextureOffset = _textureOffset;
     }
 }
