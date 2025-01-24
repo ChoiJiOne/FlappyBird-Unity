@@ -23,7 +23,7 @@ public class TitleMoveController : MonoBehaviour
     /// <summary>
     /// 타이틀이 움직이는 거리입니다.
     /// </summary>
-    private float _moveLength = 30.0f;
+    public float _moveLength;
 
     /// <summary>
     /// 타이틀이 움직이는 초 단위 시간 값입니다.
@@ -31,7 +31,7 @@ public class TitleMoveController : MonoBehaviour
     /// <remarks>
     /// 움직이는 시간은 위 방향으로 출발해서 원래 위치로 돌아오는 시간입니다.
     /// </remarks>
-    private float _moveTime = 1.0f;
+    public float _moveTime;
 
     /// <summary>
     /// 타이틀의 누적 시간 값입니다.
