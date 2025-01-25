@@ -33,10 +33,7 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: SelectBird
-    m_EventTreshold: 1
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7150602379536086144}
   m_Solo: 0
@@ -76,10 +73,7 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: SelectBird
-    m_EventTreshold: 2
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1524733464954361743}
   m_Solo: 0
@@ -94,13 +88,7 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Bird
   serializedVersion: 5
-  m_AnimatorParameters:
-  - m_Name: SelectBird
-    m_Type: 3
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+  m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -140,7 +128,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -20, y: 0, z: 0}
-  m_EntryPosition: {x: -60, y: 110, z: 0}
+  m_EntryPosition: {x: -40, y: 120, z: 0}
   m_ExitPosition: {x: 650, y: 80, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4539663758091050161}
