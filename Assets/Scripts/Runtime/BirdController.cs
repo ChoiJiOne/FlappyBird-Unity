@@ -113,6 +113,11 @@ public class BirdController : MonoBehaviour
             case State.Dead:
                 break;
         }
+
+        if (_currentState != State.Dead)
+        {
+            AdjustToBounds();
+        }
     }
 
     /// <summary>
@@ -182,6 +187,21 @@ public class BirdController : MonoBehaviour
         rotateEulerAngle.z = ROTATE_END_THIRD_QUADRANT;
 
         transform.rotation = Quaternion.Euler(rotateEulerAngle);
+    }
+
+    /// <summary>
+    /// 새가 카메라 영역을 벗어나지 못하게 위치를 조정합니다.
+    /// </summary>
+    private void AdjustToBounds()
+    {
+        if (transform.position.y < MAX_Y_POSITION)
+        {
+            return;
+        }
+
+        Vector3 adjustTargetPosition = transform.position;
+        adjustTargetPosition.y = MAX_Y_POSITION;
+        transform.position = adjustTargetPosition;
     }
 
     /// <summary>
