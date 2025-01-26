@@ -45,6 +45,11 @@ public class BirdController : MonoBehaviour
     public float _jumpSpeed;
 
     /// <summary>
+    /// 새의 회전 속력입니다.
+    /// </summary>
+    public float _rotateSpeed;
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
     /// </summary>
     private void Start()
