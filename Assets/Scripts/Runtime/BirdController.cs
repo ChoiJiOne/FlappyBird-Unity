@@ -50,13 +50,29 @@ public class BirdController : MonoBehaviour
     public float _rotateSpeed;
 
     /// <summary>
+    /// 새의 최대 회전각입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이때 회전각은 육십분법 (ex, 30도, 60도) 기준입니다.
+    /// </remarks>
+    private readonly float _maxRotateAngle = 30.0f;
+
+    /// <summary>
+    /// 새의 최소 회전각입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이때 회전각은 육십분법 (ex, 30도, 60도) 기준입니다.
+    /// </remarks>
+    private readonly float _minRotateAngle = -90.0f;
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
     /// </summary>
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
-
+        
         ActiveGravity(false);
         ActiveAnimation(true);
     }
