@@ -11,17 +11,17 @@ public class BirdController : MonoBehaviour
     /// 플레이어가 제어하는 새의 상태입니다.
     /// </summary>
     /// <remarks>
-    /// IDLE: 게임 시작 전 대기 상태입니다.
-    /// JUMP: 클릭하여 새가 점프 중인 상태입니다.
-    /// FALL: 점프가 끝나고 떨어지는 상태입니다.
-    /// DEAD: 오브젝트와 충돌한 상태입니다.
+    /// Idle: 게임 시작 전 대기 상태입니다.
+    /// Jump: 클릭하여 새가 점프 중인 상태입니다.
+    /// Fall: 점프가 끝나고 떨어지는 상태입니다.
+    /// Dead: 오브젝트와 충돌한 상태입니다.
     /// </remarks>
     public enum BirdState
     {
-        IDLE,
-        JUMP,
-        FALL,
-        DEAD,
+        Idle,
+        Jump,
+        Fall,
+        Dead,
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public class BirdController : MonoBehaviour
     /// <summary>
     /// 플레이어가 제어하는 새의 현재 상태입니다.
     /// </summary>
-    private BirdState _currentState = BirdState.IDLE;
+    private BirdState _currentState = BirdState.Idle;
 
     /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
@@ -57,12 +57,12 @@ public class BirdController : MonoBehaviour
             velocity.y = 10.0f;
             _rigidBody.velocity = velocity;
 
-            _currentState = BirdState.JUMP;
+            _currentState = BirdState.Jump;
         }
 
-        if (_currentState == BirdState.JUMP && _rigidBody.velocity.y <= 0.0f)
+        if (_currentState == BirdState.Jump && _rigidBody.velocity.y <= 0.0f)
         {
-            _currentState = BirdState.FALL;
+            _currentState = BirdState.Fall;
         }
     }
 
@@ -74,6 +74,6 @@ public class BirdController : MonoBehaviour
     /// </returns>
     private bool CanJump()
     {
-        return _currentState == BirdState.IDLE || _currentState == BirdState.FALL;
+        return _currentState == BirdState.Idle || _currentState == BirdState.Fall;
     }
 }
