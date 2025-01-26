@@ -58,6 +58,14 @@ public class BirdController : MonoBehaviour
     private const float MAX_ROTATE_ANGLE = 30.0f;
 
     /// <summary>
+    /// 새의 Y좌표 최대 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 상수는 새가 외부로 나갈 수 없도록 조정하기 위한 값입니다.
+    /// </remarks>
+    private const float MAX_Y_POSITION = 5.0f;
+
+    /// <summary>
     /// 입력 처리 시 GetMouseButtonDown에 전달할 마우스의 왼쪽 버튼 코드입니다.
     /// </summary>
     private const int LEFT_MOUSE_BUTTON_CODE = 0;
