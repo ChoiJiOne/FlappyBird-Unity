@@ -53,6 +53,7 @@ public class BirdController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
 
         ActiveGravity(false);
+        ActiveAnimation(true);
     }
 
     private void Update()
@@ -66,11 +67,13 @@ public class BirdController : MonoBehaviour
 
             _currentState = BirdState.Jump;
             ActiveGravity(true);
+            ActiveAnimation(true);
         }
 
         if (_currentState == BirdState.Jump && _rigidBody.velocity.y <= 0.0f)
         {
             _currentState = BirdState.Fall;
+            ActiveAnimation(false);
         }
     }
 
