@@ -15,6 +15,7 @@ public class BirdController : MonoBehaviour
     /// Jump: 클릭하여 새가 점프 중인 상태입니다.
     /// Fall: 점프가 끝나고 떨어지는 상태입니다.
     /// Dead: 오브젝트와 충돌한 상태입니다.
+    /// Stop: 게임이 중지된 상태입니다.
     /// </remarks>
     public enum State
     {
@@ -22,6 +23,7 @@ public class BirdController : MonoBehaviour
         Jump,
         Fall,
         Dead,
+        Stop,
     }
 
     /// <summary>
