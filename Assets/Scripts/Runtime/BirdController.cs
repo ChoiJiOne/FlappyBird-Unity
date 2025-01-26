@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 새를 제어합니다.
 /// </summary>
-public class BirdController : ControllableObject
+public class BirdController : MonoBehaviour
 {
     /// <summary>
     /// 플레이어가 제어하는 새의 상태입니다.
@@ -97,7 +97,9 @@ public class BirdController : ControllableObject
             case State.Idle:
                 if (CanJump())
                 {
-                    _gameController.SendGameSignal(GameController.Signal.Start);
+                    GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
+                    gameController.SendGameSignal(GameController.Signal.Start);
+
                     StartJump();
                 }
                 break;
