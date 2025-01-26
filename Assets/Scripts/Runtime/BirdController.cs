@@ -259,4 +259,14 @@ public class BirdController : MonoBehaviour
     {
         _animator.enabled = isActive;
     }
+
+    /// <summary>
+    /// 다른 오브젝트와의 충돌 처리를 수행합니다.
+    /// </summary>
+    /// <param name="collision">새 오브젝트와 충돌한 다른 오브젝트의 콜리젼입니다.</param>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        gameController.OnProcessGameOverSignal();
+    }
 }
