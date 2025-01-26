@@ -43,6 +43,16 @@ public class GameController : MonoBehaviour
     private GameObject _instructionsUI;
 
     /// <summary>
+    /// 플레이 씬 내에 PauseButton UI 오브젝트입니다.
+    /// </summary>
+    private GameObject _pauseButtonUI;
+
+    /// <summary>
+    /// 플레이 씬 내에 ResumeButton UI 오브젝트입니다.
+    /// </summary>
+    private GameObject _resumeButtonUI;
+
+    /// <summary>
     /// 제어해야 할 대상 오브젝트의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
@@ -50,6 +60,11 @@ public class GameController : MonoBehaviour
         _birdController = GameObject.Find("Bird").GetComponent<BirdController>();
         _getReadyUI = GameObject.Find("GetReady");
         _instructionsUI = GameObject.Find("Instructions");
+        _pauseButtonUI = GameObject.Find("PauseButton");
+        _resumeButtonUI = GameObject.Find("ResumeButton");
+
+        _pauseButtonUI.SetActive(false);
+        _resumeButtonUI.SetActive(false);
     }
 
     /// <summary>
@@ -82,5 +97,6 @@ public class GameController : MonoBehaviour
     {
         _getReadyUI.SetActive(false);
         _instructionsUI.SetActive(false);
+        _pauseButtonUI.SetActive(true);
     }
 }
