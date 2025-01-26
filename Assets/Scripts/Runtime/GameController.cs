@@ -89,4 +89,16 @@ public class GameController : MonoBehaviour
         _groundScroller.Movable = true;
         _birdController.Movable = true;
     }
+
+    /// <summary>
+    /// 게임 오버 시그널에 맞는 동작을 수행합니다.
+    /// </summary>
+    public void OnProcessGameOverSignal()
+    {
+        _pauseButtonUI.SetActive(false);
+        _resumeButtonUI.SetActive(false);
+
+        _groundScroller.Movable = false;
+        _birdController.Movable = false;
+    }
 }
