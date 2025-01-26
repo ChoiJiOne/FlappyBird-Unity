@@ -59,6 +59,29 @@ public class GameController : MonoBehaviour
     /// <param name="signal">전송할 시그널의 종류입니다.</param>
     public void SendGameSignal(Signal signal)
     {
+        switch (signal)
+        {
+            case Signal.Start:
+                ProcessStartGameSignal();
+                break;
 
+            case Signal.Pause:
+                break;
+
+            case Signal.Resume:
+                break;
+
+            case Signal.GameOver:
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 게임 시작 시그널에 맞는 동작을 수행합니다.
+    /// </summary>
+    private void ProcessStartGameSignal()
+    {
+        _getReadyUI.SetActive(false);
+        _instructionsUI.SetActive(false);
     }
 }
