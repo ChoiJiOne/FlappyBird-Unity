@@ -77,4 +77,16 @@ public class GameController : MonoBehaviour
         _groundScroller.Movable = false;
         _birdController.Movable = false;
     }
+
+    /// <summary>
+    /// 게임 재개 시그널에 맞는 동작을 수행합니다.
+    /// </summary>
+    public void OnProcessResumeGameSignal()
+    {
+        _pauseButtonUI.SetActive(true);
+        _resumeButtonUI.SetActive(false);
+
+        _groundScroller.Movable = true;
+        _birdController.Movable = true;
+    }
 }
