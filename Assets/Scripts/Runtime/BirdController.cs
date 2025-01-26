@@ -35,6 +35,20 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 새의 움직임 여부입니다.
+    /// </summary>
+    public bool Movable
+    {
+        get { return _canMove; }
+        set
+        {
+            _canMove = true;
+            ActiveGravity(_canMove);
+            ActiveAnimation(_canMove);
+        }
+    }
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어합니다.
     /// </summary>
     private Animator _animator;
@@ -58,6 +72,11 @@ public class BirdController : MonoBehaviour
     /// 새의 회전 속력입니다.
     /// </summary>
     public float _rotateSpeed;
+
+    /// <summary>
+    /// 새가 움직일 수 있는지 확인합니다.
+    /// </summary>
+    private bool _canMove = true;
 
     /// <summary>
     /// 새의 최대 회전각입니다.
@@ -94,6 +113,12 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
+        // 움직일 수 없다면 업데이트를 수행하지 않음.
+        if(!_canMove)
+        {
+            return;
+        }
+
         switch(_currentState)
         {
             case State.Idle:
