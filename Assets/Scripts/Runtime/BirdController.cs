@@ -25,6 +25,14 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 새의 현재 상태와 관련 요소를 설정하는 프로퍼티입니다.
+    /// </summary>
+    public State CurrentState
+    {
+        get { return _currentState; }
+    }
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어합니다.
     /// </summary>
     private Animator _animator;
