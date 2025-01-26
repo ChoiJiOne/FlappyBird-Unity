@@ -11,6 +11,24 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     /// <summary>
+    /// 게임 제어 신호 종류입니다.
+    /// </summary>
+    /// <remarks>
+    /// Start : 게임 시작 신호입니다.
+    /// Pause : 게임 중지 신호입니다.
+    /// Resume : 게임 재개 신호입니다.
+    /// GameOver : 게임 종료 신호입니다.
+    /// </remarks>
+    enum Signal
+    {
+        Start,
+        Pause,
+        Resume,
+        GameOver,
+    }
+
+
+    /// <summary>
     /// 플레이 씬 내의 새 오브젝트 컨트롤러입니다.
     /// </summary>
     BirdController _birdController;
