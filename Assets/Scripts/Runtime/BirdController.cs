@@ -35,6 +35,11 @@ public class BirdController : MonoBehaviour
     private Rigidbody2D _rigidBody;
 
     /// <summary>
+    /// 플레이어가 제어하는 새의 현재 상태입니다.
+    /// </summary>
+    private BirdState _currentState = BirdState.IDLE;
+
+    /// <summary>
     /// 새가 점프하는지 확인합니다. 
     /// </summary>
     /// <remarks>
