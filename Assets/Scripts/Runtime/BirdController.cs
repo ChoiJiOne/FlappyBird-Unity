@@ -60,7 +60,7 @@ public class BirdController : MonoBehaviour
     /// <summary>
     /// 입력 처리 시 GetMouseButtonDown에 전달할 마우스의 왼쪽 버튼 코드입니다.
     /// </summary>
-    private const int LEFT_MOUSE_BUTTON_CODE = 1;
+    private const int LEFT_MOUSE_BUTTON_CODE = 0;
 
     /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
@@ -79,53 +79,43 @@ public class BirdController : MonoBehaviour
         switch(_currentState)
         {
             case State.Idle:
-                break;
-
-            case State.Jump:
+                if (CanJump())
+                {
+                    StartJump();
+                }
                 break;
 
             case State.Fall:
+                if (CanJump())
+                {
+                    StartJump();
+                }
+
+                float rotateAngle = -Time.deltaTime * _rotateSpeed;
+                transform.Rotate(0.0f, 0.0f, rotateAngle);
+
+                float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
+                if (240.0f <= rotateEulerAngleZ && rotateEulerAngleZ <= 270.0f)
+                {
+                    rotateEulerAngleZ = 270.0f;
+
+                    Vector3 rotateEulerAngle = Vector3.zero;
+                    rotateEulerAngle.z = rotateEulerAngleZ;
+
+                    transform.rotation = Quaternion.Euler(rotateEulerAngle);
+                }
+                break;
+
+            case State.Jump:
+                if (_rigidBody.velocity.y <= 0.0f)
+                {
+                    _currentState = State.Fall;
+                    ActiveAnimation(false);
+                }
                 break;
 
             case State.Dead:
                 break;
-        }
-
-        if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && CanJump())
-        {
-            Vector2 velocity = Vector2.zero;
-            velocity.x = _rigidBody.velocity.x;
-            velocity.y = _jumpSpeed;
-            _rigidBody.velocity = velocity;
-
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
-
-            _currentState = State.Jump;
-            ActiveGravity(true);
-            ActiveAnimation(true);
-        }
-
-        if (_currentState == State.Jump && _rigidBody.velocity.y <= 0.0f)
-        {
-            _currentState = State.Fall;
-            ActiveAnimation(false);
-        }
-
-        if (_currentState == State.Fall)
-        {
-            float rotateAngle = -Time.deltaTime * _rotateSpeed;
-            transform.Rotate(0.0f, 0.0f, rotateAngle);
-
-            float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
-            if (240.0f <= rotateEulerAngleZ && rotateEulerAngleZ <= 270.0f)
-            {
-                rotateEulerAngleZ = 270.0f;
-
-                Vector3 rotateEulerAngle = Vector3.zero;
-                rotateEulerAngle.z = rotateEulerAngleZ;
-
-                transform.rotation = Quaternion.Euler(rotateEulerAngle);
-            }
         }
     }
 
