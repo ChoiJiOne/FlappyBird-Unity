@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Data;
 using UnityEngine;
 
 /// <summary>
@@ -58,14 +58,6 @@ public class BirdController : MonoBehaviour
     private const float MAX_ROTATE_ANGLE = 30.0f;
 
     /// <summary>
-    /// 새의 최소 회전각입니다.
-    /// </summary>
-    /// <remarks>
-    /// 이때 회전각은 육십분법 (ex, 30도, 60도) 기준입니다.
-    /// </remarks>
-    private const float MIN_ROTATE_ANGLE = -90.0f;
-
-    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
     /// </summary>
     private void Start()
@@ -86,6 +78,8 @@ public class BirdController : MonoBehaviour
             velocity.y = _jumpSpeed;
             _rigidBody.velocity = velocity;
 
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
+
             _currentState = BirdState.Jump;
             ActiveGravity(true);
             ActiveAnimation(true);
@@ -95,6 +89,23 @@ public class BirdController : MonoBehaviour
         {
             _currentState = BirdState.Fall;
             ActiveAnimation(false);
+        }
+
+        if (_currentState == BirdState.Fall)
+        {
+            float rotateAngle = -Time.deltaTime * _rotateSpeed;
+            transform.Rotate(0.0f, 0.0f, rotateAngle);
+
+            float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
+            if (240.0f <= rotateEulerAngleZ && rotateEulerAngleZ <= 270.0f)
+            {
+                rotateEulerAngleZ = 270.0f;
+
+                Vector3 rotateEulerAngle = Vector3.zero;
+                rotateEulerAngle.z = rotateEulerAngleZ;
+
+                transform.rotation = Quaternion.Euler(rotateEulerAngle);
+            }
         }
     }
 
