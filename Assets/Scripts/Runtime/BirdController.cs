@@ -71,6 +71,21 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
+        switch(_currentState)
+        {
+            case State.Idle:
+                break;
+
+            case State.Jump:
+                break;
+
+            case State.Fall:
+                break;
+
+            case State.Dead:
+                break;
+        }
+
         if (Input.GetMouseButtonDown(0) && CanJump())
         {
             Vector2 velocity = Vector2.zero;
@@ -118,6 +133,32 @@ public class BirdController : MonoBehaviour
     private bool CanJump()
     {
         return _currentState == State.Idle || _currentState == State.Fall;
+    }
+
+    /// <summary>
+    /// 점프를 시작합니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 메서드는 현재 상태가 Idle 혹은 Fall 일때만 동작합니다.
+    /// </remarks>
+    private void StartJump()
+    {
+        if (_currentState == State.Jump || _currentState == State.Dead)
+        {
+            return;
+        }
+
+        Vector2 velocity = Vector2.zero;
+        velocity.x = _rigidBody.velocity.x;
+        velocity.y = _jumpSpeed;
+        _rigidBody.velocity = velocity;
+
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
+
+        _currentState = State.Jump;
+
+        ActiveGravity(true);
+        ActiveAnimation(true);
     }
 
     /// <summary>
