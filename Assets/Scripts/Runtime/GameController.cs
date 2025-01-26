@@ -16,6 +16,11 @@ public class GameController : MonoBehaviour
     private BirdController _birdController;
 
     /// <summary>
+    /// 플레이 씬 내의 바닥 움직임을 제어합니다.
+    /// </summary>
+    private GroundScroller _groundScroller;
+
+    /// <summary>
     /// 플레이 씬 내에 GetReady UI 오브젝트입니다.
     /// </summary>
     private GameObject _getReadyUI;
@@ -41,6 +46,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         _birdController = GameObject.Find("Bird").GetComponent<BirdController>();
+        _groundScroller = GameObject.Find("Ground").GetComponent<GroundScroller>();
         _getReadyUI = GameObject.Find("GetReady");
         _instructionsUI = GameObject.Find("Instructions");
         _pauseButtonUI = GameObject.Find("PauseButton");
@@ -58,5 +64,17 @@ public class GameController : MonoBehaviour
         _getReadyUI.SetActive(false);
         _instructionsUI.SetActive(false);
         _pauseButtonUI.SetActive(true);
+    }
+
+    /// <summary>
+    /// 게임 중지 시그널에 맞는 동작을 수행합니다.
+    /// </summary>
+    public void OnProcessPauseGameSignal()
+    {
+        _pauseButtonUI.SetActive(false);
+        _resumeButtonUI.SetActive(true);
+
+        _groundScroller.Movable = false;
+        _birdController.Movable = false;
     }
 }
