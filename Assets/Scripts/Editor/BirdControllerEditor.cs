@@ -16,11 +16,17 @@ public class BirdControllerEditor : Editor
     private SerializedProperty _jumpSpeed;
 
     /// <summary>
+    /// 새의 회전 속력입니다.
+    /// </summary>
+    private SerializedProperty _rotateSpeed;
+
+    /// <summary>
     /// 에디터에서 제어할 점프 속도를 설정합니다.
     /// </summary>
     private void OnEnable()
     {
         _jumpSpeed = serializedObject.FindProperty("_jumpSpeed");
+        _rotateSpeed = serializedObject.FindProperty("_rotateSpeed");
     }
 
     /// <summary>
@@ -30,6 +36,7 @@ public class BirdControllerEditor : Editor
     {
         serializedObject.Update();
         EditorGUILayout.PropertyField(_jumpSpeed);
+        EditorGUILayout.PropertyField(_rotateSpeed);
         serializedObject.ApplyModifiedProperties();
     }
 }
