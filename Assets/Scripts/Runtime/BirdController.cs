@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 새를 제어합니다.
 /// </summary>
-public class BirdController : MonoBehaviour
+public class BirdController : ControllableObject
 {
     /// <summary>
     /// 플레이어가 제어하는 새의 상태입니다.
