@@ -40,6 +40,11 @@ public class BirdController : MonoBehaviour
     private BirdState _currentState = BirdState.Idle;
 
     /// <summary>
+    /// 새의 점프 속력입니다.
+    /// </summary>
+    public float _jumpSpeed = 1.0f;
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
     /// </summary>
     private void Start()
@@ -54,7 +59,7 @@ public class BirdController : MonoBehaviour
         {
             Vector2 velocity = Vector2.zero;
             velocity.x = _rigidBody.velocity.x;
-            velocity.y = 10.0f;
+            velocity.y = _jumpSpeed;
             _rigidBody.velocity = velocity;
 
             _currentState = BirdState.Jump;
