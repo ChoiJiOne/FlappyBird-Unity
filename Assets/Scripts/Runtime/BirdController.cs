@@ -98,7 +98,7 @@ public class BirdController : MonoBehaviour
                 if (CanJump())
                 {
                     GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
-                    gameController.SendGameSignal(GameController.Signal.Start);
+                    gameController.OnProcessStartGameSignal();
 
                     StartJump();
                 }

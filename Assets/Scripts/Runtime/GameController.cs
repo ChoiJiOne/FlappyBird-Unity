@@ -11,23 +11,6 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     /// <summary>
-    /// 게임 제어 신호 종류입니다.
-    /// </summary>
-    /// <remarks>
-    /// Start : 게임 시작 신호입니다.
-    /// Pause : 게임 중지 신호입니다.
-    /// Resume : 게임 재개 신호입니다.
-    /// GameOver : 게임 종료 신호입니다.
-    /// </remarks>
-    public enum Signal
-    {
-        Start,
-        Pause,
-        Resume,
-        GameOver,
-    }
-
-    /// <summary>
     /// 플레이 씬 내의 새 오브젝트 컨트롤러입니다.
     /// </summary>
     private BirdController _birdController;
@@ -68,32 +51,9 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// 게임 컨트롤러에 게임 시그널을 전송합니다.
-    /// </summary>
-    /// <param name="signal">전송할 시그널의 종류입니다.</param>
-    public void SendGameSignal(Signal signal)
-    {
-        switch (signal)
-        {
-            case Signal.Start:
-                OnProcessStartGameSignal();
-                break;
-
-            case Signal.Pause:
-                break;
-
-            case Signal.Resume:
-                break;
-
-            case Signal.GameOver:
-                break;
-        }
-    }
-
-    /// <summary>
     /// 게임 시작 시그널에 맞는 동작을 수행합니다.
     /// </summary>
-    private void OnProcessStartGameSignal()
+    public void OnProcessStartGameSignal()
     {
         _getReadyUI.SetActive(false);
         _instructionsUI.SetActive(false);
