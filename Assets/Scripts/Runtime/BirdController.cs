@@ -8,6 +8,23 @@ using UnityEngine;
 public class BirdController : MonoBehaviour
 {
     /// <summary>
+    /// 플레이어가 제어하는 새의 상태입니다.
+    /// </summary>
+    /// <remarks>
+    /// IDLE: 게임 시작 전 대기 상태입니다.
+    /// JUMP: 클릭하여 새가 점프 중인 상태입니다.
+    /// FALL: 점프가 끝나고 떨어지는 상태입니다.
+    /// DEAD: 오브젝트와 충돌한 상태입니다.
+    /// </remarks>
+    public enum BirdState
+    {
+        IDLE,
+        JUMP,
+        FALL,
+        DEAD,
+    }
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어합니다.
     /// </summary>
     private Animator _animator;
