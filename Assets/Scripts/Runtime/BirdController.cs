@@ -16,7 +16,7 @@ public class BirdController : MonoBehaviour
     /// Fall: 점프가 끝나고 떨어지는 상태입니다.
     /// Dead: 오브젝트와 충돌한 상태입니다.
     /// </remarks>
-    public enum BirdState
+    public enum State
     {
         Idle,
         Jump,
@@ -37,7 +37,7 @@ public class BirdController : MonoBehaviour
     /// <summary>
     /// 플레이어가 제어하는 새의 현재 상태입니다.
     /// </summary>
-    private BirdState _currentState = BirdState.Idle;
+    private State _currentState = State.Idle;
 
     /// <summary>
     /// 새의 점프 속력입니다.
@@ -80,18 +80,18 @@ public class BirdController : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
 
-            _currentState = BirdState.Jump;
+            _currentState = State.Jump;
             ActiveGravity(true);
             ActiveAnimation(true);
         }
 
-        if (_currentState == BirdState.Jump && _rigidBody.velocity.y <= 0.0f)
+        if (_currentState == State.Jump && _rigidBody.velocity.y <= 0.0f)
         {
-            _currentState = BirdState.Fall;
+            _currentState = State.Fall;
             ActiveAnimation(false);
         }
 
-        if (_currentState == BirdState.Fall)
+        if (_currentState == State.Fall)
         {
             float rotateAngle = -Time.deltaTime * _rotateSpeed;
             transform.Rotate(0.0f, 0.0f, rotateAngle);
@@ -117,7 +117,7 @@ public class BirdController : MonoBehaviour
     /// </returns>
     private bool CanJump()
     {
-        return _currentState == BirdState.Idle || _currentState == BirdState.Fall;
+        return _currentState == State.Idle || _currentState == State.Fall;
     }
 
     /// <summary>
