@@ -91,19 +91,7 @@ public class BirdController : MonoBehaviour
                     StartJump();
                 }
 
-                float rotateAngle = -Time.deltaTime * _rotateSpeed;
-                transform.Rotate(0.0f, 0.0f, rotateAngle);
-
-                float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
-                if (240.0f <= rotateEulerAngleZ && rotateEulerAngleZ <= 270.0f)
-                {
-                    rotateEulerAngleZ = 270.0f;
-
-                    Vector3 rotateEulerAngle = Vector3.zero;
-                    rotateEulerAngle.z = rotateEulerAngleZ;
-
-                    transform.rotation = Quaternion.Euler(rotateEulerAngle);
-                }
+                Rotate();
                 break;
 
             case State.Jump:
@@ -154,6 +142,34 @@ public class BirdController : MonoBehaviour
 
         ActiveGravity(true);
         ActiveAnimation(true);
+    }
+
+    /// <summary>
+    /// 새를 회전시킵니다.
+    /// </summary>
+    /// <remarks>
+    /// 회전 각의 범위는 육십분법 기준으로 -90 에서 30 사이이고, 현재 상태가 Fall일때만 동작합니다.
+    /// </remarks>
+    private void Rotate()
+    {
+        if (_currentState != State.Fall)
+        {
+            return;
+        }
+
+        float rotateAngle = -Time.deltaTime * _rotateSpeed;
+        transform.Rotate(0.0f, 0.0f, rotateAngle);
+
+        float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
+        if (240.0f <= rotateEulerAngleZ && rotateEulerAngleZ <= 270.0f)
+        {
+            rotateEulerAngleZ = 270.0f;
+
+            Vector3 rotateEulerAngle = Vector3.zero;
+            rotateEulerAngle.z = rotateEulerAngleZ;
+
+            transform.rotation = Quaternion.Euler(rotateEulerAngle);
+        }
     }
 
     /// <summary>
