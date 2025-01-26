@@ -160,16 +160,20 @@ public class BirdController : MonoBehaviour
         float rotateAngle = -Time.deltaTime * _rotateSpeed;
         transform.Rotate(0.0f, 0.0f, rotateAngle);
 
+        // 2차원 평면에서 제 3사분면의 각 범위 
+        const float ROTATE_START_THIRD_QUADRANT = 240.0f;
+        const float ROTATE_END_THIRD_QUADRANT = 270.0f;
+
         float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
-        if (240.0f <= rotateEulerAngleZ && rotateEulerAngleZ <= 270.0f)
+        if (rotateEulerAngleZ < ROTATE_START_THIRD_QUADRANT || rotateEulerAngleZ > ROTATE_END_THIRD_QUADRANT)
         {
-            rotateEulerAngleZ = 270.0f;
-
-            Vector3 rotateEulerAngle = Vector3.zero;
-            rotateEulerAngle.z = rotateEulerAngleZ;
-
-            transform.rotation = Quaternion.Euler(rotateEulerAngle);
+            return;
         }
+
+        Vector3 rotateEulerAngle = Vector3.zero;
+        rotateEulerAngle.z = ROTATE_END_THIRD_QUADRANT;
+
+        transform.rotation = Quaternion.Euler(rotateEulerAngle);
     }
 
     /// <summary>
