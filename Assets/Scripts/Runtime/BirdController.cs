@@ -97,6 +97,7 @@ public class BirdController : ControllableObject
             case State.Idle:
                 if (CanJump())
                 {
+                    _gameController.SendGameSignal(GameController.Signal.Start);
                     StartJump();
                 }
                 break;
