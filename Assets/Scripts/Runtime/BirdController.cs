@@ -58,6 +58,11 @@ public class BirdController : MonoBehaviour
     private const float MAX_ROTATE_ANGLE = 30.0f;
 
     /// <summary>
+    /// 입력 처리 시 GetMouseButtonDown에 전달할 마우스의 왼쪽 버튼 코드입니다.
+    /// </summary>
+    private const int LEFT_MOUSE_BUTTON_CODE = 1;
+
+    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
     /// </summary>
     private void Start()
@@ -86,7 +91,7 @@ public class BirdController : MonoBehaviour
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0) && CanJump())
+        if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && CanJump())
         {
             Vector2 velocity = Vector2.zero;
             velocity.x = _rigidBody.velocity.x;
@@ -132,7 +137,7 @@ public class BirdController : MonoBehaviour
     /// </returns>
     private bool CanJump()
     {
-        return _currentState == State.Idle || _currentState == State.Fall;
+        return Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
     }
 
     /// <summary>
