@@ -40,14 +40,6 @@ public class BirdController : MonoBehaviour
     private BirdState _currentState = BirdState.IDLE;
 
     /// <summary>
-    /// 새가 점프하는지 확인합니다. 
-    /// </summary>
-    /// <remarks>
-    /// 새가 점프하고있다면 true, 그렇지 않으면 false입니다.
-    /// </remarks>
-    private bool _isJump = false;
-
-    /// <summary>
     /// 새의 색상 별 애니메이션 클립을 제어하는 애니메이터를 초기화합니다.
     /// </summary>
     private void Start()
@@ -58,19 +50,19 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !_isJump)
+        if (Input.GetMouseButtonDown(0) && CanJump())
         {
             Vector2 velocity = Vector2.zero;
             velocity.x = _rigidBody.velocity.x;
             velocity.y = 10.0f;
             _rigidBody.velocity = velocity;
 
-            _isJump = true;
+            _currentState = BirdState.JUMP;
         }
 
-        if (_isJump && _rigidBody.velocity.y <= 0.0f)
+        if (_currentState == BirdState.JUMP && _rigidBody.velocity.y <= 0.0f)
         {
-            _isJump = false;
+            _currentState = BirdState.FALL;
         }
     }
 
