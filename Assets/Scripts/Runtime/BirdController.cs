@@ -42,7 +42,7 @@ public class BirdController : MonoBehaviour
         get { return _canMove; }
         set
         {
-            _canMove = true;
+            _canMove = value;
             ActiveGravity(_canMove);
             ActiveAnimation(_canMove);
         }
