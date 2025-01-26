@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     /// Resume : 게임 재개 신호입니다.
     /// GameOver : 게임 종료 신호입니다.
     /// </remarks>
-    enum Signal
+    public enum Signal
     {
         Start,
         Pause,
@@ -31,17 +31,17 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// 플레이 씬 내의 새 오브젝트 컨트롤러입니다.
     /// </summary>
-    BirdController _birdController;
+    private BirdController _birdController;
 
     /// <summary>
     /// 플레이 씬 내에 GetReady UI 오브젝트입니다.
     /// </summary>
-    GameObject _getReadyUI;
+    private GameObject _getReadyUI;
 
     /// <summary>
     /// 플레이 씬 내에 Instructions UI 오브젝트입니다.
     /// </summary>
-    GameObject _instructionsUI;
+    private GameObject _instructionsUI;
 
     /// <summary>
     /// 제어해야 할 대상 오브젝트의 참조를 초기화합니다.
@@ -53,8 +53,12 @@ public class GameController : MonoBehaviour
         _instructionsUI = GameObject.Find("Instructions");
     }
 
-    private void Update()
+    /// <summary>
+    /// 게임 컨트롤러에 게임 시그널을 전송합니다.
+    /// </summary>
+    /// <param name="signal">전송할 시그널의 종류입니다.</param>
+    public void SendGameSignal(Signal signal)
     {
-        
+
     }
 }
