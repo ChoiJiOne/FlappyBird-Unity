@@ -27,7 +27,6 @@ public class GameController : MonoBehaviour
         GameOver,
     }
 
-
     /// <summary>
     /// 플레이 씬 내의 새 오브젝트 컨트롤러입니다.
     /// </summary>
@@ -62,7 +61,7 @@ public class GameController : MonoBehaviour
         switch (signal)
         {
             case Signal.Start:
-                ProcessStartGameSignal();
+                OnProcessStartGameSignal();
                 break;
 
             case Signal.Pause:
@@ -79,7 +78,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// 게임 시작 시그널에 맞는 동작을 수행합니다.
     /// </summary>
-    private void ProcessStartGameSignal()
+    private void OnProcessStartGameSignal()
     {
         _getReadyUI.SetActive(false);
         _instructionsUI.SetActive(false);
