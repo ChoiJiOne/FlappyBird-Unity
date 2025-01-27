@@ -26,6 +26,11 @@ public class GroundController : MonoBehaviour
     private float _scrollSpeed;
 
     /// <summary>
+    /// 그라운드 오브젝트의 스크롤 이동 거리입니다.
+    /// </summary>
+    private float _scrollLength;
+
+    /// <summary>
     /// 셰이더에 전달할 그라운드 텍스처의 오프셋 값입니다.
     /// </summary>
     private Vector2 _textureOffset = Vector2.zero;
@@ -39,7 +44,7 @@ public class GroundController : MonoBehaviour
     /// 재질의 텍스처 오프셋 값을 제어할 때 사용할 렌더러입니다.
     /// </summary>
     private Renderer _renderer;
-
+    
     /// <summary>
     /// 그라운드 오브젝트가 움직일 수 있는지 확인합니다.
     /// </summary>
@@ -49,12 +54,13 @@ public class GroundController : MonoBehaviour
     private bool _canMove = true;
 
     /// <summary>
-    /// 스크롤링에 필요한 렌더러와 재질을 초기화합니다.
+    /// 스크롤링에 필요한 렌더러와 재질 및 스크롤 이동 거리 값을 초기화합니다.
     /// </summary>
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
         _material = _renderer.material;
+        _scrollLength = _renderer.bounds.size.x;
     }
 
     /// <summary>
@@ -71,7 +77,9 @@ public class GroundController : MonoBehaviour
             return;
         }
 
-        _textureOffset.x = _material.mainTextureOffset.x + _scrollSpeed * Time.deltaTime;
+        float scrollSpeed = _scrollSpeed / _scrollLength;
+
+        _textureOffset.x = _material.mainTextureOffset.x + scrollSpeed * Time.deltaTime;
         if(_textureOffset.x >= 1.0f)
         {
             _textureOffset.x -= 1.0f;
