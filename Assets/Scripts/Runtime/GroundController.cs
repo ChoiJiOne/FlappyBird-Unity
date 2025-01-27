@@ -11,6 +11,15 @@ using UnityEngine;
 public class GroundController : MonoBehaviour
 {
     /// <summary>
+    /// 그라운드의 움직임 여부를 설정하는 프로퍼티입니다.
+    /// </summary>
+    public bool Movable
+    {
+        get { return _canMove;  }
+        set { _canMove = value; }
+    }
+
+    /// <summary>
     /// 그라운드 오브젝트의 횡 스크롤 속력입니다.
     /// </summary>
     [SerializeField]
