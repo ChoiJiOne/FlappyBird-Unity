@@ -23,21 +23,36 @@ public class PipeScheduler : MonoBehaviour
     private const int MAX_PIPE_COUNT = 5;
 
     /// <summary>
+    /// 스케줄러의 활성화 여부입니다.
+    /// </summary>
+    /// <remarks>
+    /// 스케줄러가 활성화되어 있어야 스케쥴링을 수행합니다.
+    /// </remarks>
+    private bool _isActive = false;
+
+    /// <summary>
     /// 파이프 오브젝트의 프리팹입니다.
     /// </summary>
     public GameObject _pipePrefab;
 
     /// <summary>
-    /// 스케쥴링해야 할 파이프 오브젝트입니다.
+    /// 대기 중인 파이프 오브젝트입니다.
     /// </summary>
-    private Queue<GameObject> _pipeObjects;
+    private Queue<GameObject> _waitPipeObjectQueue;
+
+    /// <summary>
+    /// 활성화된 파이프 오브젝트입니다.
+    /// </summary>
+    private Queue<GameObject> _activePipeObjectQueue;
 
     /// <summary>
     /// 스케줄링할 파이프를 생성합니다.
     /// </summary>
     private void Awake()
     {
-        _pipeObjects = new Queue<GameObject>();
+        _waitPipeObjectQueue = new Queue<GameObject>();
+        _activePipeObjectQueue = new Queue<GameObject>();
+
         for(int count = 0; count < MAX_PIPE_COUNT; ++count)
         {
             Vector3 position = transform.position;
@@ -45,10 +60,13 @@ public class PipeScheduler : MonoBehaviour
             GameObject pipe = Instantiate(_pipePrefab);
             pipe.SetActive(false);
 
-            _pipeObjects.Enqueue(pipe);
+            _waitPipeObjectQueue.Enqueue(pipe);
         }
     }
 
+    /// <summary>
+    /// 파이프의 스케줄링을 수행합니다.
+    /// </summary>
     private void Update()
     {
         
