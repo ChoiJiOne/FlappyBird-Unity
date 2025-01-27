@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class BgSwitchController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _background;
+
     /// <summary>
     /// 백그라운드의 스프라이트를 관리합니다.
     /// </summary>
