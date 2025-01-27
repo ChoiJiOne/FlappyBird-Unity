@@ -23,7 +23,7 @@ public class BgSwitchController : MonoBehaviour
     /// <summary>
     /// 백그라운드의 스프라이트를 관리합니다.
     /// </summary>
-    private BgSpriteController _bgSpriteController;
+    private BackgroundSwitchController _bgSpriteController;
 
     /// <summary>
     /// 백그라운드의 스프라이트 관리 오브젝트를 초기화합니다.
@@ -31,7 +31,7 @@ public class BgSwitchController : MonoBehaviour
     private void Awake()
     {
         GameObject background = GameObject.Find("Background");
-        _bgSpriteController = background.GetComponent<BgSpriteController>();
+        _bgSpriteController = background.GetComponent<BackgroundSwitchController>();
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class BgSwitchController : MonoBehaviour
     /// </remarks>
     public void OnClickSwitchDayButton()
     {
-        if (BgSpriteController.Day)
+        if (BackgroundSwitchController.Day)
         {
             return;
         }
@@ -58,7 +58,7 @@ public class BgSwitchController : MonoBehaviour
     /// </remarks>
     public void OnClickSwitchNightButton()
     {
-        if (!BgSpriteController.Day)
+        if (!BackgroundSwitchController.Day)
         {
             return;
         }
@@ -74,7 +74,7 @@ public class BgSwitchController : MonoBehaviour
     /// </remarks>
     private void SwitchBackgroundSprite()
     {
-        BgSpriteController.Day = !BgSpriteController.Day;
+        BackgroundSwitchController.Day = !BackgroundSwitchController.Day;
         _bgSpriteController.ApplySprite();
     }
 }
