@@ -32,6 +32,14 @@ public class GroundController : MonoBehaviour
     private Renderer _renderer;
 
     /// <summary>
+    /// 그라운드 오브젝트가 움직일 수 있는지 확인합니다.
+    /// </summary>
+    /// <remarks>
+    /// 그라운드 오브젝트가 움직일 수 있다면 true, 그렇지 않으면 false입니다.
+    /// </remarks>
+    private bool _canMove = false;
+
+    /// <summary>
     /// 스크롤링에 필요한 렌더러와 재질을 초기화합니다.
     /// </summary>
     void Start()
