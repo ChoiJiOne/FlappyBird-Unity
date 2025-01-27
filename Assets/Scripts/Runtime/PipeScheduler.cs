@@ -23,6 +23,11 @@ public class PipeScheduler : MonoBehaviour
     private const int MAX_PIPE_COUNT = 5;
 
     /// <summary>
+    /// 파이프의 스케쥴링이 시작되었는지 확인합니다.
+    /// </summary>
+    private bool _isStart = false;
+
+    /// <summary>
     /// 파이프 오브젝트의 프리팹입니다.
     /// </summary>
     public GameObject _pipePrefab;
@@ -61,5 +66,18 @@ public class PipeScheduler : MonoBehaviour
     /// </summary>
     private void Update()
     {
+    }
+
+    /// <summary>
+    /// 파이프의 스케쥴링을 시작합니다.
+    /// </summary>
+    public void Start()
+    {
+        if (_isStart)
+        {
+            return;
+        }
+
+        _isStart = true;
     }
 }
