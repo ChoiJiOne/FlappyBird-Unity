@@ -7,14 +7,18 @@ using UnityEngine;
 /// </summary>
 public class PipeController : MonoBehaviour
 {
-    void Start()
+    /// <summary>
+    /// 파이프의 이동 속도입니다.
+    /// </summary>
+    [SerializeField]
+    private float _moveSpeed;
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 }
