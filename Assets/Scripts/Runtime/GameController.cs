@@ -41,12 +41,21 @@ public class GameController : MonoBehaviour
     private GameObject _resumeButtonUI;
 
     /// <summary>
+    /// 플레이 씬 내의 파이프 스케줄러입니다.
+    /// </summary>
+    /// <remarks>
+    /// 파이프 관련 제어를 수행하기 위해서는 이 오브젝트를 이용해야 합니다.
+    /// </remarks>
+    private PipeScheduler _pipeScheduler;
+
+    /// <summary>
     /// 제어해야 할 대상 오브젝트의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
     {
         _birdController = GameObject.Find("Bird").GetComponent<BirdController>();
         _groundScroller = GameObject.Find("Ground").GetComponent<GroundScroller>();
+        _pipeScheduler = GameObject.Find("PipeScheduler").GetComponent<PipeScheduler>();
         _getReadyUI = GameObject.Find("GetReady");
         _instructionsUI = GameObject.Find("Instructions");
         _pauseButtonUI = GameObject.Find("PauseButton");
