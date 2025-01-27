@@ -21,6 +21,11 @@ public class GroundController : MonoBehaviour
     /// </summary>
     private Vector2 _textureOffset = Vector2.zero;
 
+    /// <summary>
+    /// 그라운드 오브젝트의 재질입니다.
+    /// </summary>
+    private Material _material;
+
     // Start is called before the first frame update
     void Start()
     {
