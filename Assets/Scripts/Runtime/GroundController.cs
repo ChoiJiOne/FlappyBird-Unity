@@ -26,6 +26,11 @@ public class GroundController : MonoBehaviour
     /// </summary>
     private Material _material;
 
+    /// <summary>
+    /// 재질의 텍스처 오프셋 값을 제어할 때 사용할 렌더러입니다.
+    /// </summary>
+    private Renderer _renderer;
+
     // Start is called before the first frame update
     void Start()
     {
