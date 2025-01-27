@@ -8,6 +8,15 @@ using UnityEngine;
 public class PipeController : MonoBehaviour
 {
     /// <summary>
+    /// 파이프의 움직임 여부를 설정하는 프로퍼티입니다.
+    /// </summary>
+    public bool Movable
+    {
+        get { return _canMove;  }
+        set { _canMove = value; }
+    }
+
+    /// <summary>
     /// 파이프의 이동 속도입니다.
     /// </summary>
     [SerializeField]
