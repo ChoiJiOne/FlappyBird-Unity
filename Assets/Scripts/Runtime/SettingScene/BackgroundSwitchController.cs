@@ -30,8 +30,7 @@ public class BackgroundSwitchController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        GameObject background = GameObject.Find("Background");
-        _bgSpriteController = background.GetComponent<BgSpriteController>();
+        _bgSpriteController = _background.GetComponent<BgSpriteController>();
     }
 
     /// <summary>
