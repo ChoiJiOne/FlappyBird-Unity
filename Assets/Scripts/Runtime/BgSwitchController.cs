@@ -6,8 +6,17 @@ using UnityEngine;
 /// <summary>
 /// 백그라운드 전환을 수행합니다.
 /// </summary>
+/// <remarks>
+/// 이 백그라운드 스위치 컨트롤러는 세팅 씬 내부에서만 사용됩니다.
+/// </remarks>
 public class BgSwitchController : MonoBehaviour
 {
+    /// <summary>
+    /// 세팅 씬 내의 백그라운드 오브젝트입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 값은 에디터에서 설정합니다.
+    /// </remarks>
     [SerializeField]
     private GameObject _background;
 
