@@ -73,6 +73,8 @@ public class GameController : MonoBehaviour
         _getReadyUI.SetActive(false);
         _instructionsUI.SetActive(false);
         _pauseButtonUI.SetActive(true);
+
+        _pipeScheduler.BeginScheduling();
     }
 
     /// <summary>
