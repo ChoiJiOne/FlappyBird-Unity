@@ -31,10 +31,13 @@ public class GroundController : MonoBehaviour
     /// </summary>
     private Renderer _renderer;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// 스크롤링에 필요한 렌더러와 재질을 초기화합니다.
+    /// </summary>
     void Start()
     {
-        
+        _renderer = GetComponent<Renderer>();
+        _material = _renderer.material;
     }
 
     // Update is called once per frame
