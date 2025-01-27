@@ -16,6 +16,11 @@ public class GroundController : MonoBehaviour
     [SerializeField]
     private float _scrollSpeed;
 
+    /// <summary>
+    /// 셰이더에 전달할 그라운드 텍스처의 오프셋 값입니다.
+    /// </summary>
+    private Vector2 _textureOffset = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
