@@ -23,14 +23,6 @@ public class PipeScheduler : MonoBehaviour
     private const int MAX_PIPE_COUNT = 5;
 
     /// <summary>
-    /// 스케줄러의 활성화 여부입니다.
-    /// </summary>
-    /// <remarks>
-    /// 스케줄러가 활성화되어 있어야 스케쥴링을 수행합니다.
-    /// </remarks>
-    private bool _isActive = false;
-
-    /// <summary>
     /// 파이프 오브젝트의 프리팹입니다.
     /// </summary>
     public GameObject _pipePrefab;
@@ -69,6 +61,5 @@ public class PipeScheduler : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        
     }
 }
