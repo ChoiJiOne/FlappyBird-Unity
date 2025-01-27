@@ -46,20 +46,37 @@ public class GroundController : MonoBehaviour
     /// <remarks>
     /// 그라운드 오브젝트가 움직일 수 있다면 true, 그렇지 않으면 false입니다.
     /// </remarks>
-    private bool _canMove = false;
+    private bool _canMove = true;
 
     /// <summary>
     /// 스크롤링에 필요한 렌더러와 재질을 초기화합니다.
     /// </summary>
-    void Start()
+    private void Start()
     {
         _renderer = GetComponent<Renderer>();
         _material = _renderer.material;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 그라운드의 횡 스크롤을 수행합니다.
+    /// </summary>
+    /// <remarks>
+    /// 움직임 여부가 비활성화 되어 있다면 아무 동작도 수행하지 않습니다.
+    /// </remarks>
+    private void Update()
     {
-        
+        // 움직임이 비활성화 되면 아무 동작도 수행하지 않음.
+        if (!_canMove)
+        {
+            return;
+        }
+
+        _textureOffset.x = _material.mainTextureOffset.x + _scrollSpeed * Time.deltaTime;
+        if(_textureOffset.x >= 1.0f)
+        {
+            _textureOffset.x -= 1.0f;
+        }
+
+        _material.mainTextureOffset = _textureOffset;
     }
 }
