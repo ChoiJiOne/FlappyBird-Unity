@@ -27,6 +27,15 @@ public class TitleMoveController : MonoBehaviour
     private float _moveLength;
 
     /// <summary>
+    /// 타이틀이 움직이는 초 단위 시간 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 움직이는 시간은 위 방향으로 출발해서 원래 위치로 돌아오는 시간입니다.
+    /// </remarks>
+    [SerializeField]
+    private float _moveTime;
+
+    /// <summary>
     /// 타이틀 UI의 랙 트랜스폼 참조 값을 설정하고 움직일 때 기준 위치를 지정합니다.
     /// </summary>
     private void Awake()
