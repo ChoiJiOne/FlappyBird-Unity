@@ -76,7 +76,7 @@ public class PipeScheduler : MonoBehaviour
     /// <summary>
     /// 파이프의 스케쥴링을 시작합니다.
     /// </summary>
-    public void Start()
+    public void BeginScheduling()
     {
         if (_isStart)
         {
