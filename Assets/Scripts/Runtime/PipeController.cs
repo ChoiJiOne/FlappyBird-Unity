@@ -36,9 +36,26 @@ public class PipeController : MonoBehaviour
     private bool _canMove = false;
 
     /// <summary>
+    /// 파이프 하위의 오브젝트들에 충돌 이벤트를 설정합니다.
+    /// </summary>
+    private void Start()
+    {
+    }
+
+    /// <summary>
     /// 파이프가 움직일 수 있다면 왼쪽에서 오른쪽으로 이동합니다.
     /// </summary>
     private void Update()
     {
+        if (!_canMove)
+        {
+            return;
+        }
+
+        Vector2 currentPosition = transform.position;
+
+        currentPosition.x -= Time.deltaTime * 5.0f;
+
+        transform.position = currentPosition;
     }
 }
