@@ -10,6 +10,12 @@ using UnityEngine;
 /// </remarks>
 public class GroundController : MonoBehaviour
 {
+    /// <summary>
+    /// 그라운드 오브젝트의 횡 스크롤 속력입니다.
+    /// </summary>
+    [SerializeField]
+    private float _scrollSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
