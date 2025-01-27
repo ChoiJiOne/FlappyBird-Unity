@@ -36,6 +36,14 @@ public class TitleMoveController : MonoBehaviour
     private float _moveTime;
 
     /// <summary>
+    /// 타이틀의 누적 시간 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 누적 시간 값은 _moveTime를 넘을 수 없습니다.
+    /// </remarks>
+    private float _currentStepTime = 0.0f;
+
+    /// <summary>
     /// 타이틀 UI의 랙 트랜스폼 참조 값을 설정하고 움직일 때 기준 위치를 지정합니다.
     /// </summary>
     private void Awake()
