@@ -26,6 +26,16 @@ public class PipeScheduler : MonoBehaviour
     /// 파이프의 스케쥴링이 시작되었는지 확인합니다.
     /// </summary>
     private bool _isStart = false;
+    
+    /// <summary>
+    /// 파이프를 활성화하는 시간입니다.
+    /// </summary>
+    private float _activePipeStepTime = 3.0f;
+
+    /// <summary>
+    /// 파이프 스케쥴러의 누적 시간값입니다.
+    /// </summary>
+    private float _currentStepTime = 0.0f;
 
     /// <summary>
     /// 파이프 오브젝트의 프리팹입니다.
@@ -38,17 +48,11 @@ public class PipeScheduler : MonoBehaviour
     private Queue<GameObject> _waitPipeObjectQueue;
 
     /// <summary>
-    /// 활성화된 파이프 오브젝트입니다.
-    /// </summary>
-    private Queue<GameObject> _activePipeObjectQueue;
-
-    /// <summary>
     /// 스케줄링할 파이프를 생성합니다.
     /// </summary>
     private void Awake()
     {
         _waitPipeObjectQueue = new Queue<GameObject>();
-        _activePipeObjectQueue = new Queue<GameObject>();
 
         for(int count = 0; count < MAX_PIPE_COUNT; ++count)
         {
@@ -71,6 +75,20 @@ public class PipeScheduler : MonoBehaviour
             return;
         }
 
+        _currentStepTime += Time.deltaTime;
+        if (_currentStepTime < _activePipeStepTime)
+        {
+            return;
+        }
+
+        _currentStepTime -= _activePipeStepTime;
+
+        GameObject pipe = _waitPipeObjectQueue.Dequeue();
+        pipe.SetActive(true);
+
+        PipeController pipeController = pipe.GetComponent<PipeController>();
+        pipeController.Speed = 5.0f;
+        pipeController.Movable = true;
     }
 
     /// <summary>
