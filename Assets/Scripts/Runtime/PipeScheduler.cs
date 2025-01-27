@@ -66,6 +66,11 @@ public class PipeScheduler : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (!_isStart)
+        {
+            return;
+        }
+
     }
 
     /// <summary>
