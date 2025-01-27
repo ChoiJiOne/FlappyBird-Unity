@@ -333,6 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 568369612}
+  - component: {fileID: 568369613}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -349,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 568369611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -358,6 +359,18 @@ Transform:
   - {fileID: 1364104123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &568369613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568369611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6edf114afb61a24f90105656fdf26ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &660557731
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +1003,7 @@ GameObject:
   - component: {fileID: 1412484983}
   - component: {fileID: 1412484984}
   m_Layer: 0
-  m_Name: Pipe_Bottom
+  m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1292,7 +1305,7 @@ GameObject:
   - component: {fileID: 1700846611}
   - component: {fileID: 1700846612}
   m_Layer: 0
-  m_Name: Pipe_Top
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
