@@ -7,7 +7,11 @@ using UnityEngine;
 /// </summary>
 public class PipeController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// 파이프의 움직임 여부입니다.
+    /// </summary>
+    private bool _canMove = false;
+
     private void Start()
     {
     }
@@ -15,6 +19,5 @@ public class PipeController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
     }
 }
