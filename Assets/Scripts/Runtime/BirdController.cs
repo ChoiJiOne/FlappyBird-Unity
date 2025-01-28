@@ -91,6 +91,10 @@ public class BirdController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        // 최초에 시작했을 때만 서로 상태가 다르고, 게임을 시작하면 상태가 동일.
+        SetActiveGravity(false);
+        SetActiveAnimation(true);
     }
 
     private void Update()
