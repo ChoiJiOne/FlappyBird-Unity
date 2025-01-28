@@ -55,6 +55,12 @@ public class PipeManager : MonoBehaviour
     /// </summary>
     private float _currentStepTime = 0.0f;
 
+    /// <summary>
+    /// 파이프 오브젝트 생성 후 대기 큐에 추가합니다.
+    /// </summary>
+    /// <remarks>
+    /// 게임 속력 관련 설정은 GameManager에서 수행되므로, Start에서 초기화를 수행해야 합니다.
+    /// </remarks>
     private void Start()
     {
         _waitPipeObjects = new Queue<GameObject>();
@@ -73,6 +79,9 @@ public class PipeManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 특정 시간이 되면 대기 큐의 파이프 오브젝트를 활성화시킵니다.
+    /// </summary>
     private void Update()
     {
         _currentStepTime += Time.deltaTime;
