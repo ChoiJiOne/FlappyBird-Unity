@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// 게임 플레이 씬 내의 새를 제어합니다.
@@ -124,6 +125,7 @@ public class BirdController : MonoBehaviour
                     StartJump();
                 }
 
+                Rotate();
                 AdjustToBounds();
                 break;
 
