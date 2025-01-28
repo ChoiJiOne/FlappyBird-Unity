@@ -17,6 +17,12 @@ public class PipeManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 파이프의 프리팹 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _pipePrefab;
+
+    /// <summary>
     /// 파이프의 이동 속도입니다.
     /// </summary>
     private float _moveSpeed;
