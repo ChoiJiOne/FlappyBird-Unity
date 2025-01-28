@@ -43,6 +43,22 @@ public class PipeController : MonoBehaviour
     }
 
     /// <summary>
+    /// 현재 파이프의 Y좌표 값을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public float YPosition
+    {
+        set
+        {
+            _currentYPosition = value;
+
+            Vector2 currentPosition = transform.position;
+            currentPosition.y = _currentYPosition;
+
+            transform.position = currentPosition;
+        }
+    }
+
+    /// <summary>
     /// 파이프를 제어하는 매니저입니다.
     /// </summary>
     private PipeManager _pipeManager;
@@ -61,6 +77,14 @@ public class PipeController : MonoBehaviour
     /// 파이프 끝 위치의 X좌표 값입니다.
     /// </summary>
     private float _endXPosition;
+
+    /// <summary>
+    /// 현재 파이프의 Y좌표 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 값은 파이프 매니저를 이용해서 임의의 값으로 설정됩니다.
+    /// </remarks>
+    private float _currentYPosition;
 
     /// <summary>
     /// 파이프가 움직일 수 있는지 확인합니다.
