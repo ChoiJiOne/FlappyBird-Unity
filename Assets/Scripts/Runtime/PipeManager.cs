@@ -57,6 +57,8 @@ public class PipeManager : MonoBehaviour
                 return;
             }
 
+            _isManagerActive = value;
+
             // 활성화된 오브젝트를 대상으로만 작동.
             foreach (GameObject pipe in _pipes)
             {
