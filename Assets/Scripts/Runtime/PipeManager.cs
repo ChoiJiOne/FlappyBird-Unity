@@ -73,6 +73,11 @@ public class PipeManager : MonoBehaviour
     private PipeYPositionRange _pipeYPositionRange;
 
     /// <summary>
+    /// 파이프 매니저가 관리하는 파이프 오브젝트 목록입니다.
+    /// </summary>
+    private GameObject[] _pipes;
+
+    /// <summary>
     /// 대기 중인 파이프 오브젝트의 큐입니다.
     /// </summary>
     private Queue<GameObject> _waitPipeObjects;
@@ -96,9 +101,9 @@ public class PipeManager : MonoBehaviour
     /// </remarks>
     private void Start()
     {
+        _pipes = new GameObject[_pipeCount];
         _waitPipeObjects = new Queue<GameObject>();
-
-        for(int count = 0; count < _pipeCount; ++count)
+        for(int index = 0; index < _pipeCount; ++index)
         {
             GameObject pipe = Instantiate(_pipePrefab);
             pipe.SetActive(false);
@@ -110,6 +115,7 @@ public class PipeManager : MonoBehaviour
             pipeController.PipeManager = this;
             pipeController.YPosition = _pipeYPositionRange.GetRandomYPosition();
 
+            _pipes[index] = pipe;
             _waitPipeObjects.Enqueue(pipe);
         }
     }
@@ -148,7 +154,7 @@ public class PipeManager : MonoBehaviour
         {
             return;
         }
-
+        
         pipeController.Movable = false;
         pipeController.YPosition = _pipeYPositionRange.GetRandomYPosition();
 
