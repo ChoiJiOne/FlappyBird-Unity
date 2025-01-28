@@ -44,9 +44,20 @@ public class PipeManager : MonoBehaviour
     /// </summary>
     private Queue<GameObject> _waitPipeObjects;
 
-    private void Start()
+    private void Awake()
     {
-        
+        _waitPipeObjects = new Queue<GameObject>();
+
+        for(int count = 0; count < _pipeCount; ++count)
+        {
+            GameObject pipe = Instantiate(_pipePrefab);
+            pipe.SetActive(false);
+
+            PipeController pipeController = pipe.GetComponent<PipeController>();
+            pipeController.MoveSpeed = _moveSpeed;
+            pipeController.EndXPosition = _endXPosition;
+            pipeController.Movable = false;
+        }
     }
 
     private void Update()
