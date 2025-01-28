@@ -159,6 +159,12 @@ public class PipeManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        // 활성화 되어 있지 않다면 아무 동작도 수행하지 않음.
+        if (!_isManagerActive)
+        {
+            return;
+        }
+
         _currentStepTime += Time.deltaTime;
         if (_currentStepTime < _activePipeStepTime)
         {
