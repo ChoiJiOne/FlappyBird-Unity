@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private GameObject _pipeManager;
 
     /// <summary>
-    /// 그라운드의 속력 값을 설정합니다.
+    /// 그라운드 및 파이프의 속력 값을 설정합니다.
     /// </summary>
     private void Awake()
     {
