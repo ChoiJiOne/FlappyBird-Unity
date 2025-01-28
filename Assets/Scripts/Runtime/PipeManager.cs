@@ -109,11 +109,13 @@ public class PipeManager : MonoBehaviour
     /// </remarks>
     public void EnqueuePipeToWaitQueue(GameObject pipe)
     {
-        if (pipe.GetComponent<PipeController>() == null)
+        PipeController pipeController = pipe.GetComponent<PipeController>();
+        if (pipeController == null)
         {
             return;
         }
 
+        pipe.SetActive(false);
         _waitPipeObjects.Enqueue(pipe);
     }
 }
