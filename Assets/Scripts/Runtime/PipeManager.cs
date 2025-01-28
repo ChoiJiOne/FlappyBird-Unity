@@ -171,6 +171,7 @@ public class PipeManager : MonoBehaviour
             return;
         }
 
+        _currentStepTime -= _activePipeStepTime;
         ActivePipeFromWaitQueue();
     }
 
