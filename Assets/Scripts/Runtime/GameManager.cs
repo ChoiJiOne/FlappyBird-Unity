@@ -24,8 +24,18 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float _moveSpeed;
 
+    /// <summary>
+    /// 게임 내의 그라운드 오프젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _ground;
+
+    /// <summary>
+    /// 그라운드의 속력 값을 설정합니다.
+    /// </summary>
     private void Awake()
     {
-        
+        GroundController groundController = _ground.GetComponent<GroundController>();
+        groundController.MoveSpeed = _moveSpeed;
     }
 }
