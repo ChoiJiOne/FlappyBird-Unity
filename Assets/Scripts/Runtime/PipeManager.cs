@@ -55,7 +55,7 @@ public class PipeManager : MonoBehaviour
     /// </summary>
     private float _currentStepTime = 0.0f;
 
-    private void Awake()
+    private void Start()
     {
         _waitPipeObjects = new Queue<GameObject>();
 
@@ -75,6 +75,18 @@ public class PipeManager : MonoBehaviour
 
     private void Update()
     {
-        
+        _currentStepTime += Time.deltaTime;
+        if (_currentStepTime < _activePipeStepTime)
+        {
+            return;
+        }
+
+        _currentStepTime -= _activePipeStepTime;
+
+        GameObject pipe = _waitPipeObjects.Dequeue();
+        pipe.SetActive(true);
+
+        PipeController pipeController = pipe.GetComponent<PipeController>();
+        pipeController.Movable = true;
     }
 }
