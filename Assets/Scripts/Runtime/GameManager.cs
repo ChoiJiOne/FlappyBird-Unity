@@ -7,6 +7,12 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// 게임 내의 이동 속력 값입니다
+    /// </summary>
+    [SerializeField]
+    private float _moveSpeed;
+
     private void Awake()
     {
         
