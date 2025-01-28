@@ -17,6 +17,15 @@ public class PipeController : MonoBehaviour
     }
 
     /// <summary>
+    /// 파이프 끝 위치의 X좌표 값을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public float EndXPosition
+    {
+        get { return _endXPosition; }
+        set { _endXPosition = value; }
+    }
+
+    /// <summary>
     /// 파이프의 움직임 여부를 설정하는 프로퍼티입니다.
     /// </summary>
     public bool Movable
@@ -29,6 +38,11 @@ public class PipeController : MonoBehaviour
     /// 파이프의 이동 속력입니다.
     /// </summary>
     private float _moveSpeed;
+
+    /// <summary>
+    /// 파이프 끝 위치의 X좌표 값입니다.
+    /// </summary>
+    private float _endXPosition;
 
     /// <summary>
     /// 파이프가 움직일 수 있는지 확인합니다.
