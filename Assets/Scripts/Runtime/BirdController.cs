@@ -77,6 +77,14 @@ public class BirdController : MonoBehaviour
     private const float MAX_ROTATE_ANGLE = 30.0f;
 
     /// <summary>
+    /// 새의 Y좌표 최대 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 상수는 새가 외부로 나갈 수 없도록 조정하기 위한 값입니다.
+    /// </remarks>
+    private const float MAX_Y_POSITION = 5.0f;
+
+    /// <summary>
     /// 애니메이션과 리지드바디의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
