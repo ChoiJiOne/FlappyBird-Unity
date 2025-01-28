@@ -84,7 +84,7 @@ public class BirdController : MonoBehaviour
     /// 새의 중력 활성화 여부를 설정합니다.
     /// </summary>
     /// <param name="isActive">새의 중력 활성화 여부입니다. 중력을 활성화한다면 true, 그렇지 않으면 false입니다.</param>
-    private void ActiveGravity(bool isActive)
+    private void SetActiveGravity(bool isActive)
     {
         _rigidbody.simulated = isActive;
     }
@@ -93,7 +93,7 @@ public class BirdController : MonoBehaviour
     /// 새의 애니메이션 활성화 여부를 설정합니다.
     /// </summary>
     /// <param name="isActive">애니메이션의 활성화 여부입니다. 애니메이션을 활성화하다면 true, 그렇지 않으면 false입니다.</param>
-    private void ActiveAnimation(bool isActive)
+    private void SetActiveAnimation(bool isActive)
     {
         _animator.enabled = isActive;
     }
