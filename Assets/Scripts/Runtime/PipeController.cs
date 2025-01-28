@@ -82,5 +82,17 @@ public class PipeController : MonoBehaviour
         Vector2 currentPosition = transform.position;
         currentPosition.x -= Time.deltaTime * _moveSpeed;
         transform.position = currentPosition;
+
+        if (currentPosition.x <= _endXPosition)
+        {
+            _canMove = false;
+
+            Vector2 position;
+            position.x = 5.0f;
+            position.y = 1.0f;
+            transform.position = position;
+
+            _pipeManager.EnqueuePipeToWaitQueue(this.gameObject);
+        }
     }
 }
