@@ -43,5 +43,8 @@ public class GameManager : MonoBehaviour
     {
         GroundController groundController = _ground.GetComponent<GroundController>();
         groundController.MoveSpeed = _moveSpeed;
+
+        PipeManager pipeManager = _pipeManager.GetComponent<PipeManager>();
+        pipeManager.MoveSpeed = _moveSpeed;
     }
 }
