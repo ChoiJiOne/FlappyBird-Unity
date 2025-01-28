@@ -131,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49687495}
+  - component: {fileID: 49687496}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -153,6 +154,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49687496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49687494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f234eb025841244967e4ddc1e5eff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 0
 --- !u!1 &746617458
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37dbb0e2d7f5a2c4eb77f1b3149205d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1
+  _moveSpeed: 2
 --- !u!1 &1077153938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360dd8dae3384b44ea7387a22a0c8f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollSpeed: 1
+  _scrollSpeed: 2
 --- !u!50 &2094089564
 Rigidbody2D:
   serializedVersion: 4
