@@ -35,6 +35,11 @@ public class BirdController : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     /// <summary>
+    /// 현재 새의 상태입니다.
+    /// </summary>
+    private State _currentState = State.Idle;
+
+    /// <summary>
     /// 애니메이션과 리지드바디의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
