@@ -68,4 +68,15 @@ public class BirdController : MonoBehaviour
     private void Update()
     {
     }
+
+    /// <summary>
+    /// 새가 점프를 뛸 수 있는지 확인합니다.
+    /// </summary>
+    /// <returns>
+    /// 점프를 뛸 수 있다면 true, 그렇지 않으면 false를 반환합니다.
+    /// </returns>
+    private bool CanJump()
+    {
+        return Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
+    }
 }
