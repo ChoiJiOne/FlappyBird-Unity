@@ -100,10 +100,8 @@ public class PipeController : MonoBehaviour
         {
             _canMove = false;
 
-            Vector2 position;
-            position.x = 5.0f;
-            position.y = 1.0f;
-            transform.position = position;
+            currentPosition.x = _startXPosition;
+            transform.position = currentPosition;
 
             _pipeManager.EnqueuePipeToWaitQueue(this.gameObject);
         }
