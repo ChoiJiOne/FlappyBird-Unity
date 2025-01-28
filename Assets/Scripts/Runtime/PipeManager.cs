@@ -165,7 +165,13 @@ public class PipeManager : MonoBehaviour
             return;
         }
 
-        ManagePipeObjects();
+        _currentStepTime += Time.deltaTime;
+        if (_currentStepTime < _activePipeStepTime)
+        {
+            return;
+        }
+
+        ActivePipeFromQueue();
     }
 
     /// <summary>
@@ -191,19 +197,19 @@ public class PipeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 파이프 오브젝트 관리를 수행합니다.
+    /// 대기 큐에 있는 파이프를 활성화 시킵니다.
     /// </summary>
-    private void ManagePipeObjects()
+    /// <remarks>
+    /// 큐가 비어있다면 아무 동작도 수행하지 않습니다.
+    /// </remarks>
+    private void ActivePipeFromQueue()
     {
-        _currentStepTime += Time.deltaTime;
-        if (_currentStepTime < _activePipeStepTime)
+        if (!_waitPipeObjects.TryDequeue(out GameObject pipe))
         {
+            // 큐가 비어있거나 시작 부분을 제거하지 못하면 아무 동작도 수행하지 않음.
             return;
         }
 
-        _currentStepTime -= _activePipeStepTime;
-
-        GameObject pipe = _waitPipeObjects.Dequeue();
         pipe.SetActive(true);
 
         PipeController pipeController = pipe.GetComponent<PipeController>();
