@@ -11,6 +11,15 @@ using UnityEngine;
 public class GroundController : MonoBehaviour
 {
     /// <summary>
+    /// 파이프의 이동 속력을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public float MoveSpeed
+    {
+        get { return _moveSpeed; }
+        set { _moveSpeed = value; }
+    }
+
+    /// <summary>
     /// 그라운드의 움직임 여부를 설정하는 프로퍼티입니다.
     /// </summary>
     public bool Movable
@@ -20,10 +29,9 @@ public class GroundController : MonoBehaviour
     }
 
     /// <summary>
-    /// 그라운드 오브젝트의 횡 스크롤 속력입니다.
+    /// 그라운드 오브젝트의 이동(스크롤링) 속력입니다.
     /// </summary>
-    [SerializeField]
-    private float _scrollSpeed;
+    private float _moveSpeed;
 
     /// <summary>
     /// 그라운드 오브젝트의 스크롤 이동 거리입니다.
@@ -77,7 +85,7 @@ public class GroundController : MonoBehaviour
             return;
         }
 
-        float scrollSpeed = _scrollSpeed / _scrollLength;
+        float scrollSpeed = _moveSpeed / _scrollLength;
 
         _textureOffset.x = _material.mainTextureOffset.x + scrollSpeed * Time.deltaTime;
         if(_textureOffset.x >= 1.0f)
