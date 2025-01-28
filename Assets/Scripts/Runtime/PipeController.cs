@@ -35,6 +35,19 @@ public class PipeController : MonoBehaviour
     }
 
     /// <summary>
+    /// 파이프 매니저를 설정하는 프로퍼티입니다.
+    /// </summary>
+    public PipeManager PipeManager
+    {
+        set { _pipeManager = value; }
+    }
+
+    /// <summary>
+    /// 파이프를 제어하는 매니저입니다.
+    /// </summary>
+    private PipeManager _pipeManager;
+
+    /// <summary>
     /// 파이프의 이동 속력입니다.
     /// </summary>
     private float _moveSpeed;
