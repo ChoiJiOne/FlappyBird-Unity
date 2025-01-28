@@ -8,6 +8,15 @@ using UnityEngine;
 public class PipeController : MonoBehaviour
 {
     /// <summary>
+    /// 파이프의 이동 속력을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public float MoveSpeed
+    {
+        get { return _moveSpeed;  }
+        set { _moveSpeed = value; }
+    }
+
+    /// <summary>
     /// 파이프의 움직임 여부를 설정하는 프로퍼티입니다.
     /// </summary>
     public bool Movable
@@ -17,9 +26,8 @@ public class PipeController : MonoBehaviour
     }
 
     /// <summary>
-    /// 파이프의 이동 속도입니다.
+    /// 파이프의 이동 속력입니다.
     /// </summary>
-    [SerializeField]
     private float _moveSpeed;
 
     /// <summary>
@@ -29,11 +37,6 @@ public class PipeController : MonoBehaviour
     /// 파이프 오브젝트가 움직일 수 있다면 true, 그렇지 않으면 false입니다.
     /// </remarks>
     private bool _canMove = true;
-
-    private void Start()
-    {
-        
-    }
 
     /// <summary>
     /// 파이프의 움직임을 수행합니다.
