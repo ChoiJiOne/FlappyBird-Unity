@@ -18,6 +18,15 @@ public struct PipeYPositionRange
     /// Y값의 최댓값입니다.
     /// </summary>
     public float maxYPosition;
+
+    /// <summary>
+    /// 닫힌 구간 [minYPosition, maxYPosition] 사이의 임의의 난수를 얻습니다.
+    /// </summary>
+    /// <returns>[minYPosition, maxYPosition] 사이의 임의의 난수 값을 반환니다.</returns>
+    public float GetRandomYPosition()
+    {
+        return UnityEngine.Random.Range(minYPosition, maxYPosition);
+    }
 }
 
 /// <summary>
@@ -99,6 +108,7 @@ public class PipeManager : MonoBehaviour
             pipeController.EndXPosition = _endXPosition;
             pipeController.Movable = false;
             pipeController.PipeManager = this;
+            pipeController.YPosition = _pipeYPositionRange.GetRandomYPosition();
 
             _waitPipeObjects.Enqueue(pipe);
         }
@@ -138,6 +148,9 @@ public class PipeManager : MonoBehaviour
         {
             return;
         }
+
+        pipeController.Movable = false;
+        pipeController.YPosition = _pipeYPositionRange.GetRandomYPosition();
 
         pipe.SetActive(false);
         _waitPipeObjects.Enqueue(pipe);
