@@ -40,6 +40,18 @@ public class BirdController : MonoBehaviour
     private State _currentState = State.Idle;
 
     /// <summary>
+    /// 점프 속력입니다.
+    /// </summary>
+    [SerializeField]
+    private float _jumpSpeed;
+
+    /// <summary>
+    /// 회전 속력입니다.
+    /// </summary>
+    [SerializeField]
+    private float _rotateSpeed;
+
+    /// <summary>
     /// 애니메이션과 리지드바디의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
