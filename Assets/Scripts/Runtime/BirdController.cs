@@ -79,4 +79,13 @@ public class BirdController : MonoBehaviour
     {
         return Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
     }
+
+    /// <summary>
+    /// 새의 중력 활성화 여부를 설정합니다.
+    /// </summary>
+    /// <param name="isActive">새의 중력 활성화 여부입니다. 중력을 활성화한다면 true, 그렇지 않으면 false입니다.</param>
+    private void ActiveGravity(bool isActive)
+    {
+        _rigidbody.simulated = isActive;
+    }
 }
