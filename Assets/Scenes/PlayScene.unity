@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 2
   _ground: {fileID: 2094089560}
+  _pipeManager: {fileID: 6306326}
 --- !u!1 &1077153938
 GameObject:
   m_ObjectHideFlags: 0
