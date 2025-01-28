@@ -23,10 +23,16 @@ public class PipeManager : MonoBehaviour
     private GameObject _pipePrefab;
 
     /// <summary>
+    /// 파이프 끝 위치의 X좌표 값입니다.
+    /// </summary>
+    [SerializeField]
+    private float _endXPosition;
+
+    /// <summary>
     /// 파이프의 이동 속도입니다.
     /// </summary>
     private float _moveSpeed;
-
+    
     private void Start()
     {
         
