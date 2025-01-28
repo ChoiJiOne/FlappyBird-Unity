@@ -99,4 +99,21 @@ public class PipeManager : MonoBehaviour
         PipeController pipeController = pipe.GetComponent<PipeController>();
         pipeController.Movable = true;
     }
+
+    /// <summary>
+    /// 대기 큐에 파이프 오브젝트를 삽입합니다.
+    /// </summary>
+    /// <param name="pipe">대기 큐에 삽입할 파이프 오브젝트입니다.</param>
+    /// <remarks>
+    /// 삽입할 오브젝트가 PipeController를 소유하고 있지 않으면 삽입되지 않습니다.
+    /// </remarks>
+    public void EnqueuePipeToWaitQueue(GameObject pipe)
+    {
+        if (pipe.GetComponent<PipeController>() == null)
+        {
+            return;
+        }
+
+        _waitPipeObjects.Enqueue(pipe);
+    }
 }
