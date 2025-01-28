@@ -69,6 +69,14 @@ public class BirdController : MonoBehaviour
     private const int LEFT_MOUSE_BUTTON_CODE = 0;
 
     /// <summary>
+    /// 새의 최대 회전각입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이때 회전각은 육십분법 (ex, 30도, 60도) 기준입니다.
+    /// </remarks>
+    private const float MAX_ROTATE_ANGLE = 30.0f;
+
+    /// <summary>
     /// 애니메이션과 리지드바디의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
