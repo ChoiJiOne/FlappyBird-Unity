@@ -99,6 +99,20 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
+        switch (_currentState)
+        {
+            case State.Idle:
+                break;
+
+            case State.Jump:
+                break;
+
+            case State.Fall:
+                break;
+
+            case State.Dead:
+                break;
+        }
     }
 
     /// <summary>
