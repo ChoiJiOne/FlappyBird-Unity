@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
     private GameObject _ground;
 
     /// <summary>
+    /// 게임 내의 파이프 오브젝트를 관리하는 매니저입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _pipeManager;
+
+    /// <summary>
     /// 그라운드의 속력 값을 설정합니다.
     /// </summary>
     private void Awake()
