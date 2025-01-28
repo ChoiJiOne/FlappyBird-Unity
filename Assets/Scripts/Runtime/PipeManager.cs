@@ -32,6 +32,12 @@ public class PipeManager : MonoBehaviour
     /// 파이프의 이동 속도입니다.
     /// </summary>
     private float _moveSpeed;
+
+    /// <summary>
+    /// 파이프 매니저가 관리하는 파이프의 개수입니다.
+    /// </summary>
+    [SerializeField]
+    private int _pipeCount;
     
     private void Start()
     {
