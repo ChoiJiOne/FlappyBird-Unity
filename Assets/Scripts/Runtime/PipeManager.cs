@@ -42,7 +42,7 @@ public class PipeManager : MonoBehaviour
         get { return _moveSpeed; }
         set { _moveSpeed = value; }
     }
-
+        
     /// <summary>
     /// 파이프의 프리팹 오브젝트입니다.
     /// </summary>
@@ -92,6 +92,14 @@ public class PipeManager : MonoBehaviour
     /// 파이프 스케쥴러의 누적 시간값입니다.
     /// </summary>
     private float _currentStepTime = 0.0f;
+
+    /// <summary>
+    /// 파이프 매니저가 활성화 되어 있는지 확인합니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 변수가 false라면 파이프 매니저는 매니징을 수행하지 않고, 파이프 오브젝트는 화면에 보이기는 하지만 이동이 중지됩니다.
+    /// </remarks>
+    private bool _isManagerActive = false;
 
     /// <summary>
     /// 파이프 오브젝트 생성 후 대기 큐에 추가합니다.
