@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pipePrefab: {fileID: 205620713034549250, guid: 81b5993b1d69e934d9fd8cf3fc2c2524, type: 3}
+  _endXPosition: -6
 --- !u!1 &49687494
 GameObject:
   m_ObjectHideFlags: 0
