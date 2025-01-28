@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f234eb025841244967e4ddc1e5eff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeed: 3
   _ground: {fileID: 2094089560}
   _pipeManager: {fileID: 6306326}
 --- !u!1 &1077153938
