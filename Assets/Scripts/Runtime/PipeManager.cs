@@ -171,7 +171,7 @@ public class PipeManager : MonoBehaviour
             return;
         }
 
-        ActivePipeFromQueue();
+        ActivePipeFromWaitQueue();
     }
 
     /// <summary>
@@ -202,7 +202,7 @@ public class PipeManager : MonoBehaviour
     /// <remarks>
     /// 큐가 비어있다면 아무 동작도 수행하지 않습니다.
     /// </remarks>
-    private void ActivePipeFromQueue()
+    private void ActivePipeFromWaitQueue()
     {
         if (!_waitPipeObjects.TryDequeue(out GameObject pipe))
         {
