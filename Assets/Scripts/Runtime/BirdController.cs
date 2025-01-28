@@ -7,14 +7,26 @@ using UnityEngine;
 /// </summary>
 public class BirdController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 새의 애니메이션을 제어합니다.
+    /// </summary>
+    private Animator _animator;
+
+    /// <summary>
+    /// 새의 움직임 및 충돌 처리를 위한 강체(RigidBody)입니다.
+    /// </summary>
+    private Rigidbody2D _rigidbody;
+
+    /// <summary>
+    /// 애니메이션과 리지드바디의 참조를 초기화합니다.
+    /// </summary>
+    private void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
