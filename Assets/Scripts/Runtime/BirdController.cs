@@ -52,6 +52,11 @@ public class BirdController : MonoBehaviour
     private float _rotateSpeed;
 
     /// <summary>
+    /// 입력 처리 시 GetMouseButtonDown에 전달할 마우스의 왼쪽 버튼 코드입니다.
+    /// </summary>
+    private const int LEFT_MOUSE_BUTTON_CODE = 0;
+
+    /// <summary>
     /// 애니메이션과 리지드바디의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
@@ -62,6 +67,5 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
-        
     }
 }
