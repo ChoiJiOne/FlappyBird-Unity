@@ -165,19 +165,7 @@ public class PipeManager : MonoBehaviour
             return;
         }
 
-        _currentStepTime += Time.deltaTime;
-        if (_currentStepTime < _activePipeStepTime)
-        {
-            return;
-        }
-
-        _currentStepTime -= _activePipeStepTime;
-
-        GameObject pipe = _waitPipeObjects.Dequeue();
-        pipe.SetActive(true);
-
-        PipeController pipeController = pipe.GetComponent<PipeController>();
-        pipeController.Movable = true;
+        ManagePipeObjects();
     }
 
     /// <summary>
@@ -200,5 +188,25 @@ public class PipeManager : MonoBehaviour
 
         pipe.SetActive(false);
         _waitPipeObjects.Enqueue(pipe);
+    }
+
+    /// <summary>
+    /// 파이프 오브젝트 관리를 수행합니다.
+    /// </summary>
+    private void ManagePipeObjects()
+    {
+        _currentStepTime += Time.deltaTime;
+        if (_currentStepTime < _activePipeStepTime)
+        {
+            return;
+        }
+
+        _currentStepTime -= _activePipeStepTime;
+
+        GameObject pipe = _waitPipeObjects.Dequeue();
+        pipe.SetActive(true);
+
+        PipeController pipeController = pipe.GetComponent<PipeController>();
+        pipeController.Movable = true;
     }
 }
