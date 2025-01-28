@@ -102,12 +102,29 @@ public class BirdController : MonoBehaviour
         switch (_currentState)
         {
             case State.Idle:
+                if (CanJump())
+                {
+                    StartJump();
+                }
                 break;
 
             case State.Jump:
+                if (_rigidbody.velocity.y <= 0.0f)
+                {
+                    _currentState = State.Fall;
+                    SetActiveAnimation(false);
+                }
+
+                AdjustToBounds();
                 break;
 
             case State.Fall:
+                if (CanJump())
+                {
+                    StartJump();
+                }
+
+                AdjustToBounds();
                 break;
 
             case State.Dead:
