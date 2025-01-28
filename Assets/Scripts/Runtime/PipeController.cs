@@ -45,6 +45,9 @@ public class PipeController : MonoBehaviour
     /// <summary>
     /// 현재 파이프의 Y좌표 값을 설정하는 프로퍼티입니다.
     /// </summary>
+    /// <remarks>
+    /// 이 프로퍼티를 이용해서 Y값을 변경하면 즉시 반영됩니다.
+    /// </remarks>
     public float YPosition
     {
         set
