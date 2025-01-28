@@ -42,7 +42,33 @@ public class PipeManager : MonoBehaviour
         get { return _moveSpeed; }
         set { _moveSpeed = value; }
     }
-        
+
+    /// <summary>
+    /// 파이프 매니저가 활성화 여부를 설정하는 프로퍼티입니다.
+    /// </summary>
+    public bool Active
+    {
+        get { return _isManagerActive; }
+        set
+        {
+            if (_isManagerActive == value)
+            {
+                // 상태 변화가 없다면 아무 동작도 수행하지 않음.
+                return;
+            }
+
+            // 활성화된 오브젝트를 대상으로만 작동.
+            foreach (GameObject pipe in _pipes)
+            {
+                if (pipe != null && pipe.activeSelf)
+                {
+                    PipeController pipeController = pipe.GetComponent<PipeController>();
+                    pipeController.Movable = _isManagerActive;
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// 파이프의 프리팹 오브젝트입니다.
     /// </summary>
