@@ -3,6 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// 파이프의 위치 Y값의 범위입니다.
+/// </summary>
+public struct PipeYPositionRange
+{
+    /// <summary>
+    /// Y값의 최솟값입니다.
+    /// </summary>
+    public float minYPosition;
+
+    /// <summary>
+    /// Y값의 최댓값입니다.
+    /// </summary>
+    public float maxYPosition;
+}
+
+/// <summary>
 /// 게임 내의 파이프 오브젝트를 관리합니다.
 /// </summary>
 public class PipeManager : MonoBehaviour
