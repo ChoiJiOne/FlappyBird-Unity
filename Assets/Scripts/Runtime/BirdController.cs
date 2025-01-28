@@ -8,6 +8,18 @@ using UnityEngine;
 public class BirdController : MonoBehaviour
 {
     /// <summary>
+    /// 새의 움직임 여부를 설정합니다.
+    /// </summary>
+    public bool Movable
+    {
+        set
+        {
+            SetActiveGravity(value);
+            SetActiveAnimation(value);
+        }
+    }
+
+    /// <summary>
     /// 플레이어가 제어하는 새의 상태입니다.
     /// </summary>
     /// <remarks>
