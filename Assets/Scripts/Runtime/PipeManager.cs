@@ -74,6 +74,7 @@ public class PipeManager : MonoBehaviour
             pipeController.MoveSpeed = _moveSpeed;
             pipeController.EndXPosition = _endXPosition;
             pipeController.Movable = false;
+            pipeController.PipeManager = this;
 
             _waitPipeObjects.Enqueue(pipe);
         }
