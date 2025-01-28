@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     /// Play: 게임을 플레이하는 상태입니다.
     /// GameOver: 게임이 종료된 상태입니다.
     /// </remarks>
-    enum State
+    public enum State
     {
         Ready,
         Play,
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     private BirdController _birdController;
 
     /// <summary>
-    /// 그라운드 및 파이프의 속력 값을 설정합니다.
+    /// 게임 매니저가 관리해야 할 오브젝트를 제어하기 위한 컴포넌트 참조를 초기화합니다.
     /// </summary>
     private void Awake()
     {
