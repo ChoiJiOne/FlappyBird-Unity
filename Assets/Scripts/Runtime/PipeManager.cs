@@ -38,7 +38,12 @@ public class PipeManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int _pipeCount;
-    
+
+    /// <summary>
+    /// 대기 중인 파이프 오브젝트의 큐입니다.
+    /// </summary>
+    private Queue<GameObject> _waitPipeObjects;
+
     private void Start()
     {
         
