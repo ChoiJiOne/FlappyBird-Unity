@@ -53,6 +53,11 @@ public class PipeController : MonoBehaviour
     private float _moveSpeed;
 
     /// <summary>
+    /// 파이프 시작 위치의 X좌표 값입니다.
+    /// </summary>
+    private float _startXPosition;
+
+    /// <summary>
     /// 파이프 끝 위치의 X좌표 값입니다.
     /// </summary>
     private float _endXPosition;
@@ -64,6 +69,14 @@ public class PipeController : MonoBehaviour
     /// 파이프 오브젝트가 움직일 수 있다면 true, 그렇지 않으면 false입니다.
     /// </remarks>
     private bool _canMove = true;
+
+    /// <summary>
+    /// 파이프 시작 위치의 X값을 초기화 합니다.
+    /// </summary>
+    private void Awake()
+    {
+        _startXPosition = transform.position.x;
+    }
 
     /// <summary>
     /// 파이프의 움직임을 수행합니다.
