@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 파이프의 위치 Y값의 범위입니다.
 /// </summary>
+[Serializable]
 public struct PipeYPositionRange
 {
     /// <summary>
@@ -54,6 +56,12 @@ public class PipeManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int _pipeCount;
+
+    /// <summary>
+    /// 파이프의 Y좌표 값의 범위입니다.
+    /// </summary>
+    [SerializeField]
+    private PipeYPositionRange _pipeYPositionRange;
 
     /// <summary>
     /// 대기 중인 파이프 오브젝트의 큐입니다.
