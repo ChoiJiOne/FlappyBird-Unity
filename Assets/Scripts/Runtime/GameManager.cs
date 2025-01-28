@@ -8,17 +8,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     /// <summary>
-    /// 게임 내의 이동 속력 값에 대한 프로퍼티입니다.
-    /// </summary>
-    /// <remarks>
-    /// 외부에서는 설정할 수 없도록 Getter만 존재합니다.
-    /// </remarks>
-    public float MoveSpeed
-    {
-        get { return _moveSpeed; }
-    }
-
-    /// <summary>
     /// 게임 내의 이동 속력 값입니다
     /// </summary>
     [SerializeField]
