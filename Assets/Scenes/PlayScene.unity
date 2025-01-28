@@ -220,6 +220,7 @@ MonoBehaviour:
   _moveSpeed: 3
   _ground: {fileID: 2094089560}
   _pipeManager: {fileID: 6306326}
+  _bird: {fileID: 1493873099}
 --- !u!1 &1077153938
 GameObject:
   m_ObjectHideFlags: 0
