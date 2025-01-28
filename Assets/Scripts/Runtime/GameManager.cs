@@ -8,6 +8,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     /// <summary>
+    /// 게임의 상태를 정의하는 열거형입니다.
+    /// </summary>
+    /// <remarks>
+    /// Ready: 게임을 시작하기 전입니다.
+    /// Play: 게임을 플레이하는 상태입니다.
+    /// GameOver: 게임이 종료된 상태입니다.
+    /// </remarks>
+    enum State
+    {
+        Ready,
+        Play,
+        GameOver,
+    }
+
+    /// <summary>
     /// 게임 내의 이동 속력 값입니다
     /// </summary>
     [SerializeField]
