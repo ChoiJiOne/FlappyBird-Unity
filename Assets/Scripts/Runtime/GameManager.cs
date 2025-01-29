@@ -168,9 +168,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        _okButtonUI.SetActive(false);
         _scoreUI.SetActive(false);
+        _gameOverUI.SetActive(false);
         _scoreBoardUI.SetActive(false);
+        _okButtonUI.SetActive(false);
 
         _currentGameState = State.Ready;
     }
@@ -224,8 +225,9 @@ public class GameManager : MonoBehaviour
         }
 
         _scoreUI.SetActive(false);
-        _okButtonUI.SetActive(true);
+        _gameOverUI.SetActive(true);
         _scoreBoardUI.SetActive(true);
+        _okButtonUI.SetActive(true);
 
         _currentGameState = State.Done;
     }
