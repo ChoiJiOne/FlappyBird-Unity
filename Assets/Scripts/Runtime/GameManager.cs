@@ -94,4 +94,23 @@ public class GameManager : MonoBehaviour
 
         _birdController = _bird.GetComponent<BirdController>();
     }
+
+    /// <summary>
+    /// 게임 플레이 상태를 활성화합니다.
+    /// </summary>
+    public void ActivatePlayState()
+    {
+        // 이미 플레이 상태 중이거나 게임 오버 상태라면 아무 동작도 수행하지 않습니다.
+        if (_currentGameState == State.Play || _currentGameState == State.GameOver)
+        {
+            return;
+        }
+
+        _getReadyUI.SetActive(false);
+        _InstructionsUI.SetActive(false);
+
+        _pipeMgr.Active = true;
+
+        _currentGameState = State.Play;
+    }
 }
