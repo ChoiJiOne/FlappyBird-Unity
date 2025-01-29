@@ -12,6 +12,11 @@ using UnityEngine;
 public class UIMoveController : MonoBehaviour
 {
     /// <summary>
+    /// UI의 랙 트랜스폼입니다.
+    /// </summary>
+    private RectTransform _rectTransform;
+
+    /// <summary>
     /// UI의 이동 시간입니다.
     /// </summary>
     /// <remarks>
@@ -40,16 +45,29 @@ public class UIMoveController : MonoBehaviour
     private float _moveStepTime = 0.0f;
 
     /// <summary>
-    /// UI의 위치를 
+    /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
     /// </summary>
     void Awake()
     {
-        
+        _rectTransform = GetComponent<RectTransform>();
+        _startPosition = _rectTransform.anchoredPosition;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// UI를 지정된 위치로 이동시킵니다.
+    /// </summary>
     void Update()
     {
-        
+        if (_moveStepTime >= _moveTime)
+        {
+            return;
+        }
+
+        _moveStepTime += Time.deltaTime;
+
+        float t = _moveStepTime / _moveTime;
+        Vector2 newPosition = (1.0f - t) * _startPosition + t * _endPosition;
+
+        _rectTransform.anchoredPosition = newPosition;
     }
 }
