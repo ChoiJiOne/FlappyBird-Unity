@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -296,6 +297,9 @@ public class BirdController : MonoBehaviour
         if (collision.gameObject.name == "Zone")
         {
             _score++;
+
+            TMPro.TextMeshProUGUI scoreUI = _scoreUI.GetComponent<TMPro.TextMeshProUGUI>();
+            scoreUI.text = _score.ToString();
         }
     }
 }
