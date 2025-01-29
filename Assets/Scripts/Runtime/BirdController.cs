@@ -154,13 +154,14 @@ public class BirdController : MonoBehaviour
             if (CanJumpBird())
             {
                 StartJumpBird();
+
+                if (beforeState == State.Idle)
+                {
+                    _gameMgr.CurrentGameState = GameManager.State.Play;
+                }
             }
 
-            if (beforeState == State.Idle)
-            {
-                _gameMgr.CurrentGameState = GameManager.State.Play;
-            }
-            else // beforeState == State.Fall
+            if (beforeState == State.Fall)
             {
                 RotateBird();
                 AdjustToBounds();
