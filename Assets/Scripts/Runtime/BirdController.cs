@@ -166,6 +166,15 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 새가 떨어지고 있는지 확인합니다.
+    /// </summary>
+    /// <returns>새가 떨어지고 있다면 true, 그렇지 않으면 false를 반환합니다.</returns>
+    private bool IsFall()
+    {
+        return _rigidbody.velocity.y <= 0.0f;
+    }
+
+    /// <summary>
     /// 점프를 시작합니다.
     /// </summary>
     /// <remarks>
