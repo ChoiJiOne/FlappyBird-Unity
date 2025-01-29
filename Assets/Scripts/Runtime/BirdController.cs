@@ -283,11 +283,14 @@ public class BirdController : MonoBehaviour
         {
             return;
         }
+        else if (_currentState == State.Fall)
+        {
+            // 이 상태는 파이프와 충돌하지 않고, 바로 바닥과 충돌한 상황입니다.
+            this.Animation = false;
+            _gameMgr.CurrentGameState = GameManager.State.GameOver;
+        }
 
-        _gameMgr.CurrentGameState = GameManager.State.GameOver;
-
-        this.Animation = false;
-
+        _gameMgr.CurrentGameState = GameManager.State.Done;
         _currentState = State.Dead;
     }
 
@@ -297,6 +300,13 @@ public class BirdController : MonoBehaviour
     /// <param name="collision">파이프 오브젝트 하위의 콜라이더입니다.</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 현재 상태가 이미 Crash 상태이거나 Dead 상태이면 아무 동작도 수행하지 않습니다.
+        if (_currentState == State.Crash || _currentState == State.Dead)
+        {
+            return;
+        }
+
+        // 파이프 오브젝트의 Zone 영역과 충돌했다면...
         if (collision.gameObject.name == "Zone")
         {
             _score++;
@@ -305,5 +315,10 @@ public class BirdController : MonoBehaviour
             scoreUI.text = _score.ToString();
             return;
         }
+
+        this.Animation = false;
+
+        _gameMgr.CurrentGameState = GameManager.State.GameOver;
+        _currentState = State.Crash;
     }
 }
