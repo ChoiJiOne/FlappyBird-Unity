@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
                 case State.GameOver:
                     ActiveGameOverState();
                     break;
+
+                case State.Done:
+                    ActiveDoneState();
+                    break;
             }
         }
     }
@@ -186,5 +190,19 @@ public class GameManager : MonoBehaviour
         _groundController.Movable = false;
 
         _currentGameState = State.GameOver;
+    }
+
+    /// <summary>
+    /// 게임 종료 상태를 활성화합니다.
+    /// </summary>
+    private void ActiveDoneState()
+    {
+        // 이미 게임 종료 상태라면 아무 동작도 수행하지 않습니다.
+        if (_currentGameState == State.Done)
+        {
+            return;
+        }
+
+        _currentGameState = State.Done;
     }
 }
