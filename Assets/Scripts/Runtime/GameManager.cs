@@ -119,6 +119,12 @@ public class GameManager : MonoBehaviour
     private GameObject _scoreUI;
 
     /// <summary>
+    /// 게임을 종료하고 최초 씬으로 전환하는 버튼 UI 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _okButtonUI;
+
+    /// <summary>
     /// 현재 게임 상태입니다.
     /// </summary>
     private State _currentGameState = State.None;
@@ -150,6 +156,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        _okButtonUI.SetActive(false);
         _scoreUI.SetActive(false);
 
         _currentGameState = State.Ready;
@@ -202,6 +209,9 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+
+        _scoreUI.SetActive(false);
+        _okButtonUI.SetActive(true);
 
         _currentGameState = State.Done;
     }
