@@ -810,6 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpSpeed: 10
   _rotateSpeed: 360
+  _gameManager: {fileID: 49687494}
 --- !u!95 &1493873103
 Animator:
   serializedVersion: 5
