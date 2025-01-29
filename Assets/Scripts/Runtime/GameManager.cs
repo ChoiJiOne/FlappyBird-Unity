@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
     private BirdController _birdController;
 
     /// <summary>
+    /// 현재 게임 상태입니다.
+    /// </summary>
+    private State _currentGameState = State.Ready;
+
+    /// <summary>
     /// 게임 매니저가 관리해야 할 오브젝트를 제어하기 위한 컴포넌트 참조를 초기화합니다.
     /// </summary>
     private void Awake()
