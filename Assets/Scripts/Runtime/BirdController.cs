@@ -103,10 +103,6 @@ public class BirdController : MonoBehaviour
         switch (_currentState)
         {
             case State.Idle:
-                if (CanJump())
-                {
-                    StartJump();
-                }
                 break;
 
             case State.Jump:
