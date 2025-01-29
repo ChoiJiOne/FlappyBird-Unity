@@ -28,6 +28,14 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 플레이어가 획득한 점수에 대한 프로퍼티입니다.
+    /// </summary>
+    public int Score
+    {
+        get { return _score; }
+    }
+
+    /// <summary>
     /// 플레이어가 제어하는 새의 상태입니다.
     /// </summary>
     /// <remarks>
