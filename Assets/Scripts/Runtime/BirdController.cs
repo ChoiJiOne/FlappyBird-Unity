@@ -10,6 +10,15 @@ using UnityEngine.UIElements;
 public class BirdController : MonoBehaviour
 {
     /// <summary>
+    /// 새의 중력 활성화 여부를 설정합니다.
+    /// </summary>
+    public bool Gravity
+    {
+        get { return _rigidbody.simulated; }
+        set { _rigidbody.simulated = value; }
+    }
+
+    /// <summary>
     /// 새의 움직임 여부를 설정합니다.
     /// </summary>
     public bool Movable
@@ -122,7 +131,7 @@ public class BirdController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
 
         // 최초에 시작했을 때만 서로 상태가 다르고, 게임을 시작하면 상태가 동일.
-        SetActiveGravity(false);
+        this.Gravity = false;
         SetActiveAnimation(true);
     }
 
@@ -265,15 +274,6 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
-    /// 새의 중력 활성화 여부를 설정합니다.
-    /// </summary>
-    /// <param name="isActive">새의 중력 활성화 여부입니다. 중력을 활성화한다면 true, 그렇지 않으면 false입니다.</param>
-    private void SetActiveGravity(bool isActive)
-    {
-        _rigidbody.simulated = isActive;
-    }
-
-    /// <summary>
     /// 새의 애니메이션 활성화 여부를 설정합니다.
     /// </summary>
     /// <param name="isActive">애니메이션의 활성화 여부입니다. 애니메이션을 활성화하다면 true, 그렇지 않으면 false입니다.</param>
@@ -312,6 +312,9 @@ public class BirdController : MonoBehaviour
 
             TMPro.TextMeshProUGUI scoreUI = _scoreUI.GetComponent<TMPro.TextMeshProUGUI>();
             scoreUI.text = _score.ToString();
+            return;
         }
+
+
     }
 }
