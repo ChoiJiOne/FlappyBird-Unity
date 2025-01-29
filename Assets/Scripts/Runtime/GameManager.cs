@@ -125,6 +125,11 @@ public class GameManager : MonoBehaviour
     private GameObject _scoreBoardUI;
 
     /// <summary>
+    /// 스코어 UI를 제어합니다.
+    /// </summary>
+    private ScoreUIController _scoreUIController;
+
+    /// <summary>
     /// 현재 게임 상태입니다.
     /// </summary>
     private State _currentGameState = State.None;
@@ -141,6 +146,7 @@ public class GameManager : MonoBehaviour
         _pipeMgr.MoveSpeed = _moveSpeed;
 
         _birdController = _bird.GetComponent<BirdController>();
+        _scoreUIController = _scoreBoardUI.GetComponent<ScoreUIController>();
 
         this.CurrentGameState = State.Ready;
     }
