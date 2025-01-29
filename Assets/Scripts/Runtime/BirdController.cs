@@ -202,7 +202,8 @@ public class BirdController : MonoBehaviour
     /// 점프를 시작합니다.
     /// </summary>
     /// <remarks>
-    /// 이 메서드는 현재 상태가 Idle 혹은 Fall 일때만 동작합니다.
+    /// 이 메서드는 현재 상태가 Idle 혹은 Fall 일때만 동작합니다. 
+    /// 또한 내부에서 현재 상태를 변경합니다.
     /// </remarks>
     private void StartJumpBird()
     {
