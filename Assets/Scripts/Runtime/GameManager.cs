@@ -125,6 +125,12 @@ public class GameManager : MonoBehaviour
     private GameObject _okButtonUI;
 
     /// <summary>
+    /// 게임을 종료하고 플레이어가 획득한 점수, 최고 기록, 획득 메달을 표시하는 UI 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _scoreBoardUI;
+
+    /// <summary>
     /// 현재 게임 상태입니다.
     /// </summary>
     private State _currentGameState = State.None;
@@ -158,6 +164,7 @@ public class GameManager : MonoBehaviour
 
         _okButtonUI.SetActive(false);
         _scoreUI.SetActive(false);
+        _scoreBoardUI.SetActive(false);
 
         _currentGameState = State.Ready;
     }
@@ -212,6 +219,7 @@ public class GameManager : MonoBehaviour
 
         _scoreUI.SetActive(false);
         _okButtonUI.SetActive(true);
+        _scoreBoardUI.SetActive(true);
 
         _currentGameState = State.Done;
     }
