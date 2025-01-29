@@ -76,6 +76,20 @@ public class BirdController : MonoBehaviour
     private GameManager _gameMgr;
 
     /// <summary>
+    /// 인 게임 내의 스코어 텍스트 UI입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _scoreUI;
+
+    /// <summary>
+    /// 플레이어의 스코어입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 스코어는 파이프를 통과한 횟수와 동일합니다.
+    /// </remarks>
+    private int _score = 0;
+
+    /// <summary>
     /// 입력 처리 시 GetMouseButtonDown에 전달할 마우스의 왼쪽 버튼 코드입니다.
     /// </summary>
     private const int LEFT_MOUSE_BUTTON_CODE = 0;
@@ -130,7 +144,7 @@ public class BirdController : MonoBehaviour
                 break;
 
             case State.Jump:
-                if (_rigidbody.velocity.y <= 0.0f)
+                if (IsFallBird())
                 {
                     _currentState = State.Fall;
                     SetActiveAnimation(false);
@@ -266,16 +280,22 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
-    /// 다른 오브젝트와의 충돌 처리를 수행합니다.
+    /// 그라운드 오브젝트와의 충돌 처리를 수행합니다.
     /// </summary>
-    /// <param name="collision">새 오브젝트와 충돌한 다른 오브젝트의 콜리젼입니다.</param>
+    /// <param name="collision">그라운드 오브젝트의 콜리젼입니다.</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(collision.gameObject.name);
+    }
 
-        SetActiveGravity(false);
-        SetActiveAnimation(false);
-
-        _currentState = State.Dead;
+    /// <summary>
+    /// 파이프 오브젝트와의 충돌을 감지하고 처리합니다.
+    /// </summary>
+    /// <param name="collision">파이프 오브젝트 하위의 콜라이더입니다.</param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Zone")
+        {
+            _score++;
+        }
     }
 }

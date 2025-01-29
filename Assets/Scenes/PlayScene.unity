@@ -813,6 +813,7 @@ MonoBehaviour:
   _jumpSpeed: 10
   _rotateSpeed: 360
   _gameManager: {fileID: 49687494}
+  _scoreUI: {fileID: 1605595453}
 --- !u!95 &1493873103
 Animator:
   serializedVersion: 5
