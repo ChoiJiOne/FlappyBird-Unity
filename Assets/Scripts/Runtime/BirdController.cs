@@ -65,6 +65,12 @@ public class BirdController : MonoBehaviour
     private float _rotateSpeed;
 
     /// <summary>
+    /// 게임 플레이 씬의 게임 매니저입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _gameManager;
+
+    /// <summary>
     /// 입력 처리 시 GetMouseButtonDown에 전달할 마우스의 왼쪽 버튼 코드입니다.
     /// </summary>
     private const int LEFT_MOUSE_BUTTON_CODE = 0;
@@ -98,11 +104,23 @@ public class BirdController : MonoBehaviour
         SetActiveAnimation(true);
     }
 
+    /// <summary>
+    /// 게임 매니저를 초기화합니다.
+    /// </summary>
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         switch (_currentState)
         {
             case State.Idle:
+                if (CanJump())
+                {
+                    StartJump();
+                }
                 break;
 
             case State.Jump:
