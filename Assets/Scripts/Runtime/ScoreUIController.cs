@@ -52,7 +52,7 @@ public class ScoreUIController : MonoBehaviour
     /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
     /// </summary>
-    void Awake()
+    private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
         _startPosition = _rectTransform.anchoredPosition;
@@ -61,14 +61,27 @@ public class ScoreUIController : MonoBehaviour
     /// <summary>
     /// UI를 지정된 위치로 이동시킵니다.
     /// </summary>
-    void Update()
+    private void Update()
     {
-        if (_moveStepTime >= _moveTime)
+        MoveScoreBoard();
+    }
+
+    /// <summary>
+    /// 스코어 보드를 이동시킵니다.
+    /// </summary>
+    private void MoveScoreBoard()
+    {
+        // 도착했다면 아무 동작도 수행하지 않음.
+        if (_isAtDestination)
         {
             return;
         }
 
         _moveStepTime += Time.deltaTime;
+        if (_moveStepTime >= _moveTime)
+        {
+            _isAtDestination = true;
+        }
 
         float t = _moveStepTime / _moveTime;
         Vector2 newPosition = (1.0f - t) * _startPosition + t * _endPosition;
