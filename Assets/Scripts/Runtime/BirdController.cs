@@ -288,6 +288,16 @@ public class BirdController : MonoBehaviour
     /// <param name="collision">그라운드 오브젝트의 콜리젼입니다.</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // 이미 Dead 상태라면 아무 동작도 수행하지 않음.
+        if (_currentState == State.Dead)
+        {
+            return;
+        }
+
+        _gameMgr.ActiveGameOverState();
+
+        SetActiveAnimation(false);
+        _currentState = State.Dead;
     }
 
     /// <summary>
