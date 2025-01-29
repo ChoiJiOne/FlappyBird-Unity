@@ -11,15 +11,45 @@ public class GameManager : MonoBehaviour
     /// 게임의 상태를 정의하는 열거형입니다.
     /// </summary>
     /// <remarks>
+    /// None: 초기화가 진행되지 않은 상태입니다.
     /// Ready: 게임을 시작하기 전입니다.
     /// Play: 게임을 플레이하는 상태입니다.
-    /// GameOver: 게임이 종료된 상태입니다.
+    /// GameOver: 새 오브젝트와 파이프가 충돌하여 게임이 종료된 상태입니다.
     /// </remarks>
     public enum State
     {
+        None,
         Ready,
         Play,
         GameOver,
+    }
+
+    /// <summary>
+    /// 현재의 게임 상태에 대한 프로퍼티입니다.
+    /// </summary>
+    /// <remarks>
+    /// 게임 상태 값을 변경하면 변경 사항에 맞게 전체 게임 상태도 따라서 변경됩니다.
+    /// </remarks>
+    public State CurrentGameState
+    {
+        get { return _currentGameState; }
+        set
+        {
+            switch (value)
+            {
+                case State.Ready:
+                    ActiveReadyState();
+                    break;
+
+                case State.Play:
+                    ActivatePlayState();
+                    break;
+
+                case State.GameOver:
+                    ActiveGameOverState();
+                    break;
+            }
+        }
     }
 
     /// <summary>
@@ -85,7 +115,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 현재 게임 상태입니다.
     /// </summary>
-    private State _currentGameState = State.Ready;
+    private State _currentGameState = State.None;
     
     /// <summary>
     /// 게임 매니저가 관리해야 할 오브젝트를 제어하기 위한 컴포넌트 참조를 초기화합니다.
@@ -100,13 +130,29 @@ public class GameManager : MonoBehaviour
 
         _birdController = _bird.GetComponent<BirdController>();
 
+        this.CurrentGameState = State.Ready;
+    }
+
+    /// <summary>
+    /// 게임 대기 상태를 활성화합니다.
+    /// </summary>
+    private void ActiveReadyState()
+    {
+        // 이미 대기 중인 상태라면 아무 동작도 수행하지 않습니다.
+        if (_currentGameState == State.Ready)
+        {
+            return;
+        }
+
         _scoreUI.SetActive(false);
+
+        _currentGameState = State.Ready;
     }
 
     /// <summary>
     /// 게임 플레이 상태를 활성화합니다.
     /// </summary>
-    public void ActivatePlayState()
+    private void ActivatePlayState()
     {
         // 이미 플레이 상태 중이거나 게임 오버 상태라면 아무 동작도 수행하지 않습니다.
         if (_currentGameState == State.Play || _currentGameState == State.GameOver)
@@ -126,7 +172,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 게임 오버 상태를 활성화합니다.
     /// </summary>
-    public void ActiveGameOverState()
+    private void ActiveGameOverState()
     {
         // 이미 게임 오버 상태라면 아무 동작도 수행하지 않습니다.
         if (_currentGameState == State.GameOver)
