@@ -74,6 +74,8 @@ public class ScoreUIController : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>();
         _startPosition = _rectTransform.anchoredPosition;
+
+        _medalUI.SetActive(false);
     }
 
     /// <summary>
