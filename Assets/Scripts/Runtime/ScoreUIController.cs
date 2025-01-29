@@ -50,6 +50,12 @@ public class ScoreUIController : MonoBehaviour
     private bool _isAtDestination = false;
 
     /// <summary>
+    /// 플레이어의 스코어를 표시하는 텍스트 UI입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _playerScoreUI;
+    
+    /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
     /// </summary>
     private void Awake()
