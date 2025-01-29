@@ -122,10 +122,10 @@ public class BirdController : MonoBehaviour
         switch (_currentState)
         {
             case State.Idle:
-                if (CanJump())
+                if (CanJumpBird())
                 {
                     _gameMgr.ActivatePlayState();
-                    StartJump();
+                    StartJumpBird();
                 }
                 break;
 
@@ -140,12 +140,12 @@ public class BirdController : MonoBehaviour
                 break;
 
             case State.Fall:
-                if (CanJump())
+                if (CanJumpBird())
                 {
-                    StartJump();
+                    StartJumpBird();
                 }
 
-                Rotate();
+                RotateBird();
                 AdjustToBounds();
                 break;
 
@@ -160,7 +160,7 @@ public class BirdController : MonoBehaviour
     /// <returns>
     /// 점프를 뛸 수 있다면 true, 그렇지 않으면 false를 반환합니다.
     /// </returns>
-    private bool CanJump()
+    private bool CanJumpBird()
     {
         return Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
     }
@@ -169,7 +169,7 @@ public class BirdController : MonoBehaviour
     /// 새가 떨어지고 있는지 확인합니다.
     /// </summary>
     /// <returns>새가 떨어지고 있다면 true, 그렇지 않으면 false를 반환합니다.</returns>
-    private bool IsFall()
+    private bool IsFallBird()
     {
         return _rigidbody.velocity.y <= 0.0f;
     }
@@ -180,7 +180,7 @@ public class BirdController : MonoBehaviour
     /// <remarks>
     /// 이 메서드는 현재 상태가 Idle 혹은 Fall 일때만 동작합니다.
     /// </remarks>
-    private void StartJump()
+    private void StartJumpBird()
     {
         if (_currentState == State.Jump || _currentState == State.Dead)
         {
@@ -206,7 +206,7 @@ public class BirdController : MonoBehaviour
     /// <remarks>
     /// 회전 각의 범위는 육십분법 기준으로 -90 에서 30 사이이고, 현재 상태가 Fall일때만 동작합니다.
     /// </remarks>
-    private void Rotate()
+    private void RotateBird()
     {
         if (_currentState != State.Fall)
         {
