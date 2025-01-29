@@ -45,6 +45,11 @@ public class ScoreUIController : MonoBehaviour
     private float _moveStepTime = 0.0f;
 
     /// <summary>
+    /// UI가 도착 위치에 있는지 확인합니다.
+    /// </summary>
+    private bool _isAtDestination = false;
+
+    /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
     /// </summary>
     void Awake()
