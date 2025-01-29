@@ -124,6 +124,7 @@ public class BirdController : MonoBehaviour
             case State.Idle:
                 if (CanJump())
                 {
+                    _gameMgr.ActivatePlayState();
                     StartJump();
                 }
                 break;
