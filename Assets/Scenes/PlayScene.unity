@@ -224,9 +224,7 @@ MonoBehaviour:
   _getReadyUI: {fileID: 857634836}
   _InstructionsUI: {fileID: 56938685}
   _scoreUI: {fileID: 1605595453}
-  _gameOverUI: {fileID: 1304767272}
   _scoreBoardUI: {fileID: 845323938}
-  _okButtonUI: {fileID: 585552427}
 --- !u!1 &56938685
 GameObject:
   m_ObjectHideFlags: 0
