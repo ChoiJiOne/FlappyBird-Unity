@@ -77,6 +77,12 @@ public class GameManager : MonoBehaviour
     private GameObject _InstructionsUI;
 
     /// <summary>
+    /// 인 게임 캔버스 내의 스코어를 표시하는 텍스트 UI 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _scoreUI;
+
+    /// <summary>
     /// 현재 게임 상태입니다.
     /// </summary>
     private State _currentGameState = State.Ready;
