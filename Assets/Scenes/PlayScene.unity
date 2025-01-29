@@ -935,6 +935,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveTime: 0.5
   _endPosition: {x: 0, y: 50}
+  _playerScoreUI: {fileID: 226381255}
+  _bestScoreUI: {fileID: 715641548}
+  _medalUI: {fileID: 1140717825}
 --- !u!1 &857634836
 GameObject:
   m_ObjectHideFlags: 0
