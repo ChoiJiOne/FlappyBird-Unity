@@ -5,6 +5,10 @@ using UnityEngine;
 /// <summary>
 /// UI의 움직임을 제어합니다.
 /// </summary>
+/// <remarks>
+/// 이때, 움직임의 속력은 시간 단위로 지정합니다.
+/// 예를 들어 2초라고 지정하면 지정된 위치까지 2초동안 이동합니다.
+/// </remarks>
 public class UIMoveController : MonoBehaviour
 {
     /// <summary>
