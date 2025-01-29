@@ -119,16 +119,22 @@ public class GameManager : MonoBehaviour
     private GameObject _scoreUI;
 
     /// <summary>
-    /// 게임을 종료하고 최초 씬으로 전환하는 버튼 UI 오브젝트입니다.
+    /// 게임 종료 시 표시할 타이틀 UI 오브젝트입니다.
     /// </summary>
     [SerializeField]
-    private GameObject _okButtonUI;
+    private GameObject _gameOverUI;
 
     /// <summary>
     /// 게임을 종료하고 플레이어가 획득한 점수, 최고 기록, 획득 메달을 표시하는 UI 오브젝트입니다.
     /// </summary>
     [SerializeField]
     private GameObject _scoreBoardUI;
+
+    /// <summary>
+    /// 게임을 종료하고 최초 씬으로 전환하는 버튼 UI 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _okButtonUI;
 
     /// <summary>
     /// 현재 게임 상태입니다.
