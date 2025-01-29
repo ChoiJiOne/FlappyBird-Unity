@@ -54,6 +54,12 @@ public class ScoreUIController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject _playerScoreUI;
+
+    /// <summary>
+    /// 플레이어의 최고 점수를 표시하는 텍스트 UI입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _bestScoreUI;
     
     /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
