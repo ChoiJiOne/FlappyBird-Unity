@@ -221,6 +221,8 @@ MonoBehaviour:
   _ground: {fileID: 2094089560}
   _pipeManager: {fileID: 6306326}
   _bird: {fileID: 1493873099}
+  _getReadyUI: {fileID: 857634836}
+  _InstructionsUI: {fileID: 56938685}
 --- !u!1 &56938685
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +235,7 @@ GameObject:
   - component: {fileID: 56938688}
   - component: {fileID: 56938687}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1071,6 +1073,6 @@ SceneRoots:
   - {fileID: 2094089562}
   - {fileID: 1493873101}
   - {fileID: 6306327}
-  - {fileID: 49687495}
   - {fileID: 1085627394}
   - {fileID: 646430726}
+  - {fileID: 49687495}
