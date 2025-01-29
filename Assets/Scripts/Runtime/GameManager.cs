@@ -99,6 +99,8 @@ public class GameManager : MonoBehaviour
         _pipeMgr.MoveSpeed = _moveSpeed;
 
         _birdController = _bird.GetComponent<BirdController>();
+
+        _scoreUI.SetActive(false);
     }
 
     /// <summary>
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
         _getReadyUI.SetActive(false);
         _InstructionsUI.SetActive(false);
 
+        _scoreUI.SetActive(true);
         _pipeMgr.Active = true;
 
         _currentGameState = State.Play;
