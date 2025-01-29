@@ -83,7 +83,7 @@ public class ScoreUIController : MonoBehaviour
             _isAtDestination = true;
         }
 
-        float t = _moveStepTime / _moveTime;
+        float t = Mathf.Clamp01(_moveStepTime / _moveTime);
         Vector2 newPosition = (1.0f - t) * _startPosition + t * _endPosition;
 
         _rectTransform.anchoredPosition = newPosition;
