@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     /// None: 초기화가 진행되지 않은 상태입니다.
     /// Ready: 게임을 시작하기 전입니다.
     /// Play: 게임을 플레이하는 상태입니다.
-    /// GameOver: 새 오브젝트와 파이프가 충돌하여 게임이 종료된 상태입니다.
+    /// GameOver: 새 오브젝트와 파이프가 충돌한 상태입니다.
+    /// Done: 게임이 종료된 상태입니다.
     /// </remarks>
     public enum State
     {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         Ready,
         Play,
         GameOver,
+        Done,
     }
 
     /// <summary>
