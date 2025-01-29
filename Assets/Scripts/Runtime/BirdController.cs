@@ -28,6 +28,7 @@ public class BirdController : MonoBehaviour
     /// Idle: 게임 시작 전 대기 상태입니다.
     /// Jump: 클릭하여 새가 점프 중인 상태입니다.
     /// Fall: 점프가 끝나고 떨어지는 상태입니다.
+    /// Crash: 새가 파이프와 충돌한 상태입니다.
     /// Dead: 오브젝트와 충돌한 상태입니다.
     /// </remarks>
     public enum State
@@ -35,6 +36,7 @@ public class BirdController : MonoBehaviour
         Idle,
         Jump,
         Fall,
+        Crash,
         Dead,
     }
 
