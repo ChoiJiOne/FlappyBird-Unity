@@ -122,4 +122,21 @@ public class GameManager : MonoBehaviour
 
         _currentGameState = State.Play;
     }
+
+    /// <summary>
+    /// 게임 오버 상태를 활성화합니다.
+    /// </summary>
+    public void ActiveGameOverState()
+    {
+        // 이미 게임 오버 상태라면 아무 동작도 수행하지 않습니다.
+        if (_currentGameState == State.GameOver)
+        {
+            return;
+        }
+
+        _pipeMgr.Active = false;
+        _groundController.Movable = false;
+
+        _currentGameState = State.GameOver;
+    }
 }
