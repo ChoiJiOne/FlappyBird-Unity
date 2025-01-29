@@ -19,15 +19,12 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
-    /// 새의 움직임 여부를 설정합니다.
+    /// 새의 애니메이션 활성화 여부를 설정합니다.
     /// </summary>
-    public bool Movable
+    public bool Animation
     {
-        set
-        {
-            SetActiveGravity(value);
-            SetActiveAnimation(value);
-        }
+        get { return _animator.enabled; }
+        set { _animator.enabled = value; }
     }
 
     /// <summary>
@@ -132,7 +129,7 @@ public class BirdController : MonoBehaviour
 
         // 최초에 시작했을 때만 서로 상태가 다르고, 게임을 시작하면 상태가 동일.
         this.Gravity = false;
-        SetActiveAnimation(true);
+        this.Animation = true;
     }
 
     /// <summary>
@@ -145,38 +142,39 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
-        switch (_currentState)
+        // Crash 상태이거나 Dead 상태이면 아무 동작도 수행할 필요가 없음.
+        if (_currentState == State.Crash || _currentState == State.Dead)
         {
-            case State.Idle:
-                if (CanJumpBird())
-                {
-                    _gameMgr.ActivatePlayState();
-                    StartJumpBird();
-                }
-                break;
+            return;
+        }
+        
+        if (_currentState == State.Idle || _currentState == State.Fall)
+        {
+            State beforeState = _currentState;
+            if (CanJumpBird())
+            {
+                StartJumpBird();
+            }
 
-            case State.Jump:
-                if (IsFallBird())
-                {
-                    _currentState = State.Fall;
-                    SetActiveAnimation(false);
-                }
-
-                AdjustToBounds();
-                break;
-
-            case State.Fall:
-                if (CanJumpBird())
-                {
-                    StartJumpBird();
-                }
-
+            if (beforeState == State.Idle)
+            {
+                _gameMgr.CurrentGameState = GameManager.State.Play;
+            }
+            else // beforeState == State.Fall
+            {
                 RotateBird();
                 AdjustToBounds();
-                break;
+            }
+        }
+        else if (_currentState == State.Jump)
+        {
+            if (IsFallBird())
+            {
+                _currentState = State.Fall;
+                this.Animation = false;
+            }
 
-            case State.Dead:
-                break;
+            AdjustToBounds();
         }
     }
 
@@ -220,10 +218,10 @@ public class BirdController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
 
-        _currentState = State.Jump;
+        this.Gravity = true;
+        this.Animation = true;
 
-        SetActiveGravity(true);
-        SetActiveAnimation(true);
+        _currentState = State.Jump;
     }
 
     /// <summary>
@@ -274,15 +272,6 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
-    /// 새의 애니메이션 활성화 여부를 설정합니다.
-    /// </summary>
-    /// <param name="isActive">애니메이션의 활성화 여부입니다. 애니메이션을 활성화하다면 true, 그렇지 않으면 false입니다.</param>
-    private void SetActiveAnimation(bool isActive)
-    {
-        _animator.enabled = isActive;
-    }
-
-    /// <summary>
     /// 그라운드 오브젝트와의 충돌 처리를 수행합니다.
     /// </summary>
     /// <param name="collision">그라운드 오브젝트의 콜리젼입니다.</param>
@@ -294,9 +283,10 @@ public class BirdController : MonoBehaviour
             return;
         }
 
-        _gameMgr.ActiveGameOverState();
+        _gameMgr.CurrentGameState = GameManager.State.GameOver;
 
-        SetActiveAnimation(false);
+        this.Animation = false;
+
         _currentState = State.Dead;
     }
 
@@ -314,7 +304,5 @@ public class BirdController : MonoBehaviour
             scoreUI.text = _score.ToString();
             return;
         }
-
-
     }
 }
