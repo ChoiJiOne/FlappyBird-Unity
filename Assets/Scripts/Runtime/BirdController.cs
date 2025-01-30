@@ -398,7 +398,7 @@ public class BirdController : MonoBehaviour
         }
                 
         PlayAudioSource(AudioType.Hit);
-        PlayAudioSource(AudioType.Die);
+        StartCoroutine(PlayAudioSourceDelay(AudioType.Die, 0.5f));
 
         // 점프 후 떨어지도록 해당 메서드 호출.
         StartJumpBird();
