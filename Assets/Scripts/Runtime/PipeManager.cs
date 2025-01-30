@@ -72,6 +72,18 @@ public class PipeManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 파이프 활성화 시간 값에 대한 프로퍼티 추가
+    /// </summary>
+    public float ActivePipeTime
+    {
+        get { return _activePipeStepTime; }
+        set
+        {
+            _activePipeStepTime = value;
+        }
+    }
+
+    /// <summary>
     /// 파이프의 프리팹 오브젝트입니다.
     /// </summary>
     [SerializeField]
@@ -113,7 +125,6 @@ public class PipeManager : MonoBehaviour
     /// <summary>
     /// 파이프를 활성화하는 시간입니다.
     /// </summary>
-    [SerializeField]
     private float _activePipeStepTime;
 
     /// <summary>
