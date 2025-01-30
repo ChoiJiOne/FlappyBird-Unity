@@ -34,7 +34,7 @@ public class LevelSelectController : MonoBehaviour
                 continue;
             }
 
-            _levelObjects[index].SetActive(false);
+            SetActiveLevelObject(index, false);
         }
     }
 
@@ -43,7 +43,6 @@ public class LevelSelectController : MonoBehaviour
     /// </summary>
     public void OnClickLeftSelectButton()
     {
-
     }
 
     /// <summary>
