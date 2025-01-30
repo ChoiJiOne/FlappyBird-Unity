@@ -531,7 +531,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 341856687}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49687496}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickPauseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &341856687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,7 +2566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1873662210}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49687496}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickResumeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1873662210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2847,8 +2871,8 @@ SceneRoots:
   - {fileID: 1396941502}
   - {fileID: 2094089562}
   - {fileID: 1085627394}
+  - {fileID: 646430726}
   - {fileID: 1493873101}
   - {fileID: 6306327}
-  - {fileID: 646430726}
   - {fileID: 49687495}
   - {fileID: 386488171}
