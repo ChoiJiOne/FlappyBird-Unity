@@ -223,6 +223,8 @@ MonoBehaviour:
   _bird: {fileID: 1493873099}
   _getReadyUI: {fileID: 857634836}
   _InstructionsUI: {fileID: 56938685}
+  _pauseButtonUI: {fileID: 341856684}
+  _resumeButtonUI: {fileID: 1873662207}
   _scoreUI: {fileID: 1605595453}
   _scoreBoardUI: {fileID: 845323938}
 --- !u!1 &56938685
