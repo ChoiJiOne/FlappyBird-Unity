@@ -146,7 +146,7 @@ public class BirdController : MonoBehaviour
     /// <remarks>
     /// 이때 회전각은 육십분법 (ex, 30도, 60도) 기준입니다.
     /// </remarks>
-    private const float MAX_ROTATE_ANGLE = 30.0f;
+    private const float MAX_ROTATE_ANGLE = 15.0f;
 
     /// <summary>
     /// 새의 Y좌표 최대 값입니다.
