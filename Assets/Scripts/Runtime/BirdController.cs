@@ -218,7 +218,7 @@ public class BirdController : MonoBehaviour
                 }
                 AdjustToBounds();
 
-                if (_rigidbody.velocity.y <= -1.0f)
+                if (IsFallBird())
                 {
                     this.Animation = false;
                     _currentState = State.Fall;
@@ -243,7 +243,7 @@ public class BirdController : MonoBehaviour
                 break;
 
             case State.Crash when _canMove:
-                if (_rigidbody.velocity.y <= -1.0f)
+                if (IsFallBird())
                 {
                     RotateBird();
                 }
