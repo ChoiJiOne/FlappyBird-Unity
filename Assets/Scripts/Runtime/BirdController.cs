@@ -240,6 +240,9 @@ public class BirdController : MonoBehaviour
     /// <summary>
     /// 새를 점프시킵니다.
     /// </summary>
+    /// <remarks>
+    /// 입력이 없다면 아무 동작도 수행하지 않습니다.
+    /// </remarks>
     private void JumpBird()
     {
         if (!Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
