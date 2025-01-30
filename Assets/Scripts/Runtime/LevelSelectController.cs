@@ -30,7 +30,7 @@ public class LevelSelectController : MonoBehaviour
     /// NORMAL: 1
     /// HARD: 2
     /// </remarks>
-    static string _playerLevelKey = "Level";
+    private static string _playerLevelKey = "Level";
 
     /// <summary>
     /// 레벨 오브젝트의 목록 내의 게임 오브젝트들을 명시적으로 비활성화합니다.
