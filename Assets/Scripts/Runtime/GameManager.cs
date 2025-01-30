@@ -159,6 +159,21 @@ public class GameManager : MonoBehaviour
     private ScoreUIController _scoreUIController;
 
     /// <summary>
+    /// 플레이어의 레벨 키 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// EASY: 0
+    /// NORMAL: 1
+    /// HARD: 2
+    /// </remarks>
+    static string _playerLevelKey = "Level";
+
+    /// <summary>
+    /// 현재 플레이 난이도입니다.
+    /// </summary>
+    private Level _currentLevel = Level.Easy;
+
+    /// <summary>
     /// 현재 게임 상태입니다.
     /// </summary>
     private State _currentGameState = State.None;
@@ -168,6 +183,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        if (PlayerPrefs.HasKey(_playerLevelKey))
+        {
+            _currentLevel = (Level)(PlayerPrefs.GetInt(_playerLevelKey));
+        }
+
         _groundController = _ground.GetComponent<GroundController>();
         _groundController.MoveSpeed = _moveSpeed;
 
