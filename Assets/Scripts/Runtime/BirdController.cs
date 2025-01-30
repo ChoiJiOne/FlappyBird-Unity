@@ -243,7 +243,10 @@ public class BirdController : MonoBehaviour
                 break;
 
             case State.Crash when _canMove:
-                RotateBird();
+                if (_rigidbody.velocity.y <= -1.0f)
+                {
+                    RotateBird();
+                }
                 break;
 
             case State.Dead:
@@ -277,6 +280,15 @@ public class BirdController : MonoBehaviour
         rotateEulerAngle.z = ROTATE_END_THIRD_QUADRANT;
 
         transform.rotation = Quaternion.Euler(rotateEulerAngle);
+    }
+
+    /// <summary>
+    /// 새가 떨어지는지 확인합니다.
+    /// </summary>
+    /// <returns>새가 떨어지고 있다면 true, 그렇지 않으면 false를 반환합니다.</returns>
+    private bool IsFallBird()
+    {
+        return _rigidbody.velocity.y <= -1.0f;
     }
 
     /// <summary>
