@@ -35,36 +35,36 @@ public class BackgroundSpriteController : MonoBehaviour
     /// <summary>
     /// 낮 배경의 스프라이트입니다.
     /// </summary>
-    private static Sprite _daySprite;
+    private static Sprite s_daySprite;
 
     /// <summary>
     /// 밤 배경의 스프라이트입니다.
     /// </summary>
-    private static Sprite _nightSprite;
+    private static Sprite s_nightSprite;
 
     /// <summary>
     /// 스프라이트 렌더러와 낮/밤 배경의 스프라이트를 초기화합니다.
     /// </summary>
     private void Awake()
     {
-        if (_daySprite == null)
+        if (s_daySprite == null)
         {
-            _daySprite = Resources.Load<Sprite>("Sprites/Day");
+            s_daySprite = Resources.Load<Sprite>("Sprites/Day");
         }
 
-        if (_nightSprite == null)
+        if (s_nightSprite == null)
         {
-            _nightSprite = Resources.Load<Sprite>("Sprites/Night");
+            s_nightSprite = Resources.Load<Sprite>("Sprites/Night");
         }
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         if (_isDay)
         {
-            _spriteRenderer.sprite = _daySprite;
+            _spriteRenderer.sprite = s_daySprite;
         }
         else
         {
-            _spriteRenderer.sprite = _nightSprite;
+            _spriteRenderer.sprite = s_nightSprite;
         }
     }
 
@@ -78,11 +78,11 @@ public class BackgroundSpriteController : MonoBehaviour
     {
         if (_isDay)
         {
-            _spriteRenderer.sprite = _daySprite;
+            _spriteRenderer.sprite = s_daySprite;
         }
         else
         {
-            _spriteRenderer.sprite = _nightSprite;
+            _spriteRenderer.sprite = s_nightSprite;
         }
     }
 }
