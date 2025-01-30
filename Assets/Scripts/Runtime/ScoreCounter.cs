@@ -85,10 +85,12 @@ public class ScoreCounter : MonoBehaviour
 
         _currentStepTime += Time.deltaTime;
         float t = Mathf.Clamp01(_currentStepTime / _countTime);
-        float score = Mathf.Lerp(0.0f, (float)(_targetScore), t);
-        _currentScore = (int)(score);
-
-        ApplyScoreText(_currentScore);
+        int score = (int)(Mathf.Lerp(0.0f, (float)(_targetScore), t));
+        if (_currentScore != score)
+        {
+            _currentScore = score;
+            ApplyScoreText(_currentScore);
+        }
 
         if (_currentStepTime >= _countTime)
         {
