@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,5 +52,21 @@ public class LevelSelectController : MonoBehaviour
     public void OnClickRightSelecttButton()
     {
 
+    }
+
+    /// <summary>
+    /// 레벨 오브젝트의 활성화 여부를 설정합니다.
+    /// </summary>
+    /// <param name="levelObjectIndex">활성화 여부를 설정할 레벨 오브젝트의 인덱스입니다.</param>
+    /// <param name="isActive">활성화 여부입니다.</param>
+    private void SetActiveLevelObject(int levelObjectIndex, bool isActive)
+    {
+        // 인덱스가 배열의 범위를 벗어난다면 아무 동작도 수행하지 않습니다.
+        if (levelObjectIndex < 0 || levelObjectIndex >= _levelObjects.Length)
+        {
+            return;
+        }
+
+        _levelObjects[levelObjectIndex].SetActive(isActive);
     }
 }
