@@ -55,6 +55,20 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 새 오브젝트 내에서 사용하는 오디오 타입입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 열거형은 BirdController 내에서만 사용됩니다.
+    /// </remarks>
+    private enum AudioType
+    {
+        Wing  = 0,
+        Point = 1,
+        Hit   = 2,
+        Die   = 3,
+    }
+
+    /// <summary>
     /// 새의 애니메이션을 제어합니다.
     /// </summary>
     private Animator _animator;
