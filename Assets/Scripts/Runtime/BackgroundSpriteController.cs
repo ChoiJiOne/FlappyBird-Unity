@@ -15,6 +15,14 @@ public class BackgroundSpriteController : MonoBehaviour
     /// </summary>
     private SpriteRenderer _spriteRenderer;
 
+    /// <summary>
+    /// 배경이 낮인지 확인합니다.
+    /// </summary>
+    /// <remarks>
+    /// 배경이 낮이라면 true, 밤이라면 false입니다.
+    /// </remarks>
+    private static bool _isDay = true;
+
     void Start()
     {
         
