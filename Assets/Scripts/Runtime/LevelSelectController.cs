@@ -22,6 +22,22 @@ public class LevelSelectController : MonoBehaviour
     private int _currentSelectIndex = 0;
 
     /// <summary>
+    /// 레벨 오브젝트의 목록 내의 게임 오브젝트들을 명시적으로 비활성화합니다.
+    /// </summary>
+    private void Awake()
+    {
+        for(int index = 0; index < _levelObjects.Length; ++index)
+        {
+            if (index == _currentSelectIndex)
+            {
+                continue;
+            }
+
+            _levelObjects[index].SetActive(false);
+        }
+    }
+
+    /// <summary>
     /// LeftSelectButton 버튼을 클릭했을 때 실행할 이벤트입니다.
     /// </summary>
     public void OnClickLeftSelectButton()
