@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,32 @@ using UnityEngine;
 /// Normal: 보통
 /// Hard: 어려움
 /// </remarks>
+[Serializable]
 public enum Level
 {
     Easy   = 0,
     Normal = 1,
     Hard   = 2,
+}
+
+
+[Serializable]
+public struct GameLevelOption
+{
+    /// <summary>
+    /// 게임 레벨입니다.
+    /// </summary>
+    public Level level;
+
+    /// <summary>
+    /// 게임 내의 파이프와 바닥의 이동 속력입니다.
+    /// </summary>
+    public float moveSpeed;
+
+    /// <summary>
+    /// 파이프의 활성화 시간입니다.
+    /// </summary>
+    public float pipeActiveTime;
 }
 
 /// <summary>
@@ -172,6 +194,12 @@ public class GameManager : MonoBehaviour
     /// 현재 플레이 난이도입니다.
     /// </summary>
     private Level _currentLevel = Level.Easy;
+    
+    /// <summary>
+    /// 현재 게임의 난이도에 따른 옵션입니다.
+    /// </summary>
+    [SerializeField]
+    private GameLevelOption[] _gameLevelOptions;
 
     /// <summary>
     /// 현재 게임 상태입니다.
