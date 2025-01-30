@@ -370,6 +370,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 762cce2077e729c4dad3e71ee82d5bd4, type: 3}
+--- !u!114 &534590867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 569083238379480201, guid: 762cce2077e729c4dad3e71ee82d5bd4, type: 3}
+  m_PrefabInstance: {fileID: 534590866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2df547a2dc27bd439d8fe4609ee98d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &590249547 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 569083238379480201, guid: 762cce2077e729c4dad3e71ee82d5bd4, type: 3}
@@ -767,7 +778,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1749942626}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 534590867}
+        m_TargetAssemblyTypeName: SceneSwitchTrigger, Assembly-CSharp
+        m_MethodName: OnClickSceneSwitchButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1749942626
 MonoBehaviour:
   m_ObjectHideFlags: 0
