@@ -330,6 +330,10 @@ public class BirdController : MonoBehaviour
         {
             // 이 상태는 파이프와 충돌하지 않고, 바로 바닥과 충돌한 상황입니다.
             this.Animation = false;
+
+            PlayAudioSource(AudioType.Hit);
+            PlayAudioSource(AudioType.Die);
+
             _gameMgr.CurrentGameState = GameManager.State.GameOver;
         }
 
@@ -362,6 +366,9 @@ public class BirdController : MonoBehaviour
         }
 
         this.Animation = false;
+        
+        PlayAudioSource(AudioType.Hit);
+        PlayAudioSource(AudioType.Die);
 
         _gameMgr.CurrentGameState = GameManager.State.GameOver;
         _currentState = State.Crash;
