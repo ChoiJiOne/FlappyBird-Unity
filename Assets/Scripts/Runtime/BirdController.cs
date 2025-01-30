@@ -303,6 +303,16 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 오디오 소스를 출력합니다.
+    /// </summary>
+    /// <param name="type">추</param>
+    private void PlayAudioSource(AudioType type)
+    {
+        uint audioIndex = (uint)(type);
+        _audioSources[audioIndex].Play();
+    }
+
+    /// <summary>
     /// 그라운드 오브젝트와의 충돌 처리를 수행합니다.
     /// </summary>
     /// <param name="collision">그라운드 오브젝트의 콜리젼입니다.</param>
