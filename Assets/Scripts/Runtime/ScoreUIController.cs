@@ -122,8 +122,7 @@ public class ScoreUIController : MonoBehaviour
         if (PlayerPrefs.HasKey("BestScore"))
         {
             _playerBestScore = PlayerPrefs.GetInt("BestScore");
-            TMPro.TextMeshProUGUI bestScoreText = _bestScoreUI.GetComponent<TMPro.TextMeshProUGUI>();
-            bestScoreText.text = _playerBestScore.ToString();
+            ApplyBestScoreText(_playerBestScore);
         }
         else
         {
@@ -181,8 +180,7 @@ public class ScoreUIController : MonoBehaviour
             PlayerPrefs.SetInt("BestScore", _playerScore);
             PlayerPrefs.Save();
 
-            TMPro.TextMeshProUGUI bestScoreText = _bestScoreUI.GetComponent<TMPro.TextMeshProUGUI>();
-            bestScoreText.text = _playerBestScore.ToString();
+            ApplyBestScoreText(_playerBestScore);
 
             medalUIIndex = (uint)(Medal.Gold);
         }
@@ -196,5 +194,15 @@ public class ScoreUIController : MonoBehaviour
         }
 
         _medalUIs[medalUIIndex].SetActive(true);
+    }
+
+    /// <summary>
+    /// 최고 기록을 표시하는 텍스트에 변경 사항을 적용합니다.
+    /// </summary>
+    /// <param name="bestScore"></param>
+    private void ApplyBestScoreText(int bestScore)
+    {
+        TMPro.TextMeshProUGUI bestScoreText = _bestScoreUI.GetComponent<TMPro.TextMeshProUGUI>();
+        bestScoreText.text = bestScore.ToString();
     }
 }
