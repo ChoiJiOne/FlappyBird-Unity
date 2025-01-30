@@ -100,6 +100,8 @@ public class ScoreCounter : MonoBehaviour
     /// <summary>
     /// 카운터를 시작합니다. 이미 시작했는데, 다시 호출하면 초기화 후 처음부터 시작합니다.
     /// </summary>
+    /// <param name="targetScore">카운터 대상이 되는 점수입니다. 0에서부터 대상이 되는 점수까지 증가합니다.</param>
+    /// <param name="onProcessCounterDone">카운팅이 종료되었을 때 실행할 이벤트입니다.</param>
     public void StartCounter(int targetScore, OnProcessCounterDone onProcessCounterDone)
     {
         if (_currentState == State.Process || _currentState == State.Done)
