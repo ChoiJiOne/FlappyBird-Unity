@@ -172,7 +172,7 @@ MonoBehaviour:
   _pipeYPositionRange:
     minYPosition: 0
     maxYPosition: 1
-  _activePipeStepTime: 1.2
+  _activePipeStepTime: 0.8
 --- !u!1 &49687494
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f234eb025841244967e4ddc1e5eff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
+  _moveSpeed: 4
   _ground: {fileID: 2094089560}
   _pipeManager: {fileID: 6306326}
   _bird: {fileID: 1493873099}
@@ -227,6 +227,16 @@ MonoBehaviour:
   _resumeButtonUI: {fileID: 1873662207}
   _scoreUI: {fileID: 1605595453}
   _scoreBoardUI: {fileID: 845323938}
+  _gameLevelOptions:
+  - level: 0
+    moveSpeed: 2
+    pipeActiveTime: 1.6
+  - level: 1
+    moveSpeed: 3
+    pipeActiveTime: 1.2
+  - level: 2
+    moveSpeed: 4
+    pipeActiveTime: 0.8
 --- !u!1 &56938685
 GameObject:
   m_ObjectHideFlags: 0
