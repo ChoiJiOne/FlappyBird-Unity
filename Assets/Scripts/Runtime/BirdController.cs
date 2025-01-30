@@ -241,7 +241,8 @@ public class BirdController : MonoBehaviour
     /// </returns>
     private bool CanJumpBird()
     {
-        return Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
+        bool canPressButton = _gameMgr.CurrentGameState == GameManager.State.Play || _gameMgr.CurrentGameState == GameManager.State.Ready;
+        return canPressButton && Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
     }
 
     /// <summary>
