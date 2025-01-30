@@ -174,7 +174,7 @@ public class BirdController : MonoBehaviour
     private void Update()
     {
         // Crash 상태이거나 Dead 상태이면 아무 동작도 수행할 필요가 없음.
-        if (_currentState == State.Crash || _currentState == State.Dead)
+        if (_currentState == State.Dead)
         {
             return;
         }
@@ -207,6 +207,13 @@ public class BirdController : MonoBehaviour
             }
 
             AdjustToBounds();
+        }
+        else if (_currentState == State.Crash)
+        {
+            if (IsFallBird())
+            {
+                RotateBird();
+            }
         }
     }
 
@@ -266,11 +273,6 @@ public class BirdController : MonoBehaviour
     /// </remarks>
     private void RotateBird()
     {
-        if (_currentState != State.Fall)
-        {
-            return;
-        }
-
         float rotateAngle = -Time.deltaTime * _rotateSpeed;
         transform.Rotate(0.0f, 0.0f, rotateAngle);
 
@@ -364,11 +366,14 @@ public class BirdController : MonoBehaviour
             PlayAudioSource(AudioType.Point);
             return;
         }
-
-        this.Animation = false;
-        
+                
         PlayAudioSource(AudioType.Hit);
         PlayAudioSource(AudioType.Die);
+
+        // 점프 후 떨어지도록 해당 메서드 호출.
+        StartJumpBird();
+
+        this.Animation = false;
 
         _gameMgr.CurrentGameState = GameManager.State.GameOver;
         _currentState = State.Crash;
