@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ScoreCounter;
 
 /// <summary>
 /// 스코어를 0부터 획득한 점수까지 증가시킵니다.
 /// </summary>
 public class ScoreCounter : MonoBehaviour
 {
+    /// <summary>
+    /// 스코어의 카운팅이 종료되었을 때 실행할 델리게이트입니다.
+    /// </summary>
+    public delegate void OnProcessCounterDone();
+
     /// <summary>
     /// 카운터의 상태입니다.
     /// </summary>
@@ -63,6 +69,11 @@ public class ScoreCounter : MonoBehaviour
     private State _currentState = State.Wait;
 
     /// <summary>
+    /// 카운트 종료 시 실행할 델리게이트입니다.
+    /// </summary>
+    private OnProcessCounterDone _onProcessCounterDone;
+
+    /// <summary>
     /// 스코어를 0부터 획득한 점수까지 증가시킵니다.
     /// </summary>
     private void Update()
@@ -81,6 +92,7 @@ public class ScoreCounter : MonoBehaviour
 
         if (_currentStepTime >= _countTime)
         {
+            _onProcessCounterDone?.Invoke();
             _currentState = State.Done;
         }
     }
@@ -88,7 +100,7 @@ public class ScoreCounter : MonoBehaviour
     /// <summary>
     /// 카운터를 시작합니다. 이미 시작했는데, 다시 호출하면 초기화 후 처음부터 시작합니다.
     /// </summary>
-    public void StartCounter(int targetScore)
+    public void StartCounter(int targetScore, OnProcessCounterDone onProcessCounterDone)
     {
         if (_currentState == State.Process || _currentState == State.Done)
         {
@@ -96,6 +108,7 @@ public class ScoreCounter : MonoBehaviour
         }
 
         _targetScore = targetScore;
+        _onProcessCounterDone = onProcessCounterDone;
         _currentState = State.Process;
     }
 
