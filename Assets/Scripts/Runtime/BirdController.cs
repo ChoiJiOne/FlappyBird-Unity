@@ -193,6 +193,7 @@ public class BirdController : MonoBehaviour
                 if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
                 {
                     _gameMgr.CurrentGameState = GameManager.State.Play;
+
                     _rigidbody.velocity = Vector2.up * _jumpSpeed;
                     _currentState = State.Jump;
                     _canMove = true;
@@ -243,34 +244,7 @@ public class BirdController : MonoBehaviour
                 break;
         }
     }
-
-    /// <summary>
-    /// 새를 회전시킵니다.
-    /// </summary>
-    /// <remarks>
-    /// 회전 각의 범위는 육십분법 기준으로 -90 에서 30 사이이고, 현재 상태가 Fall일때만 동작합니다.
-    /// </remarks>
-    private void RotateBird()
-    {
-        float rotateAngle = -Time.deltaTime * _rotateSpeed;
-        transform.Rotate(0.0f, 0.0f, rotateAngle);
-
-        // 2차원 평면에서 제 3사분면의 각 범위 
-        const float ROTATE_START_THIRD_QUADRANT = 240.0f;
-        const float ROTATE_END_THIRD_QUADRANT = 270.0f;
-
-        float rotateEulerAngleZ = transform.rotation.eulerAngles.z;
-        if (rotateEulerAngleZ < ROTATE_START_THIRD_QUADRANT || rotateEulerAngleZ > ROTATE_END_THIRD_QUADRANT)
-        {
-            return;
-        }
-
-        Vector3 rotateEulerAngle = Vector3.zero;
-        rotateEulerAngle.z = ROTATE_END_THIRD_QUADRANT;
-
-        transform.rotation = Quaternion.Euler(rotateEulerAngle);
-    }
-
+    
     /// <summary>
     /// 새가 카메라 영역을 벗어나지 못하게 위치를 조정합니다.
     /// </summary>
