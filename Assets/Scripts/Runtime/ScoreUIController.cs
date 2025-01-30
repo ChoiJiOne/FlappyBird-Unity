@@ -103,6 +103,11 @@ public class ScoreUIController : MonoBehaviour
     /// 플레이어의 최고 점수입니다.
     /// </summary>
     int _playerBestScore = 0;
+
+    /// <summary>
+    /// PlayerPrefs에 저장된 최고 기록 키 값입니다.
+    /// </summary>
+    static string _bestScoreKey = "BestScore";
     
     /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
@@ -119,9 +124,9 @@ public class ScoreUIController : MonoBehaviour
             medalUI.SetActive(false);
         }
 
-        if (PlayerPrefs.HasKey("BestScore"))
+        if (PlayerPrefs.HasKey(_bestScoreKey))
         {
-            _playerBestScore = PlayerPrefs.GetInt("BestScore");
+            _playerBestScore = PlayerPrefs.GetInt(_bestScoreKey);
             ApplyBestScoreText(_playerBestScore);
         }
         else
@@ -177,7 +182,7 @@ public class ScoreUIController : MonoBehaviour
         if (_playerScore > _playerBestScore)
         {
             _playerBestScore = _playerScore;
-            PlayerPrefs.SetInt("BestScore", _playerScore);
+            PlayerPrefs.SetInt(_bestScoreKey, _playerScore);
             PlayerPrefs.Save();
 
             ApplyBestScoreText(_playerBestScore);
