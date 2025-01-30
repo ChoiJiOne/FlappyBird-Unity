@@ -62,10 +62,11 @@ public class BirdController : MonoBehaviour
     /// </remarks>
     private enum AudioType
     {
-        Wing  = 0,
-        Point = 1,
-        Hit   = 2,
-        Die   = 3,
+        Swooshing = 0,
+        Wing      = 1,
+        Point     = 2,
+        Hit       = 3,
+        Die       = 4,
     }
 
     /// <summary>
