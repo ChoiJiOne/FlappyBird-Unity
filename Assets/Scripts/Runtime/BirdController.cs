@@ -190,101 +190,58 @@ public class BirdController : MonoBehaviour
         switch(_currentState)
         {
             case State.Idle:
-                if (CanJumpBird())
+                if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
                 {
-                    StartJumpBird();
-                    _canMove = true;
                     _gameMgr.CurrentGameState = GameManager.State.Play;
+                    _rigidbody.velocity = Vector2.up * _jumpSpeed;
+                    _currentState = State.Jump;
+                    _canMove = true;
+
+                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
+
+                    this.Gravity = true;
+                    this.Animation = true;
+                    PlayAudioSource(AudioType.Wing);
                 }
                 break;
 
             case State.Jump when _canMove:
-                if (IsFallBird())
+                if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
+                {
+                    _rigidbody.velocity = Vector2.up * _jumpSpeed;
+                    _currentState = State.Jump;
+
+                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
+
+                    PlayAudioSource(AudioType.Wing);
+                }
+                AdjustToBounds();
+
+                if (_rigidbody.velocity.y < 0.0f)
                 {
                     _currentState = State.Fall;
-                    this.Animation = false;
                 }
-
-                if (CanJumpBird())
-                {
-                    StartJumpBird();
-                }
-
-                AdjustToBounds();
                 break;
 
             case State.Fall when _canMove:
-                if (CanJumpBird())
+                if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
                 {
-                    StartJumpBird();
-                }
-                else
-                {
-                    RotateBird();
-                    AdjustToBounds();
+                    _rigidbody.velocity = Vector2.up * _jumpSpeed;
+                    _currentState = State.Jump;
+
+                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
+
+                    PlayAudioSource(AudioType.Wing);
                 }
                 break;
 
             case State.Crash when _canMove:
-                if (IsFallBird())
-                {
-                    RotateBird();
-                }
                 break;
 
             case State.Dead:
                 // 아무 동작도 수행하지 않습니다.
                 break;
         }
-    }
-
-    /// <summary>
-    /// 새가 점프를 뛸 수 있는지 확인합니다.
-    /// </summary>
-    /// <returns>
-    /// 점프를 뛸 수 있다면 true, 그렇지 않으면 false를 반환합니다.
-    /// </returns>
-    private bool CanJumpBird()
-    {
-        bool canPressButton = _gameMgr.CurrentGameState == GameManager.State.Play || _gameMgr.CurrentGameState == GameManager.State.Ready;
-        return canPressButton && Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE) && (_currentState == State.Idle || _currentState == State.Fall);
-    }
-
-    /// <summary>
-    /// 새가 떨어지고 있는지 확인합니다.
-    /// </summary>
-    /// <returns>새가 떨어지고 있다면 true, 그렇지 않으면 false를 반환합니다.</returns>
-    private bool IsFallBird()
-    {
-        return _rigidbody.velocity.y <= 0.0f;
-    }
-
-    /// <summary>
-    /// 점프를 시작합니다.
-    /// </summary>
-    /// <remarks>
-    /// 이 메서드는 현재 상태가 Idle 혹은 Fall 일때만 동작합니다. 
-    /// 또한 내부에서 현재 상태를 변경합니다.
-    /// </remarks>
-    private void StartJumpBird()
-    {
-        if (_currentState == State.Jump || _currentState == State.Dead)
-        {
-            return;
-        }
-
-        Vector2 velocity = Vector2.zero;
-        velocity.x = _rigidbody.velocity.x;
-        velocity.y = _jumpSpeed;
-        _rigidbody.velocity = velocity;
-
-        transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
-
-        this.Gravity = true;
-        this.Animation = true;
-        
-        PlayAudioSource(AudioType.Wing);
-        _currentState = State.Jump;
     }
 
     /// <summary>
@@ -405,9 +362,6 @@ public class BirdController : MonoBehaviour
                 
         PlayAudioSource(AudioType.Hit);
         StartCoroutine(PlayAudioSourceDelay(AudioType.Die, 0.5f));
-
-        // 점프 후 떨어지도록 해당 메서드 호출.
-        StartJumpBird();
 
         this.Animation = false;
 
