@@ -10,15 +10,30 @@ using UnityEngine;
 /// </remarks>
 public class LevelSelectController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 선택할 레벨 오브젝트 목록입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject[] _levelObjects;
+
+    /// <summary>
+    /// 현재 선택한 레벨의 인덱스입니다.
+    /// </summary>
+    private int _currentSelectIndex = 0;
+
+    /// <summary>
+    /// LeftSelectButton 버튼을 클릭했을 때 실행할 이벤트입니다.
+    /// </summary>
+    public void OnClickLeftSelectButton()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// RightSelectButton 버튼을 클릭했을 때 실행할 이벤트입니다.
+    /// </summary>
+    public void OnClickRightSelecttButton()
     {
-        
+
     }
 }
