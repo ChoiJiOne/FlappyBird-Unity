@@ -219,6 +219,9 @@ public class GameManager : MonoBehaviour
         _scoreUI.SetActive(false);
         _scoreBoardUI.SetActive(true);
 
+        int score = _birdController.Score;
+        _scoreUIController.PlayerScore = score;
+
         _currentGameState = State.Done;
     }
 }
