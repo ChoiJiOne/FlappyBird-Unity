@@ -171,7 +171,7 @@ MonoBehaviour:
   _pipeCount: 6
   _pipeYPositionRange:
     minYPosition: 0
-    maxYPosition: 1
+    maxYPosition: 2
 --- !u!1 &49687494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7e81284a5ebf745bfcae5dfbcc7203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpSpeed: 7
+  _jumpSpeed: 4.5
   _rotateSpeed: 360
   _gameManager: {fileID: 49687494}
   _scoreUI: {fileID: 1605595453}
@@ -1831,7 +1831,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
