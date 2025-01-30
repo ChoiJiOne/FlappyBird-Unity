@@ -170,8 +170,8 @@ MonoBehaviour:
   _endXPosition: -6
   _pipeCount: 6
   _pipeYPositionRange:
-    minYPosition: -1
-    maxYPosition: 3
+    minYPosition: 0
+    maxYPosition: 1
   _activePipeStepTime: 1.2
 --- !u!1 &49687494
 GameObject:
