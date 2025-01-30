@@ -118,6 +118,17 @@ public class ScoreUIController : MonoBehaviour
         {
             medalUI.SetActive(false);
         }
+
+        if (PlayerPrefs.HasKey("BestScore"))
+        {
+            _playerBestScore = PlayerPrefs.GetInt("BestScore");
+            TMPro.TextMeshProUGUI bestScoreText = _bestScoreUI.GetComponent<TMPro.TextMeshProUGUI>();
+            bestScoreText.text = _playerBestScore.ToString();
+        }
+        else
+        {
+            _playerBestScore = -1;
+        }
     }
 
     /// <summary>
@@ -166,6 +177,13 @@ public class ScoreUIController : MonoBehaviour
 
         if (_playerScore > _playerBestScore)
         {
+            _playerBestScore = _playerScore;
+            PlayerPrefs.SetInt("BestScore", _playerScore);
+            PlayerPrefs.Save();
+
+            TMPro.TextMeshProUGUI bestScoreText = _bestScoreUI.GetComponent<TMPro.TextMeshProUGUI>();
+            bestScoreText.text = _playerBestScore.ToString();
+
             medalUIIndex = (uint)(Medal.Gold);
         }
         else if (_playerScore == _playerBestScore)
