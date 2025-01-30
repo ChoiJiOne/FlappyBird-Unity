@@ -23,6 +23,16 @@ public class BackgroundSpriteController : MonoBehaviour
     /// </remarks>
     private static bool _isDay = true;
 
+    /// <summary>
+    /// 낮 배경의 스프라이트입니다.
+    /// </summary>
+    private static Sprite _daySprite;
+
+    /// <summary>
+    /// 밤 배경의 스프라이트입니다.
+    /// </summary>
+    private static Sprite _nightSprite;
+
     void Start()
     {
         
