@@ -205,6 +205,11 @@ public class BirdController : MonoBehaviour
                     this.Animation = false;
                 }
 
+                if (CanJumpBird())
+                {
+                    StartJumpBird();
+                }
+
                 AdjustToBounds();
                 break;
 
