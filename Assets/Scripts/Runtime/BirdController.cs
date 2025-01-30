@@ -28,6 +28,15 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 새의 움직임 여부를 설정하는 프로퍼티입니다.
+    /// </summary>
+    public bool Movable
+    {
+        get { return _canMove; }
+        set { _canMove = value; }
+    }
+
+    /// <summary>
     /// 플레이어가 획득한 점수에 대한 프로퍼티입니다.
     /// </summary>
     public int Score
@@ -83,6 +92,11 @@ public class BirdController : MonoBehaviour
     /// 현재 새의 상태입니다.
     /// </summary>
     private State _currentState = State.Idle;
+
+    /// <summary>
+    /// 새가 움직일 수 있는지 확인합니다.
+    /// </summary>
+    private bool _canMove = false;
 
     /// <summary>
     /// 점프 속력입니다.
@@ -155,7 +169,7 @@ public class BirdController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSources = GetComponents<AudioSource>();
-
+        
         // 최초에 시작했을 때만 서로 상태가 다르고, 게임을 시작하면 상태가 동일.
         this.Gravity = false;
         this.Animation = true;
@@ -173,47 +187,49 @@ public class BirdController : MonoBehaviour
 
     private void Update()
     {
-        // Crash 상태이거나 Dead 상태이면 아무 동작도 수행할 필요가 없음.
-        if (_currentState == State.Dead)
+        switch(_currentState)
         {
-            return;
-        }
-        
-        if (_currentState == State.Idle || _currentState == State.Fall)
-        {
-            State beforeState = _currentState;
-            if (CanJumpBird())
-            {
-                StartJumpBird();
-
-                if (beforeState == State.Idle)
+            case State.Idle:
+                if (CanJumpBird())
                 {
+                    StartJumpBird();
+                    _canMove = true;
                     _gameMgr.CurrentGameState = GameManager.State.Play;
                 }
-            }
+                break;
 
-            if (beforeState == State.Fall)
-            {
-                RotateBird();
+            case State.Jump when _canMove:
+                if (IsFallBird())
+                {
+                    _currentState = State.Fall;
+                    this.Animation = false;
+                }
+
                 AdjustToBounds();
-            }
-        }
-        else if (_currentState == State.Jump)
-        {
-            if (IsFallBird())
-            {
-                _currentState = State.Fall;
-                this.Animation = false;
-            }
+                break;
 
-            AdjustToBounds();
-        }
-        else if (_currentState == State.Crash)
-        {
-            if (IsFallBird())
-            {
-                RotateBird();
-            }
+            case State.Fall when _canMove:
+                if (CanJumpBird())
+                {
+                    StartJumpBird();
+                }
+                else
+                {
+                    RotateBird();
+                    AdjustToBounds();
+                }
+                break;
+
+            case State.Crash when _canMove:
+                if (IsFallBird())
+                {
+                    RotateBird();
+                }
+                break;
+
+            case State.Dead:
+                // 아무 동작도 수행하지 않습니다.
+                break;
         }
     }
 
