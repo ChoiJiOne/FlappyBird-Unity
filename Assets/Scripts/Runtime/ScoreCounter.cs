@@ -88,7 +88,7 @@ public class ScoreCounter : MonoBehaviour
         float score = Mathf.Lerp(0.0f, (float)(_targetScore), t);
         _currentScore = (int)(score);
 
-        UpdateScoreText(_currentScore);
+        ApplyScoreText(_currentScore);
 
         if (_currentStepTime >= _countTime)
         {
@@ -113,10 +113,10 @@ public class ScoreCounter : MonoBehaviour
     }
 
     /// <summary>
-    /// 스코어의 텍스트를 업데이트합니다.
+    /// 스코어의 텍스트를 적용합니다.
     /// </summary>
     /// <param name="score">업데이트할 스코어입니다.</param>
-    private void UpdateScoreText(int score)
+    private void ApplyScoreText(int score)
     {
         TMPro.TextMeshProUGUI scoreText = GetComponent<TMPro.TextMeshProUGUI>();
         if (scoreText.text == _targetScore.ToString())
