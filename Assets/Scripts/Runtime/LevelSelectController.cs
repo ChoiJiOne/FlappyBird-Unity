@@ -23,10 +23,25 @@ public class LevelSelectController : MonoBehaviour
     private int _currentSelectIndex = 0;
 
     /// <summary>
+    /// 플레이어의 레벨 키 값입니다.
+    /// </summary>
+    /// <remarks>
+    /// EASY: 0
+    /// NORMAL: 1
+    /// HARD: 2
+    /// </remarks>
+    static string _playerLevelKey = "Level";
+
+    /// <summary>
     /// 레벨 오브젝트의 목록 내의 게임 오브젝트들을 명시적으로 비활성화합니다.
     /// </summary>
     private void Awake()
     {
+        if (PlayerPrefs.HasKey(_playerLevelKey))
+        {
+            _currentSelectIndex = PlayerPrefs.GetInt(_playerLevelKey);
+        }
+
         for(int index = 0; index < _levelObjects.Length; ++index)
         {
             if (index == _currentSelectIndex)
@@ -50,6 +65,7 @@ public class LevelSelectController : MonoBehaviour
             _currentSelectIndex = _levelObjects.Length;
         }
         _currentSelectIndex--;
+        PlayerPrefs.SetInt(_playerLevelKey, _currentSelectIndex);
 
         SetActiveLevelObject(_currentSelectIndex, true);
     }
@@ -62,6 +78,7 @@ public class LevelSelectController : MonoBehaviour
         SetActiveLevelObject(_currentSelectIndex, false);
 
         _currentSelectIndex = (_currentSelectIndex + 1) % _levelObjects.Length;
+        PlayerPrefs.SetInt(_playerLevelKey, _currentSelectIndex);
 
         SetActiveLevelObject(_currentSelectIndex, true);
     }
