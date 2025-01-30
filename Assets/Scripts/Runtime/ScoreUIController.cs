@@ -12,6 +12,15 @@ using UnityEngine;
 public class ScoreUIController : MonoBehaviour
 {
     /// <summary>
+    /// 플레이어 스코어에 대한 프로퍼티입니다.
+    /// </summary>
+    public int PlayerScore
+    {
+        get { return _playerScore;  }
+        set { _playerScore = value; }
+    }
+
+    /// <summary>
     /// UI의 랙 트랜스폼입니다.
     /// </summary>
     private RectTransform _rectTransform;
@@ -66,6 +75,11 @@ public class ScoreUIController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject _medalUI;
+
+    /// <summary>
+    /// 플레이어가 획득한 점수입니다.
+    /// </summary>
+    int _playerScore = 0;
     
     /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
