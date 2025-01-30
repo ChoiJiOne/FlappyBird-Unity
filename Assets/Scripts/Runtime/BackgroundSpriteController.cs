@@ -30,7 +30,7 @@ public class BackgroundSpriteController : MonoBehaviour
     /// <remarks>
     /// 배경이 낮이라면 true, 밤이라면 false입니다.
     /// </remarks>
-    private static bool s_isDay = true;
+    private static bool s_isDay;
 
     /// <summary>
     /// 낮 배경의 스프라이트입니다.
@@ -82,6 +82,8 @@ public class BackgroundSpriteController : MonoBehaviour
 
     private void OnDestroy()
     {
+        int daySelectValue = s_isDay ? 0 : 1;
+        PlayerPrefs.SetInt(s_isDayKey, daySelectValue);
         PlayerPrefs.Save();
     }
 
