@@ -190,32 +190,19 @@ public class BirdController : MonoBehaviour
         switch(_currentState)
         {
             case State.Idle:
-                if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
+                JumpBird();
+                if (_currentState == State.Jump)
                 {
                     _gameMgr.CurrentGameState = GameManager.State.Play;
 
-                    _rigidbody.velocity = Vector2.up * _jumpSpeed;
-                    _currentState = State.Jump;
                     _canMove = true;
-
-                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
-
                     this.Gravity = true;
                     this.Animation = true;
-                    PlayAudioSource(AudioType.Wing);
                 }
                 break;
 
             case State.Jump when _canMove:
-                if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
-                {
-                    _rigidbody.velocity = Vector2.up * _jumpSpeed;
-                    _currentState = State.Jump;
-
-                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
-
-                    PlayAudioSource(AudioType.Wing);
-                }
+                JumpBird();
                 AdjustToBounds();
 
                 if (IsFallBird())
@@ -226,19 +213,14 @@ public class BirdController : MonoBehaviour
                 break;
 
             case State.Fall when _canMove:
-                if (Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
+                JumpBird();
+                if (_currentState == State.Fall)
                 {
-                    _rigidbody.velocity = Vector2.up * _jumpSpeed;
-                    _currentState = State.Jump;
-
-                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
-
-                    this.Animation = true;
-                    PlayAudioSource(AudioType.Wing);
+                    RotateBird();
                 }
                 else
                 {
-                    RotateBird();
+                    this.Animation = true;
                 }
                 break;
 
@@ -253,6 +235,24 @@ public class BirdController : MonoBehaviour
                 // 아무 동작도 수행하지 않습니다.
                 break;
         }
+    }
+
+    /// <summary>
+    /// 새를 점프시킵니다.
+    /// </summary>
+    private void JumpBird()
+    {
+        if (!Input.GetMouseButtonDown(LEFT_MOUSE_BUTTON_CODE))
+        {
+            return;
+        }
+
+        _rigidbody.velocity = Vector2.up * _jumpSpeed;
+        _currentState = State.Jump;
+
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, MAX_ROTATE_ANGLE);
+
+        PlayAudioSource(AudioType.Wing);
     }
 
     /// <summary>
