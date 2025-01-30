@@ -11,6 +11,15 @@ using UnityEngine;
 public class BackgroundSpriteController : MonoBehaviour
 {
     /// <summary>
+    /// 배경의 낮/밤을 설정하는 프로퍼티입니다.
+    /// </summary>
+    public static bool Day
+    {
+        get { return _isDay; }
+        set { _isDay = value; }
+    }
+
+    /// <summary>
     /// 배경 스프라이트 렌더링을 수행할 렌더러입니다.
     /// </summary>
     private SpriteRenderer _spriteRenderer;
@@ -59,8 +68,18 @@ public class BackgroundSpriteController : MonoBehaviour
         }
     }
 
-    void Update()
+    /// <summary>
+    /// 백그라운드의 스프라이트 변경 사항을 적용합니다.
+    /// </summary>
+    public void ApplySprite()
     {
-        
+        if (_isDay)
+        {
+            _spriteRenderer.sprite = _daySprite;
+        }
+        else
+        {
+            _spriteRenderer.sprite = _nightSprite;
+        }
     }
 }
