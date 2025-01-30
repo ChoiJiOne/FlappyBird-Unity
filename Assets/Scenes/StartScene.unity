@@ -730,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969039314139057946, guid: 762cce2077e729c4dad3e71ee82d5bd4, type: 3}
       propertyPath: m_Name
-      value: SceneSwitchTrigger
+      value: StartSceneSwitchTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 7583499512002380276, guid: 762cce2077e729c4dad3e71ee82d5bd4, type: 3}
       propertyPath: m_LocalPosition.x
