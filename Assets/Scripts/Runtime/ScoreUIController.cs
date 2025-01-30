@@ -76,10 +76,10 @@ public class ScoreUIController : MonoBehaviour
     private GameObject _bestScoreUI;
 
     /// <summary>
-    /// 플레이어의 점수에 따라 부여하는 메달 UI입니다.
+    /// 플레이어의 점수에 따라 부여하는 메달 UI 목록입니다.
     /// </summary>
     [SerializeField]
-    private GameObject _medalUI;
+    private GameObject[] _medalUIs;
 
     /// <summary>
     /// 플레이어가 획득한 점수입니다.
@@ -96,7 +96,10 @@ public class ScoreUIController : MonoBehaviour
 
         _scoreCounter = _playerScoreUI.GetComponent<ScoreCounter>();
 
-        _medalUI.SetActive(false);
+        foreach (GameObject medalUI in _medalUIs)
+        {
+            medalUI.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -121,6 +124,7 @@ public class ScoreUIController : MonoBehaviour
         _moveStepTime += Time.deltaTime;
         if (_moveStepTime >= _moveTime)
         {
+            _scoreCounter.StartCounter(_playerScore);
             _isAtDestination = true;
         }
 
