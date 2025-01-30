@@ -47,6 +47,8 @@ public class BackgroundSpriteController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
         if (s_daySprite == null)
         {
             s_daySprite = Resources.Load<Sprite>("Sprites/Day");
@@ -57,7 +59,6 @@ public class BackgroundSpriteController : MonoBehaviour
             s_nightSprite = Resources.Load<Sprite>("Sprites/Night");
         }
 
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         if (s_isDay)
         {
             _spriteRenderer.sprite = s_daySprite;
