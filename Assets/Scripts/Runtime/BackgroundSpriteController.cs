@@ -33,9 +33,30 @@ public class BackgroundSpriteController : MonoBehaviour
     /// </summary>
     private static Sprite _nightSprite;
 
-    void Start()
+    /// <summary>
+    /// 스프라이트 렌더러와 낮/밤 배경의 스프라이트를 초기화합니다.
+    /// </summary>
+    private void Awake()
     {
-        
+        if (_daySprite == null)
+        {
+            _daySprite = Resources.Load<Sprite>("Sprites/Day");
+        }
+
+        if (_nightSprite == null)
+        {
+            _nightSprite = Resources.Load<Sprite>("Sprites/Night");
+        }
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_isDay)
+        {
+            _spriteRenderer.sprite = _daySprite;
+        }
+        else
+        {
+            _spriteRenderer.sprite = _nightSprite;
+        }
     }
 
     void Update()
