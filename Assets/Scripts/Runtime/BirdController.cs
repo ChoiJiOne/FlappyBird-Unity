@@ -128,12 +128,18 @@ public class BirdController : MonoBehaviour
     private const float MAX_Y_POSITION = 5.0f;
 
     /// <summary>
+    /// 새 오브젝트 내에서 사용하는 오디오 소스 목록입니다.
+    /// </summary>
+    private AudioSource[] _audioSources;
+
+    /// <summary>
     /// 애니메이션과 리지드바디의 참조를 초기화합니다.
     /// </summary>
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _audioSources = GetComponents<AudioSource>();
 
         // 최초에 시작했을 때만 서로 상태가 다르고, 게임을 시작하면 상태가 동일.
         this.Gravity = false;
