@@ -217,15 +217,22 @@ public class GameManager : MonoBehaviour
         }
 
         _groundController = _ground.GetComponent<GroundController>();
-        _groundController.MoveSpeed = _moveSpeed;
-
         _pipeMgr = _pipeManager.GetComponent<PipeManager>();
-        _pipeMgr.MoveSpeed = _moveSpeed;
-
         _birdController = _bird.GetComponent<BirdController>();
         _scoreUIController = _scoreBoardUI.GetComponent<ScoreUIController>();
 
+        ApplyGameLevelOption(_currentLevel);
+
         this.CurrentGameState = State.Ready;
+    }
+
+    private void ApplyGameLevelOption(Level level)
+    {
+        int gameLevelOptionIndex = (int)(level);
+
+        _groundController.MoveSpeed = _gameLevelOptions[gameLevelOptionIndex].moveSpeed;
+        _pipeMgr.MoveSpeed = _gameLevelOptions[gameLevelOptionIndex].moveSpeed;
+        _pipeMgr.ActivePipeTime = _gameLevelOptions[gameLevelOptionIndex].pipeActiveTime;
     }
 
     /// <summary>
