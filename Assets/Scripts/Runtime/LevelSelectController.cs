@@ -59,6 +59,11 @@ public class LevelSelectController : MonoBehaviour
     /// </summary>
     public void OnClickRightSelecttButton()
     {
+        SetActiveLevelObject(_currentSelectIndex, false);
+
+        _currentSelectIndex = (_currentSelectIndex + 1) % _levelObjects.Length;
+
+        SetActiveLevelObject(_currentSelectIndex, true);
     }
 
     /// <summary>
