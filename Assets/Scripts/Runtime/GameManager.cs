@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     /// None: 초기화가 진행되지 않은 상태입니다.
     /// Ready: 게임을 시작하기 전입니다.
     /// Play: 게임을 플레이하는 상태입니다.
+    /// Pause: 게임 중지 상태입니다.
     /// GameOver: 새 오브젝트와 파이프가 충돌한 상태입니다.
     /// Done: 게임이 종료된 상태입니다.
     /// </remarks>
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         None,
         Ready,
         Play,
+        Pause,
         GameOver,
         Done,
     }
@@ -214,6 +216,9 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        _pauseButtonUI.SetActive(false);
+        _resumeButtonUI.SetActive(false);
+
         _pipeMgr.Active = false;
         _groundController.Movable = false;
 
@@ -238,5 +243,39 @@ public class GameManager : MonoBehaviour
         _scoreUIController.PlayerScore = score;
 
         _currentGameState = State.Done;
+    }
+
+    /// <summary>
+    /// 게임 중지 버튼을 클릭했을 때 실행할 이벤트입니다.
+    /// </summary>
+    public void OnClickPauseButton()
+    {
+        SetActiveMovableObjects(false);
+        _currentGameState = State.Pause;
+    }
+
+    /// <summary>
+    /// 게임 재개 버튼을 클릭했을 때 실행할 이벤트입니다.
+    /// </summary>
+    public void OnClickResumeButton()
+    {
+        SetActiveMovableObjects(true);
+        _currentGameState = State.Play;
+    }
+
+    /// <summary>
+    /// 움직임이 있는 오브젝트들의 활성화 여부를 설정합니다.
+    /// </summary>
+    /// <param name="bIsActive">움직임 활성화 여부입니다.</param>
+    private void SetActiveMovableObjects(bool bIsActive)
+    {
+        _groundController.Movable = bIsActive;
+        _pipeMgr.Active = bIsActive;
+        _birdController.Movable = bIsActive;
+        _birdController.Gravity = bIsActive;
+        _birdController.Animation = bIsActive;
+
+        _pauseButtonUI.SetActive(bIsActive);
+        _resumeButtonUI.SetActive(!bIsActive);
     }
 }
