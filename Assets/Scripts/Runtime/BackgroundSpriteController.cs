@@ -80,6 +80,9 @@ public class BackgroundSpriteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 오브젝트가 파괴되기 전에 배경 변경 사항을 저장합니다.
+    /// </summary>
     private void OnDestroy()
     {
         int daySelectValue = s_isDay ? 0 : 1;
