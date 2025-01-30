@@ -21,6 +21,19 @@ public class ScoreUIController : MonoBehaviour
     }
 
     /// <summary>
+    /// 플레이어가 획득한 메달입니다.
+    /// </summary>
+    /// <remarks>
+    /// 이 열거형은 스코어 UI를 제어하는 컨트롤러 내부에서만 사용합니다.
+    /// </remarks>
+    private enum Medal : uint
+    {
+        Bronze = 0,
+        Silver = 1,
+        Gold = 2,
+    }
+
+    /// <summary>
     /// UI의 랙 트랜스폼입니다.
     /// </summary>
     private RectTransform _rectTransform;
@@ -85,6 +98,11 @@ public class ScoreUIController : MonoBehaviour
     /// 플레이어가 획득한 점수입니다.
     /// </summary>
     int _playerScore = 0;
+
+    /// <summary>
+    /// 플레이어의 최고 점수입니다.
+    /// </summary>
+    int _playerBestScore = 0;
     
     /// <summary>
     /// UI의 랙 트랜스 폼과 시작 위치를 초기화합니다.
@@ -124,7 +142,7 @@ public class ScoreUIController : MonoBehaviour
         _moveStepTime += Time.deltaTime;
         if (_moveStepTime >= _moveTime)
         {
-            _scoreCounter.StartCounter(_playerScore);
+            _scoreCounter.StartCounter(_playerScore, this.ActivePlayerMetal);
             _isAtDestination = true;
         }
 
@@ -132,5 +150,33 @@ public class ScoreUIController : MonoBehaviour
         Vector2 newPosition = Vector2.Lerp(_startPosition, _endPosition, t);
 
         _rectTransform.anchoredPosition = newPosition;
+    }
+
+    /// <summary>
+    /// 플레이어가 획득한 점수에 따라 메달 오브젝트를 활성화합니다.
+    /// </summary>
+    /// <remarks>
+    /// 최고 점수를 넘은 경우: Gold
+    /// 최고 점수와 동일한 경우: Silver
+    /// 최고 점수보다 낮은 경우: Bronze
+    /// </remarks>
+    private void ActivePlayerMetal()
+    {
+        uint medalUIIndex = 0;
+
+        if (_playerScore > _playerBestScore)
+        {
+            medalUIIndex = (uint)(Medal.Gold);
+        }
+        else if (_playerScore == _playerBestScore)
+        {
+            medalUIIndex = (uint)(Medal.Silver);
+        }
+        else
+        {
+            medalUIIndex = (uint)(Medal.Bronze);
+        }
+
+        _medalUIs[medalUIIndex].SetActive(true);
     }
 }
