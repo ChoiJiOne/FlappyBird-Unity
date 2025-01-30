@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
     /// NORMAL: 1
     /// HARD: 2
     /// </remarks>
-    static string _playerLevelKey = "Level";
+    static string s_playerLevelKey = "Level";
 
     /// <summary>
     /// 현재 플레이 난이도입니다.
@@ -211,9 +211,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (PlayerPrefs.HasKey(_playerLevelKey))
+        if (PlayerPrefs.HasKey(s_playerLevelKey))
         {
-            _currentLevel = (Level)(PlayerPrefs.GetInt(_playerLevelKey));
+            _currentLevel = (Level)(PlayerPrefs.GetInt(s_playerLevelKey));
         }
 
         _groundController = _ground.GetComponent<GroundController>();
