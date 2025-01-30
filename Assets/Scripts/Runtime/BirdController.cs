@@ -253,7 +253,8 @@ public class BirdController : MonoBehaviour
 
         this.Gravity = true;
         this.Animation = true;
-
+        
+        PlayAudioSource(AudioType.Wing);
         _currentState = State.Jump;
     }
 
