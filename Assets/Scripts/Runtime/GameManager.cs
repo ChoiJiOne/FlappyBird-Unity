@@ -113,6 +113,18 @@ public class GameManager : MonoBehaviour
     private GameObject _InstructionsUI;
 
     /// <summary>
+    /// 게임을 중지시키는 버튼 UI 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _pauseButtonUI;
+
+    /// <summary>
+    /// 중지된 게임을 다시 재개시키는 버튼 UI 오브젝트입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _resumeButtonUI;
+
+    /// <summary>
     /// 인 게임 캔버스 내의 스코어를 표시하는 텍스트 UI 오브젝트입니다.
     /// </summary>
     [SerializeField]
@@ -162,6 +174,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        _pauseButtonUI.SetActive(false);
+        _resumeButtonUI.SetActive(false);
         _scoreUI.SetActive(false);
         _scoreBoardUI.SetActive(false);
 
@@ -182,6 +196,7 @@ public class GameManager : MonoBehaviour
         _getReadyUI.SetActive(false);
         _InstructionsUI.SetActive(false);
 
+        _pauseButtonUI.SetActive(true);
         _scoreUI.SetActive(true);
         _pipeMgr.Active = true;
 
