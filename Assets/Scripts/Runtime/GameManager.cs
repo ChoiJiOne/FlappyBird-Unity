@@ -3,6 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// 게임 난이도입니다.
+/// </summary>
+/// <remarks>
+/// Easy: 쉬움
+/// Normal: 보통
+/// Hard: 어려움
+/// </remarks>
+public enum Level
+{
+    Easy   = 0,
+    Normal = 1,
+    Hard   = 2,
+}
+
+/// <summary>
 /// 게임 플레이 씬 내의 설정 값 및 이벤트를 관리합니다.
 /// </summary>
 public class GameManager : MonoBehaviour
@@ -27,22 +42,7 @@ public class GameManager : MonoBehaviour
         GameOver,
         Done,
     }
-
-    /// <summary>
-    /// 게임 난이도입니다.
-    /// </summary>
-    /// <remarks>
-    /// Easy: 쉬움
-    /// Normal: 보통
-    /// Hard: 어려움
-    /// </remarks>
-    public enum Level
-    {
-        Easy   = 0,
-        Normal = 1,
-        Hard   = 2,
-    }
-
+    
     /// <summary>
     /// 현재의 게임 상태에 대한 프로퍼티입니다.
     /// </summary>
