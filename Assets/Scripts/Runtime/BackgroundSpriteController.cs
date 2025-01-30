@@ -43,11 +43,22 @@ public class BackgroundSpriteController : MonoBehaviour
     private static Sprite s_nightSprite;
 
     /// <summary>
+    /// 플레이어의 배경이 낮인지 확인하는 키 값입니다.
+    /// </summary>
+    private static string s_isDayKey = "IsDay";
+
+    /// <summary>
     /// 스프라이트 렌더러와 낮/밤 배경의 스프라이트를 초기화합니다.
     /// </summary>
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (PlayerPrefs.HasKey(s_isDayKey))
+        {
+            int daySelectValue = PlayerPrefs.GetInt(s_isDayKey);
+            s_isDay = (daySelectValue == 0);
+        }
 
         if (s_daySprite == null)
         {
@@ -67,6 +78,11 @@ public class BackgroundSpriteController : MonoBehaviour
         {
             _spriteRenderer.sprite = s_nightSprite;
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.Save();
     }
 
     /// <summary>
