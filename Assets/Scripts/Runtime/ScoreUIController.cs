@@ -65,6 +65,11 @@ public class ScoreUIController : MonoBehaviour
     private GameObject _playerScoreUI;
 
     /// <summary>
+    /// 플레이어가 획득한 스코어를 0부터 증가시킵니다.
+    /// </summary>
+    private ScoreCounter _scoreCounter;
+
+    /// <summary>
     /// 플레이어의 최고 점수를 표시하는 텍스트 UI입니다.
     /// </summary>
     [SerializeField]
@@ -88,6 +93,8 @@ public class ScoreUIController : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>();
         _startPosition = _rectTransform.anchoredPosition;
+
+        _scoreCounter = _playerScoreUI.GetComponent<ScoreCounter>();
 
         _medalUI.SetActive(false);
     }
