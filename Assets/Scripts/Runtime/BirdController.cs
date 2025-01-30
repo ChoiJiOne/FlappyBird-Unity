@@ -334,6 +334,20 @@ public class BirdController : MonoBehaviour
     }
 
     /// <summary>
+    /// 오디오 소스를 비동기적으로 출력합니다.
+    /// </summary>
+    /// <param name="type">출력할 오디오의 종류입니다.</param>
+    /// <param name="delay">오디오 출력의 지연 시간입니다.</param>
+    /// <remarks>
+    /// StartCoroutine와 함께 사용해야 합니다.
+    /// </remarks>
+    private IEnumerator PlayAudioSourceDelay(AudioType type, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayAudioSource(type);
+    }
+
+    /// <summary>
     /// 그라운드 오브젝트와의 충돌 처리를 수행합니다.
     /// </summary>
     /// <param name="collision">그라운드 오브젝트의 콜리젼입니다.</param>
