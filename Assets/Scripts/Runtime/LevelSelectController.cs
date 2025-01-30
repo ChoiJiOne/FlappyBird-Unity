@@ -54,6 +54,14 @@ public class LevelSelectController : MonoBehaviour
     }
 
     /// <summary>
+    /// 오브젝트가 파괴되기 전 플레이어 레벨 변경 사항을 저장합니다.
+    /// </summary>
+    private void OnDestroy()
+    {
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
     /// LeftSelectButton 버튼을 클릭했을 때 실행할 이벤트입니다.
     /// </summary>
     public void OnClickLeftSelectButton()
