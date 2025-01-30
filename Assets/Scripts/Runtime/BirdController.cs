@@ -356,6 +356,8 @@ public class BirdController : MonoBehaviour
 
             TMPro.TextMeshProUGUI scoreUI = _scoreUI.GetComponent<TMPro.TextMeshProUGUI>();
             scoreUI.text = _score.ToString();
+
+            PlayAudioSource(AudioType.Point);
             return;
         }
 
