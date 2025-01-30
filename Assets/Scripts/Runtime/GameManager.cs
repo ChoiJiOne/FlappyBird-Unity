@@ -29,6 +29,21 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 게임 난이도입니다.
+    /// </summary>
+    /// <remarks>
+    /// Easy: 쉬움
+    /// Normal: 보통
+    /// Hard: 어려움
+    /// </remarks>
+    public enum Level
+    {
+        Easy   = 0,
+        Normal = 1,
+        Hard   = 2,
+    }
+
+    /// <summary>
     /// 현재의 게임 상태에 대한 프로퍼티입니다.
     /// </summary>
     /// <remarks>
