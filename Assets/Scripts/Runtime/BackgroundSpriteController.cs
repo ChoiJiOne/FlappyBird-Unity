@@ -15,8 +15,8 @@ public class BackgroundSpriteController : MonoBehaviour
     /// </summary>
     public static bool Day
     {
-        get { return _isDay; }
-        set { _isDay = value; }
+        get { return s_isDay; }
+        set { s_isDay = value; }
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public class BackgroundSpriteController : MonoBehaviour
     /// <remarks>
     /// 배경이 낮이라면 true, 밤이라면 false입니다.
     /// </remarks>
-    private static bool _isDay = true;
+    private static bool s_isDay = true;
 
     /// <summary>
     /// 낮 배경의 스프라이트입니다.
@@ -58,7 +58,7 @@ public class BackgroundSpriteController : MonoBehaviour
         }
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (_isDay)
+        if (s_isDay)
         {
             _spriteRenderer.sprite = s_daySprite;
         }
@@ -76,7 +76,7 @@ public class BackgroundSpriteController : MonoBehaviour
     /// </remarks>
     public void ApplySprite()
     {
-        if (_isDay)
+        if (s_isDay)
         {
             _spriteRenderer.sprite = s_daySprite;
         }
