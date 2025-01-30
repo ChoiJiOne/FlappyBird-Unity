@@ -167,6 +167,8 @@ public class BirdController : MonoBehaviour
     private void Start()
     {
         _gameMgr = _gameManager.GetComponent<GameManager>();
+
+        PlayAudioSource(AudioType.Swooshing);
     }
 
     private void Update()
